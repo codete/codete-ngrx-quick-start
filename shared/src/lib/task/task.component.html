@@ -1,0 +1,6 @@
+<div [ngClass]="{'subtask': isSubtask, 'task': !isSubtask, 'selected': task.selected }">
+  <mat-checkbox [checked]="!!task.isDone"
+                (click)="$event.stopPropagation()"
+                (change)="change($event)"></mat-checkbox>
+  {{ task.name }}
+</div>

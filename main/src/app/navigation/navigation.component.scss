@@ -1,0 +1,9 @@
+mat-card {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/layout",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/layout/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/main",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/main",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/main/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/main/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/ngrx-data-tasks",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-data-tasks",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-data-tasks/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-data-tasks/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/ngrx-tasks",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-tasks",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-tasks/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-tasks/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/shared",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/shared/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    }
+  ]
+}

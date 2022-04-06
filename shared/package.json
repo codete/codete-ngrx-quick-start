@@ -1,5 +1,5 @@
 {
-  "name": "codete-ngrx-quick-start",
+  "name": "shared",
   "version": "0.0.0",
   "dependencies": {
     "@angular-devkit/build-angular": "~13.2.5",
@@ -230,5 +230,6 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {},
-  "private": true
+  "license": "MIT",
+  "private": false
 }

@@ -1,0 +1,51 @@
+import { Firedev } from "firedev";
+import { TaskController } from "../task/task.controller";
+import { SubTask } from "./subtask";
+
+@Firedev.Controller({
+  className: 'SubTaskController',
+  entity: SubTask,
+  path: 'subtasks'
+})
+export class SubTaskController extends TaskController {
+
+  //#region @backend
+  async initExampleDbData() {
+
+    const repo = this.connection.getRepository<SubTask>(SubTask);
+    await repo.save(SubTask.from({
+      name: 'kabage',
+      taskId: 1
+    }));
+    await repo.save(SubTask.from({
+      name: 'berries',
+      taskId: 1
+    }));
+
+    await repo.save(SubTask.from({
+      name: 'check size',
+      taskId: 2
+    }));
+    await repo.save(SubTask.from({
+      name: 'create space',
+      taskId: 2
+    }));
+
+    await repo.save(SubTask.from({
+      name: 'paint outside',
+      taskId: 2
+    }));
+
+    await repo.save(SubTask.from({
+      name: 'tomato',
+      taskId: 3,
+    }));
+    await repo.save(SubTask.from({
+      name: 'peas',
+      taskId: 3,
+    }));
+
+  }
+  //#endregion
+
+}

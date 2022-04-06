@@ -1,0 +1,10 @@
+<ng-container *ngFor="let t of topics; let i = index">
+  <br *ngIf="i > 0">
+  <mat-card [routerLink]="[t.link]">
+    <mat-card-header>
+      <mat-card-title [innerHtml]="(i + 1) + '. ' + t.title"></mat-card-title>
+      <mat-card-subtitle [innerHtml]="t.subtitle"></mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</ng-container>
+

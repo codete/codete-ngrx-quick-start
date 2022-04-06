@@ -1,0 +1,25 @@
+{
+  "resources": [],
+  "overrided": {
+    "linkedFolders": [],
+    "ignoreDepsPattern": [
+      "*"
+    ],
+    "includeAsDev": [],
+    "includeOnly": [],
+    "dependencies": {
+      "sqlite3": "4.0.9"
+    }
+  },
+  "linkedProjects": ['main', 'layout', 'ngrx-data-tasks', 'ngrx-tasks', 'shared'],
+  "libReleaseOptions": {
+    "nodts": false,
+    "obscure": false,
+    "ugly": false
+  },
+  "type": "container",
+  "version": "v3",
+  "smart": true,
+  "monorepo": true,
+  "private": true
+}

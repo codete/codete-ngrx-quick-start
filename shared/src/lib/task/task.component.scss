@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.subtask {
+  width : 100%;
+  height: 40px;
+  margin-bottom   : 2px;
+  padding-left    : 10px;
+  line-height     : 50px;
+  opacity         : 0.8;
+  white-space     : nowrap;
+  overflow        : hidden;
+}
+
+.task {
+  @extend .subtask;
+  border          : 1px gray solid;
+  height          : 50px;
+  background-color: lightgray;
+}
+
+
+
+.selected {
+  opacity         : 1.0;
+  background-color: gray;
+}

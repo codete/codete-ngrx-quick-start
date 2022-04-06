@@ -1,0 +1,13 @@
+<button mat-icon-button
+        (click)="
+          close.emit()">
+  <mat-icon>close</mat-icon>
+</button>
+<br>
+<app-task [task]="task"
+          [isSubtask]="true"
+          *ngFor="let task of (subtasks$ | async)"> </app-task>
+<mat-form-field class="new-subtask-input">
+  <input matInput
+         placeholder="+ Add new subtask..">
+</mat-form-field> <br>
