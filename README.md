@@ -2,6 +2,8 @@
 
 <p style="text-align: center;"><img src="./baner.jpeg" ></p>
 
+<p style="text-align: center;"><img src="./screen.png" ></p>
+
 # Installation & build
 
 1. Install firedev
