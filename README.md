@@ -6,22 +6,22 @@
 
 # Installation & build
 
-1. Install firedev
+1. Install firedev, ts-node:
 ```
-npm i -g firedev
+npm i -g firedev ts-node
 ```
 
-2. Start build
+2. Start build:
 ```
 cd codete-ngrx-quick-start
 firedev build:watch main
 ```
 
-3. Start serve
+3. Start server:
 ```
 ts-node run.json
 ```
-or in vscode select proper debug task and press F5 on keyboard
+or in Visual Studi code select proper debug task and press F5 on keyboard
 
 ![](proper-debug.png)
 
