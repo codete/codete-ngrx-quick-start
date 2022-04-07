@@ -26,19 +26,14 @@ const routes: Routes = [
   {
     path: 'ngrx-tasks',
     loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-tasks`)
-      .then(m => m.TasksModule),
+      .then(m => m.TasksAppModule),
   },
 ];
 
 @Component({
   selector: 'app-main',
   encapsulation: ViewEncapsulation.None,
-  styles: [`
-  * {
-    box-sizing: border-box;
-  }
-
-  `],
+  styleUrls: ['./app.scss'],
   template: `
   <app-codete-layout-blog>
     <router-outlet></router-outlet>
@@ -83,7 +78,7 @@ async function start() {
 
   if(Firedev.isBrowser) {
     const appDiv: HTMLElement = document.getElementsByTagName('head').item(0);
-    appDiv.innerHTML = `${appDiv.innerHTML} <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">`;
+    // appDiv.innerHTML = `${appDiv.innerHTML} <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">`;
   }
 
   const context = await Firedev.init({

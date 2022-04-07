@@ -18,7 +18,7 @@ export class Task extends Firedev.Base.Entity<Task> {
   //#region @backend
   @Firedev.Orm.Column.Generated()
   //#endregion
-  id: string;
+  id: number;
 
   //#region @backend
   @Firedev.Orm.Column.Custom({

@@ -1,2 +1,2 @@
-export * from './tasks.module';
+export * from './tasks-app/tasks-app.module';
 

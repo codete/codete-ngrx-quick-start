@@ -1,0 +1,33 @@
+<mat-drawer-container class="container"
+                      [hasBackdrop]="false">
+  <mat-drawer #drawer
+              [mode]="'side'"
+              position="end">
+    <!-- <app-subtasks *ngIf="toogled"
+                  (close)="onCloseSubtaskMenu()"
+                  [taskId]="toogled.id"></app-subtasks> -->
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <h4>
+        <span>NGRX TASKS</span>
+        <button mat-icon-button
+                mat-raised-button
+                class="sync-button">
+          <mat-icon>sync</mat-icon>
+        </button>
+        <!-- <mat-icon aria-hidden="false"
+                  aria-label="Sync">sync</mat-icon> -->
+
+      </h4>
+      <mat-form-field class="new-task-input">
+        <input matInput
+               placeholder="+ Add new task..">
+      </mat-form-field> <br>
+      <app-task [task]="task"
+                (isDone)="onSave($event,task)"
+                (click)="toogle($event,task)"
+                *ngFor="let task of (tasks$ | async)"></app-task>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>
