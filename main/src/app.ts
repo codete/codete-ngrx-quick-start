@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { CodeteLayoutBlogModule } from "@codete-ngrx-quick-start/layout";
 // @browserLine
 import { RouterModule, Routes } from "@angular/router";
+import { ProcessController, Process } from '@codete-ngrx-quick-start/shared';
 
 
 //#region @browser
@@ -27,6 +28,11 @@ const routes: Routes = [
     path: 'ngrx-tasks',
     loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-tasks`)
       .then(m => m.TasksAppModule),
+  },
+  {
+    path: 'realtime-process',
+    loadChildren: () => import(`@codete-ngrx-quick-start/realtime-process`)
+      .then(m => m.RealtimeProcessAppModule),
   },
 ];
 
@@ -76,15 +82,15 @@ async function start() {
   } as Firedev.IConnectionOptions;
   //#endregion
 
-  if(Firedev.isBrowser) {
+  if (Firedev.isBrowser) {
     const appDiv: HTMLElement = document.getElementsByTagName('head').item(0);
     // appDiv.innerHTML = `${appDiv.innerHTML} <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">`;
   }
 
   const context = await Firedev.init({
     host,
-    controllers: [TaskController, SubTaskController],
-    entities: [Task, SubTask],
+    controllers: [TaskController, SubTaskController, ProcessController],
+    entities: [Task, SubTask, Process],
     disabledRealtime: true,
     //#region @backend
     config: config as any

@@ -1,5 +1,7 @@
+import type { Process } from "./process/process";
 import type { Task } from "./task/task";
 
+export type IProcess = Partial<Process>
 export type ITask = Partial<Task>
 
 export interface ISubTask extends ITask {

@@ -27,7 +27,7 @@ export class NavigationComponent implements OnInit {
     {
       title: 'realtime <b>node process</b>',
       imageLink: '/assets/backend-data-into-template.jpeg',
-      link: '/ngrx-tasks'
+      link: '/realtime-process'
     },
   ]
 

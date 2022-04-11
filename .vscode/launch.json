@@ -84,6 +84,26 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/realtime-process",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/realtime-process",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/realtime-process/run.js",
+      "args": [],
+      "outFiles": [
+        "${workspaceFolder}/dist/codete-ngrx-quick-start/realtime-process/dist/**/*.js"
+      ],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Server @codete-ngrx-quick-start/shared",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared/run.js",

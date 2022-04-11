@@ -7,26 +7,19 @@
     ],
     "includeAsDev": [],
     "includeOnly": [],
-    "dependencies": {
-      "sqlite3": "4.0.9"
-    }
+    "dependencies": {}
   },
-  "linkedProjects": [
-    'main',
-    'layout',
-    'ngrx-data-tasks',
-    'ngrx-tasks',
-    'shared',
-    'realtime-process',
-  ],
+  "linkedProjects": [],
   "libReleaseOptions": {
     "nodts": false,
     "obscure": false,
     "ugly": false
   },
-  "type": "container",
+  "type": "isomorphic-lib",
   "version": "v3",
-  "smart": true,
-  "monorepo": true,
-  "private": true
+  "isCoreProject": false,
+  "isGenerated": false,
+  "useFramework": false,
+  "required": [],
+  "requiredServers": []
 }

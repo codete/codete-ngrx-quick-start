@@ -10,3 +10,9 @@ export * from './task/task.controller'
 export * from './subtask/subtask';
 export * from './subtask/subtask.controller';
 export * from './constants';
+export * from './process/process';
+export * from './process/process.controller';
+// @browserLine
+export * from './process/process.component';
+// @browserLine
+export * from './process/process.module';
