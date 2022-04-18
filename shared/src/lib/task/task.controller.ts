@@ -1,11 +1,14 @@
 
 import { Firedev } from "firedev";
+import { Helpers } from "tnp-helpers";
+import { CLASS } from "typescript-class-helpers";
+import { PATH_FOR } from "../constants";
 import { Task } from "./task";
 
 @Firedev.Controller({
   className: 'TaskController',
   entity: Task,
-  path: 'tasks'
+  path: PATH_FOR(Task),
 })
 export class TaskController extends Firedev.Base.Controller<Task> {
 

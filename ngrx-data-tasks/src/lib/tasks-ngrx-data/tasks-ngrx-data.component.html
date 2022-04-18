@@ -22,7 +22,9 @@
       </h4>
       <mat-form-field class="new-task-input">
         <input matInput
-               placeholder="+ Add new task..">
+               [(ngModel)]="newTaskModel"
+               placeholder="+ Add new task.."
+               (window:keypress)="add($event)">
       </mat-form-field> <br>
       <app-task [task]="task"
                 (isDone)="onSave($event,task)"

@@ -19,3 +19,21 @@ export const FETCH_TASKS_ERROR = createAction(
   '[tasks] FETCH_TASKS_ERROR',
   props<{ error: any; }>()
 );
+
+export const ADD_TASK = createAction(
+  '[tasks] ADD_TASK',
+  props<{ task: ITask }>()
+);
+
+
+export const ADD_TASK_SUCCESS = createAction(
+  '[tasks] ADD_TASK_SUCCESS',
+  props<{ task: ITask }>()
+);
+
+
+export const ADD_TASK_ERROR = createAction(
+  '[tasks] ADD_TASK_ERROR',
+  props<{ error: any; }>()
+);
+

@@ -6,18 +6,12 @@ import {
 } from '@ngrx/data';
 
 import { entityMetadata } from './app-entity-metadata';
-import { host, isE2E } from '@codete-ngrx-quick-start/shared';
+import { isE2E, SubTask, Task } from '@codete-ngrx-quick-start/shared';
 
 const defaultDataServiceConfig: DefaultDataServiceConfig = {
   entityHttpResourceUrls: {
-    Task: {
-      entityResourceUrl: `${host}/tasks/model`,
-      collectionResourceUrl: `${host}/tasks/model`,
-    },
-    SubTask: {
-      entityResourceUrl: `${host}/subtasks/model`,
-      collectionResourceUrl: `${host}/subtasks/model`,
-    }
+    Task: Task.URLS,
+    SubTask: SubTask.URLS,
   },
   timeout: 3000, // request timeout
   getDelay: isE2E ? 0 : 500,

@@ -3,7 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Task } from '@codete-ngrx-quick-start/shared';
 import { TasksService } from './tasks-ngrx-data.service';
 import * as _ from 'lodash';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable, tap } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
@@ -14,6 +14,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class TasksComponent implements OnInit, AfterViewInit {
 
   @ViewChild('drawer') drawer?: MatDrawer;
+  newTaskModel: string;
   toogled: Task;
   constructor(
     private tasksService: TasksService,
@@ -31,6 +32,15 @@ export class TasksComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
+  }
+
+  async add(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      await firstValueFrom(this.tasksService.add(Task.from({
+        name: this.newTaskModel
+      })));
+      this.newTaskModel = '';
+    }
   }
 
   onSave(isDone: boolean, task: Task) {

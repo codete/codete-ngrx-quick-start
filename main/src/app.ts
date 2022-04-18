@@ -1,5 +1,6 @@
 import { Firedev } from 'firedev';
 import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
+import { CLASS } from 'typescript-class-helpers';
 
 // @browserLine
 import { NgModule, ViewEncapsulation } from '@angular/core';
@@ -69,7 +70,7 @@ export class MainModule { }
 
 
 async function start() {
-
+  // Firedev.enableProductionMode();
   //#region @backend
   const config = {
     host,
@@ -103,6 +104,9 @@ async function start() {
     })
   }
   //#endregion
+
+
+  // console.log(`HEHEHEHHEHEH: ${SubTask.name}: ${CLASS.getName(SubTask)}`);
 }
 
 if (Firedev.isBrowser) {

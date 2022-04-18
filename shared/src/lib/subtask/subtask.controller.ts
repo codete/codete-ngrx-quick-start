@@ -1,11 +1,12 @@
 import { Firedev } from "firedev";
+import { host, PATH_FOR } from "../constants";
 import { TaskController } from "../task/task.controller";
 import { SubTask } from "./subtask";
 
 @Firedev.Controller({
   className: 'SubTaskController',
   entity: SubTask,
-  path: 'subtasks'
+  path: PATH_FOR(SubTask),
 })
 export class SubTaskController extends TaskController {
 

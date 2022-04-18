@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ISubTask } from '@codete-ngrx-quick-start/shared';
+import { ISubTask, SubTask } from '@codete-ngrx-quick-start/shared';
 import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
+import { CLASS } from 'typescript-class-helpers';
 
 @Injectable({ providedIn: 'root' })
 export class SubtasksService extends EntityCollectionServiceBase<ISubTask>{
-    constructor(
-        serviceElementsFactory: EntityCollectionServiceElementsFactory
-    ) {
-        super('SubTask', serviceElementsFactory);
-    }
+  constructor(
+    serviceElementsFactory: EntityCollectionServiceElementsFactory
+  ) {
+    super(CLASS.getName(SubTask), serviceElementsFactory);
+  }
 
 }

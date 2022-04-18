@@ -1,3 +1,5 @@
+<!-- ngrx-data-tasks/src/lib/tasks-ngrx-data/tasks-ngrx-data.component.html -->
+
 <mat-drawer-container class="container"
                       [hasBackdrop]="false">
   <mat-drawer #drawer
@@ -22,7 +24,9 @@
       </h4>
       <mat-form-field class="new-task-input">
         <input matInput
-               placeholder="+ Add new task..">
+               placeholder="+ Add new task.."
+               (window:keypress)="add($event)">
+        >
       </mat-form-field> <br>
       <app-task [task]="task"
                 (isDone)="onSave($event,task)"

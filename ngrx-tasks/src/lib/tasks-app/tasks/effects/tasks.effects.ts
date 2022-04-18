@@ -16,10 +16,25 @@ export class TasksEffects {
   fetchTasks = createEffect(() => this.actions$.pipe(
     ofType(tasksActions.FETCH_TASKS),
     switchMap(() =>
-      this.service.load().pipe(
-        delay(1000),
+      this.service.getAll().received.observable.pipe(
+        map(r => {
+          return r.body.rawJson;
+        }),
         map(tasks => {
           return tasksActions.FETCH_TASKS_SUCCESS({ tasks })
+        })
+      ))
+  ));
+
+  addTask = createEffect(() => this.actions$.pipe(
+    ofType(tasksActions.ADD_TASK),
+    switchMap((action) =>
+      this.service.create(action.task as any).received.observable.pipe(
+        map(r => r.body.rawJson),
+        map(task => {
+          return tasksActions.ADD_TASK_SUCCESS({ task })
+          // @LAST
+          // adding tasks in progress
         })
       ))
   ));

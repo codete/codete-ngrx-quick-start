@@ -1,0 +1,23 @@
+// ngrx-data-tasks/src/lib/tasks-ngrx-data/tasks-ngrx-data.component.scss
+
+:host {
+  --max-container-size: 1200px;
+  white-space: nowrap;
+}
+
+.container {
+  height: 100%;
+}
+
+.new-task-input {
+  width: 100%;
+}
+
+h4 {
+  text-align: center;
+  margin: 0xp;
+}
+
+.sync-button {
+  float: right;
+}
