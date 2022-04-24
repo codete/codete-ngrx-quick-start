@@ -4,17 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { TasksContainerModule } from './containers/tasks-container/tasks-container.module';
+
 import { tasksReducer } from './reducres/tasks.reducres';
 import { TasksEffects } from './effects/tasks.effects';
 import { tasksFeatureKey } from './tasks.constants';
 import { TasksService } from './services/tasks.service';
-
-
+import { TasksEngineModule } from '@codete-ngrx-quick-start/ngrx-data-tasks';
+import { TasksEngineService } from './tasks.service';
 
 @NgModule({
   imports: [
-    TasksContainerModule,
+    TasksEngineModule.forRoot({
+      customEngineService: TasksEngineService
+    }),
     HttpClientModule,
     StoreModule.forFeature(tasksFeatureKey, tasksReducer),
     EffectsModule.forFeature([TasksEffects]),
@@ -23,7 +25,8 @@ import { TasksService } from './services/tasks.service';
   declarations: [TasksComponent],
   providers: [
     TasksEffects,
-    TasksService
+    TasksService,
+    TasksEngineService,
   ],
 })
 export class TasksModule { }

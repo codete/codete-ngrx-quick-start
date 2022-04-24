@@ -7,7 +7,7 @@ import { CLASS } from 'typescript-class-helpers';
 
 import { Task } from '@codete-ngrx-quick-start/shared';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TasksService extends EntityCollectionServiceBase<Task> {
 
   constructor(

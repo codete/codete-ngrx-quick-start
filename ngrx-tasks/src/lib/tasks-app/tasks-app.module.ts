@@ -31,4 +31,4 @@ const routes: Routes = [
   ],
   declarations: [TasksAppComponent]
 })
-export class TasksAppModule { }
+export class TasksAppModule2 { }

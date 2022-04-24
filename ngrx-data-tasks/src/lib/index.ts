@@ -1,6 +1,6 @@
-export * from './tasks-ngrx-data/tasks-ngrx-data.component';
-export * from './tasks-ngrx-data/tasks-ngrx-data.module';
+export * from './tasks-app/tasks-app.component';
+export * from './tasks-app/tasks-app.module';
 
-export * from './subtasks/subtasks.component';
-export * from './subtasks/subtasks.module';
-
+export * from './tasks-app/engine/tasks-engine.service';
+export * from './tasks-app/engine/tasks-engine.component';
+export * from './tasks-app/engine/tasks-engine.module';

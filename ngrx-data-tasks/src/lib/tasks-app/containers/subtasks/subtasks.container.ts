@@ -1,25 +1,30 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component, EventEmitter, Inject,
+  Input, OnInit, Optional, Output, SimpleChanges
+} from '@angular/core';
 import { Task } from '@codete-ngrx-quick-start/shared';
 import { map } from 'rxjs';
-import { SubtasksService } from './subtasks.service';
+import { TasksEngineService } from '../../engine/tasks-engine.service';
 
 @Component({
   selector: 'app-subtasks',
-  templateUrl: './subtasks.component.html',
-  styleUrls: ['./subtasks.component.scss']
+  templateUrl: './subtasks.container.html',
+  styleUrls: ['./subtasks.container.scss']
 })
 export class SubtasksComponent implements OnInit {
   @Input() taskId: number;
   @Output() close = new EventEmitter<void>();
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.subtasksService.getAll()
-  }
   constructor(
-    private subtasksService: SubtasksService
+    private engine: TasksEngineService,
   ) { }
 
-  subtasks$ = this.subtasksService.entities$.pipe(
+  ngOnChanges(changes: SimpleChanges): void {
+    this.engine.fetchSubtaskAction()
+  }
+
+
+  subtasks$ = this.engine.allSubtasks(this).pipe(
     map(subtaks => {
       console.log('hello')
       if (!this.taskId) {

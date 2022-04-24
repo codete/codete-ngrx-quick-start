@@ -23,12 +23,12 @@ const routes: Routes = [
   {
     path: 'ngrx-data-tasks',
     loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-data-tasks`)
-      .then(m => m.TasksNgrxDataModule),
+      .then(m => m.TasksAppModule1),
   },
   {
     path: 'ngrx-tasks',
     loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-tasks`)
-      .then(m => m.TasksAppModule),
+      .then(m => m.TasksAppModule2),
   },
   {
     path: 'realtime-process',
