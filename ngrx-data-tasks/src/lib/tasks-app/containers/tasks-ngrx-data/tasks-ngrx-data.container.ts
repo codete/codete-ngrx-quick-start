@@ -33,11 +33,11 @@ export class TasksContainer implements OnInit, AfterViewInit {
   ngAfterViewInit(): void { }
 
   async add(event: KeyboardEvent) {
-    this.engine.addAction(event, this);
+    this.engine.addTaskAction(event, this);
   }
 
   onSave(isDone: boolean, task: Task) {
-    this.engine.onSaveAction(isDone, task, this);
+    this.engine.onSaveTaskAction(isDone, task, this);
   }
 
   async toogle(event: Event, task: Task) {

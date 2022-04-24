@@ -1,7 +1,7 @@
 
 import * as _ from 'lodash';
 import { Injectable, InjectionToken, Type } from '@angular/core';
-import { Task } from '@codete-ngrx-quick-start/shared';
+import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
 import { firstValueFrom } from 'rxjs';
 import type { TasksContainer } from '../containers/tasks-ngrx-data/tasks-ngrx-data.container';
 import type { SubtasksComponent } from '../containers/subtasks/subtasks.container';
@@ -59,7 +59,7 @@ export class TasksEngineService {
   //#endregion
 
   //#region actions / add task
-  async addAction(event: KeyboardEvent, context: TasksContainer) {
+  async addTaskAction(event: KeyboardEvent, context: TasksContainer) {
     if (event.code === 'Enter') {
       await firstValueFrom(this.tasksService.add(Task.from({
         name: context.newTaskModel
@@ -70,7 +70,7 @@ export class TasksEngineService {
   //#endregion
 
   //#region actions / save task locally
-  onSaveAction(isDone: boolean, task: Task, context: TasksContainer) {
+  onSaveTaskAction(isDone: boolean, task: Task, context: TasksContainer) {
     task = _.cloneDeep(task) as Task;
     task.isDone = isDone;
     console.log({ isDone })
@@ -103,5 +103,8 @@ export class TasksEngineService {
   //#endregion
 
 
+  saveSubtaskAction(subtask: SubTask, context: SubtasksComponent) {
+
+  }
 
 }

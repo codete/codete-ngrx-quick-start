@@ -4,6 +4,6 @@ import { TasksInitialState } from '../tasks.models';
 
 const tasksFeatureSelector = createFeatureSelector<TasksInitialState>(tasksFeatureKey);
 
-export const allTaks = createSelector(tasksFeatureSelector, state => {
+export const allTasks = createSelector(tasksFeatureSelector, state => {
     return state.tasks;
 });

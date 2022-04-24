@@ -1,5 +1,5 @@
-import { ITask } from "@codete-ngrx-quick-start/shared";
+import { ISubTask, ITask } from "@codete-ngrx-quick-start/shared";
 
 export interface TasksInitialState {
-  tasks: ITask[]
+  tasks: ITask[];
 };

@@ -11,15 +11,17 @@ import { tasksFeatureKey } from './tasks.constants';
 import { TasksService } from './services/tasks.service';
 import { TasksEngineModule } from '@codete-ngrx-quick-start/ngrx-data-tasks';
 import { TasksEngineService } from './tasks.service';
+import { SubTasksModule } from '../subtasks/subtasks.module';
 
 @NgModule({
   imports: [
-    TasksEngineModule.forRoot({
+    TasksEngineModule.forRoot({ // @ts-ignore
       customEngineService: TasksEngineService
     }),
     HttpClientModule,
     StoreModule.forFeature(tasksFeatureKey, tasksReducer),
     EffectsModule.forFeature([TasksEffects]),
+    SubTasksModule,
   ],
   exports: [TasksComponent],
   declarations: [TasksComponent],
