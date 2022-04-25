@@ -26,7 +26,6 @@ export class SubtasksComponent implements OnInit {
 
   subtasks$ = this.engine.allSubtasks(this).pipe(
     map(subtaks => {
-      console.log('hello')
       if (!this.taskId) {
         return [];
       }

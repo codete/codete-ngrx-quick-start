@@ -35,6 +35,12 @@ export class Task extends Firedev.Base.Entity<Task> {
   })
   //#endregion
   isDone?: boolean;
+
+  //#region @backend
+  @Firedev.Orm.Column.Custom({
+    default: false
+  })
+  //#endregion
   selected?: boolean;
 
 }

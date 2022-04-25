@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActionsSubject } from '@ngrx/store';
+import { skip } from 'rxjs';
 
 @Component({
   selector: 'app-tasks-app',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksAppComponent implements OnInit {
 
-  constructor() { }
+  constructor(private actionListener$: ActionsSubject) { }
+
 
   ngOnInit() {
+    this.actionListener$.pipe(
+      skip(1) // optional: skips initial logging done by ngrx
+    ).subscribe((action) => console.info('ngrx action', action));
   }
 
 }
