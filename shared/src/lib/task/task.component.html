@@ -6,8 +6,8 @@
                   (click)="$event.stopPropagation()"
                   (change)="change($event)"></mat-checkbox>
   </column>
-  <column grow>
-    <span *ngIf="!editable"> {{ task.name }} </span>
+  <column grow [ngClass]="{'done': !!task.isDone }" >
+    <span *ngIf="!editable"   > {{ task.name }} </span>
     <input *ngIf="editable"
            [ngModel]="editableTask.name">
   </column>

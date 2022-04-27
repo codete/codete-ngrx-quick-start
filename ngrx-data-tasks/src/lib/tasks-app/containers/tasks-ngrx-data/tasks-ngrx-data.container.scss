@@ -1,6 +1,6 @@
 :host {
   --max-container-size: 1200px;
-  white-space: nowrap;
+  white-space         : nowrap;
 }
 
 .container {
@@ -13,6 +13,15 @@
 
 h4 {
   text-align: center;
-  margin: 0px;
+  margin    : 0px;
 }
 
+.title {
+  overflow     : hidden;
+  text-overflow: ellipsis;
+  white-space  : nowrap;
+}
+
+.background {
+  background-color: white;
+}

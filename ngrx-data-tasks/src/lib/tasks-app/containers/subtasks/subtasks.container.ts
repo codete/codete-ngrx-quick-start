@@ -35,6 +35,10 @@ export class SubtasksComponent implements OnInit {
     this.engine.removeSubTaskAction(subtask);
   }
 
+  onSave(isDone: boolean, subtask: SubTask) {
+    this.engine.onSaveSubTaskAction(isDone, subtask, this);
+  }
+
   subtasks$ = this.engine.allSubtasks(this).pipe(
     map(subtaks => {
       if (!this.taskId) {

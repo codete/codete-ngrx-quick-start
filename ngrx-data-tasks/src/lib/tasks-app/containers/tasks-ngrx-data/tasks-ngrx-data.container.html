@@ -10,10 +10,16 @@
   </mat-drawer>
   <mat-drawer-content>
     <mat-card>
-      <h4>
-        <span>{{ title$ | async }}</span>
-        <app-synchonization></app-synchonization>
-      </h4>
+      <columns-container>
+        <column grow
+                class="title">
+          {{ title$ | async }}
+        </column>
+        <column [width]="60"
+                class="background">
+          <app-synchonization></app-synchonization>
+        </column>
+      </columns-container>
       <mat-form-field class="new-task-input">
         <input matInput
                [(ngModel)]="newTaskModel"

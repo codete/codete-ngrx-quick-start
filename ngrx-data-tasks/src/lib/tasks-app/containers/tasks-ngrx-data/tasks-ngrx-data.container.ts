@@ -33,6 +33,9 @@ export class TasksContainer implements OnInit, AfterViewInit {
     this.engine.removeTaskAction(taskId);
   }
 
+  async onRemoveSubTask(subtask: SubTask) {
+    this.engine.removeSubTaskAction(subtask);
+  }
 
   onCloseSubtaskMenu() {
     this.drawer?.close();

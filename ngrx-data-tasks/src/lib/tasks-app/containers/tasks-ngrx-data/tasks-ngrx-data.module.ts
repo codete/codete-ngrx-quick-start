@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SubtasksContainerModule } from '../subtasks/subtasks.module';
 import { AppStoreModule } from '../../store/app-store.module';
 import { SynchonizationModule } from '../synchonization/synchonization.module';
+import { StaticColumnsModule } from "static-columns";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule,
+    StaticColumnsModule,
     SubtasksContainerModule,
     TaskModule,
     HttpClientModule,

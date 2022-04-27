@@ -112,6 +112,15 @@ export class TasksEngineService {
   }
   //#endregion
 
+  //#region actions / save task locally
+  onSaveSubTaskAction(isDone: boolean, subtask: SubTask, context: SubtasksComponent) {
+    subtask = _.cloneDeep(subtask) as SubTask ;
+    subtask.isDone = isDone;
+    console.log({ isDone })
+    this.subtasksService.updateOneInCache(subtask);
+  }
+  //#endregion
+
   //#region actions / toogle subtasks for task
   toogleSubtasksAction(event: Event, task: Task, context: TasksContainer) {
     context.toogled = task;

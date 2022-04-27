@@ -15,6 +15,7 @@
           [isSubtask]="true"
           [editable]="true"
           (remove)="onRemove(subtask)"
+          (isDone)="onSave($event,subtask)"
           *ngFor="let subtask of (subtasks$ | async)"> </app-task>
 <mat-form-field class="new-subtask-input">
   <input matInput
