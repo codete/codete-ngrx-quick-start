@@ -6,7 +6,6 @@
     <app-subtasks *ngIf="toogled"
                   (close)="onCloseSubtaskMenu()"
                   (removeTask)="onRemoveTask($event)"
-                  (removeSubtask)="onRemoveSubTask($event)"
                   [taskId]="toogled.id"></app-subtasks>
   </mat-drawer>
   <mat-drawer-content>

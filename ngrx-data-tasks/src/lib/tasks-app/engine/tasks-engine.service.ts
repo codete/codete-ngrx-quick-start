@@ -64,11 +64,27 @@ export class TasksEngineService {
 
   //#region actions / add task
   async addTaskAction(event: KeyboardEvent, context: TasksContainer) {
-    if (event.code === 'Enter') {
+    if (event.code === 'Enter' && context.newTaskModel) {
       await firstValueFrom(this.tasksService.add(Task.from({
         name: context.newTaskModel
       })));
       context.newTaskModel = '';
+    }
+  }
+  //#endregion
+
+  //#region actions / add sub task
+  async addSubTaskAction(event: KeyboardEvent, context: SubtasksComponent) {
+    event.stopImmediatePropagation();
+    event.stopPropagation();
+    if (event.code === 'Enter' && context.tempSubtask) {
+      const subtaskInstance = SubTask.from({
+        name: context.tempSubtask,
+        taskId: context.taskId,
+      });
+      const subtask = _.cloneDeep(subtaskInstance);
+      await firstValueFrom(this.subtasksService.add(subtask));
+      context.tempSubtask = '';
     }
   }
   //#endregion

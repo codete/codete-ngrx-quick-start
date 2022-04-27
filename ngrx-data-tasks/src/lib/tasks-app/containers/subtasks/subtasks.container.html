@@ -3,7 +3,8 @@
           close.emit()">
   <mat-icon>close</mat-icon>
 </button>
-<button mat-icon-button class="delete"
+<button mat-icon-button
+        class="delete"
         (click)="removeTask.emit(taskId)">
   <mat-icon>
     delete_forever
@@ -13,9 +14,11 @@
 <app-task [task]="subtask"
           [isSubtask]="true"
           [editable]="true"
-          (remove)="removeSubtask.emit($event)"
+          (remove)="onRemove(subtask)"
           *ngFor="let subtask of (subtasks$ | async)"> </app-task>
 <mat-form-field class="new-subtask-input">
   <input matInput
+         [(ngModel)]="tempSubtask"
+         (window:keypress)="onNewSubtask($event)"
          placeholder="+ Add new subtask..">
 </mat-form-field> <br>

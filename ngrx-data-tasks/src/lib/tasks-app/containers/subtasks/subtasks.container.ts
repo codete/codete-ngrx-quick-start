@@ -16,6 +16,8 @@ export class SubtasksComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   @Output() removeTask = new EventEmitter<number>();
   @Output() removeSubtask = new EventEmitter<SubTask>();
+  @Output() newSubtask = new EventEmitter<string>();
+  tempSubtask: string;
 
   constructor(
     private engine: TasksEngineService,
@@ -25,6 +27,13 @@ export class SubtasksComponent implements OnInit {
     this.engine.fetchSubtaskAction()
   }
 
+  onNewSubtask(event: KeyboardEvent) {
+    this.engine.addSubTaskAction(event, this);
+  }
+
+  async onRemove(subtask: SubTask) {
+    this.engine.removeSubTaskAction(subtask);
+  }
 
   subtasks$ = this.engine.allSubtasks(this).pipe(
     map(subtaks => {
