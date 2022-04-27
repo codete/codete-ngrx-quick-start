@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, HostBinding, Inject, OnInit, Optional, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { Task } from '@codete-ngrx-quick-start/shared';
+import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
 import * as _ from 'lodash';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { TasksEngineService } from '../../engine/tasks-engine.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
@@ -21,9 +22,20 @@ export class TasksContainer implements OnInit, AfterViewInit {
     protected breakpointObserver: BreakpointObserver,
   ) { }
   tasks$ = this.engine.allTasksSelector(this);
+  title$ = this.engine.title()
 
   async ngOnInit() {
     this.engine.initAction(this);
+  }
+
+  async onRemoveTask(taskId: number) {
+    this.drawer?.close();
+    this.engine.removeTaskAction(taskId);
+  }
+
+  async onRemoveSubTask(subtask: SubTask) {
+    debugger
+    this.engine.removeSubTaskAction(subtask);
   }
 
   onCloseSubtaskMenu() {

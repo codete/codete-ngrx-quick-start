@@ -11,4 +11,5 @@ export class SubtasksService extends EntityCollectionServiceBase<ISubTask>{
     super(CLASS.getName(SubTask), serviceElementsFactory);
   }
 
+
 }

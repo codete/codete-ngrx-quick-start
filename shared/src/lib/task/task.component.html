@@ -1,6 +1,21 @@
-<div [ngClass]="{'subtask': isSubtask, 'task': !isSubtask, 'selected': task.selected }">
-  <mat-checkbox [checked]="!!task.isDone"
-                (click)="$event.stopPropagation()"
-                (change)="change($event)"></mat-checkbox>
-  {{ task.name }}
-</div>
+<columns-container [ngClass]="{'subtask': isSubtask, 'task': !isSubtask, 'selected': task.selected }">
+  <column [width]="30">
+    <span class="space"
+          *ngIf="!isSubtask"></span>
+    <mat-checkbox [checked]="!!task.isDone"
+                  (click)="$event.stopPropagation()"
+                  (change)="change($event)"></mat-checkbox>
+  </column>
+  <column grow>
+    <span *ngIf="!editable"> {{ task.name }} </span>
+    <input *ngIf="editable"
+           [ngModel]="editableTask.name">
+  </column>
+  <column [width]="30">
+    <button mat-icon-button
+            *ngIf="isSubtask"
+            (click)="remove.emit(task)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </column>
+</columns-container>

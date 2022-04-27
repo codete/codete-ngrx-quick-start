@@ -4,6 +4,8 @@ import { Helpers } from "tnp-helpers";
 import { CLASS } from "typescript-class-helpers";
 import { PATH_FOR } from "../constants";
 import { Task } from "./task";
+import { Models } from 'ng2-rest';
+import { map } from "rxjs";
 
 @Firedev.Controller({
   className: 'TaskController',
@@ -11,6 +13,10 @@ import { Task } from "./task";
   path: PATH_FOR(Task),
 })
 export class TaskController extends Firedev.Base.Controller<Task> {
+
+  saveAll<T = Task>(entites: T[]) {
+    return this.bulkUpdate(entites as any).received.observable;
+  }
 
 
   //#region @backend

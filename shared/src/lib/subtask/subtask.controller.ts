@@ -8,7 +8,11 @@ import { SubTask } from "./subtask";
   entity: SubTask,
   path: PATH_FOR(SubTask),
 })
-export class SubTaskController extends TaskController {
+export class SubTaskController extends Firedev.Base.Controller<SubTask> {
+
+  saveAll<T = SubTask>(entites: T[]) {
+    return this.bulkUpdate(entites as any).received.observable;
+  }
 
   //#region @backend
   async initExampleDbData() {

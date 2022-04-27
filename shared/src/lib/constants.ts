@@ -10,7 +10,7 @@ export const host = `http://localhost:4199`;
 
 export const URL_FOR = (taget: Function) => {
   return {
-    entityResourceUrl: `${host}/${Helpers.strings.plural(CLASS.getName(taget).toLowerCase())}/${Firedev.symbols.CRUD_TABLE_MODEL}`,
+    entityResourceUrl: `${host}/${Helpers.strings.plural(CLASS.getName(taget).toLowerCase())}/${Firedev.symbols.CRUD_TABLE_MODEL}/`,
     collectionResourceUrl: `${host}/${Helpers.strings.plural(CLASS.getName(taget).toLowerCase())}/${Firedev.symbols.CRUD_TABLE_MODELS}`,
   };
 }

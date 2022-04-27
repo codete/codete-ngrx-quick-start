@@ -5,12 +5,13 @@ import { SubtasksComponent } from '@codete-ngrx-quick-start/ngrx-data-tasks/task
 import { TasksContainer } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/tasks-ngrx-data/tasks-ngrx-data.container';
 import { Task, ISubTask, SubTask } from '@codete-ngrx-quick-start/shared';
 import { Store } from '@ngrx/store';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable, of } from 'rxjs';
 import { TasksInitialState } from './tasks.models';
 import * as tasksSelectors from './selectors/tasks.selectors';
 import * as tasksActions from './actions/tasks.actions';
 import * as subtasksSelectors from '../subtasks/selectors/subtasks.selectors';
 import * as subtasksActions from '../subtasks/actions/subtasks.actions';
+import { Models } from 'ng2-rest';
 
 type UnwanterServices = 'subtasksService' | 'tasksService';
 
@@ -21,6 +22,10 @@ export class TasksEngineService implements Omit<BaseTasksEngineService, Unwanter
 
   helloWorld() {
     return 'Hello from standard ngrx application'
+  }
+
+  title() {
+    return of('HAMSTERS TASKS (standard ngrx application)')
   }
 
   allTasksSelector(context: TasksContainer): Observable<Task[]> | Store<Task[]> {
@@ -76,9 +81,11 @@ export class TasksEngineService implements Omit<BaseTasksEngineService, Unwanter
     });
   }
 
-  saveSubtaskAction(subtask: SubTask, context: SubtasksComponent): void {
-
+  // @ts-ignore
+  saveAll(): Observable<[Observable<Models.HttpResponse<Task[]>>, Observable<Models.HttpResponse<Task[]>>]> {
+    throw 'not implemented'
   }
+
 
 
 }

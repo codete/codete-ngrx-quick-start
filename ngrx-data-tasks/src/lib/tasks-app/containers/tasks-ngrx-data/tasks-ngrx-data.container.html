@@ -5,20 +5,15 @@
               position="end">
     <app-subtasks *ngIf="toogled"
                   (close)="onCloseSubtaskMenu()"
+                  (removeTask)="onRemoveTask($event)"
+                  (removeSubtask)="onRemoveSubTask($event)"
                   [taskId]="toogled.id"></app-subtasks>
   </mat-drawer>
   <mat-drawer-content>
     <mat-card>
       <h4>
-        <span>NGRX/DATA TASKS</span>
-        <button mat-icon-button
-                mat-raised-button
-                class="sync-button">
-          <mat-icon>sync</mat-icon>
-        </button>
-        <!-- <mat-icon aria-hidden="false"
-                  aria-label="Sync">sync</mat-icon> -->
-
+        <span>{{ title$ | async }}</span>
+        <app-synchonization></app-synchonization>
       </h4>
       <mat-form-field class="new-task-input">
         <input matInput

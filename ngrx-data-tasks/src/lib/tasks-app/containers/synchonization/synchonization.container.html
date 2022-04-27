@@ -1,0 +1,28 @@
+<ng-container *ngIf="state$ | async as state">
+  <button *ngIf="state === 'idle'"
+          mat-icon-button
+          mat-raised-button
+          class="sync-button pointer"
+          (click)="startSync()">
+    <mat-icon>sync</mat-icon>
+  </button>
+  <button *ngIf="state === 'sync-problem'"
+          mat-icon-button
+          mat-raised-button
+          class="sync-button pointer-blocked"
+          (click)="startSync()">
+    <mat-icon>sync_problem</mat-icon>
+  </button>
+  <button *ngIf="state === 'syncing'"
+          mat-icon-button
+          mat-raised-button
+          class="sync-button pointer-blocked">
+    <mat-spinner [diameter]="20"></mat-spinner>
+  </button>
+  <button *ngIf="state === 'syncing-done'"
+          mat-icon-button
+          mat-raised-button
+          class="sync-button pointer-blocked">
+    <mat-icon>done</mat-icon>
+  </button>
+</ng-container>

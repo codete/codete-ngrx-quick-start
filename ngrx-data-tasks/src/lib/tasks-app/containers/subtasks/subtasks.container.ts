@@ -2,7 +2,7 @@ import {
   Component, EventEmitter, Inject,
   Input, OnInit, Optional, Output, SimpleChanges
 } from '@angular/core';
-import { Task } from '@codete-ngrx-quick-start/shared';
+import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
 import { map } from 'rxjs';
 import { TasksEngineService } from '../../engine/tasks-engine.service';
 
@@ -14,6 +14,8 @@ import { TasksEngineService } from '../../engine/tasks-engine.service';
 export class SubtasksComponent implements OnInit {
   @Input() taskId: number;
   @Output() close = new EventEmitter<void>();
+  @Output() removeTask = new EventEmitter<number>();
+  @Output() removeSubtask = new EventEmitter<SubTask>();
 
   constructor(
     private engine: TasksEngineService,

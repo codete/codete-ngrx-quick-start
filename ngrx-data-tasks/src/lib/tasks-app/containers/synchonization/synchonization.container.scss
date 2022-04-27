@@ -1,0 +1,41 @@
+:host {
+  position: absolute;
+  right   : 20px;
+}
+
+.pointer {
+  cursor: pointer;
+
+  mat-spinner {
+    cursor: pointer;
+  }
+}
+
+.pointer-blocked {
+  pointer-events: none;
+  cursor: not-allowed;
+
+  mat-spinner {
+    cursor: not-allowed;
+  }
+}
+
+.sync-button {
+  z-index: 999; // TODO max
+  float  : right;
+
+  mat-spinner {
+    left: 10px;
+  }
+
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: black;
+}

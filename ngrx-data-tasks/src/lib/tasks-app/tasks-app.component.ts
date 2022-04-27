@@ -9,13 +9,11 @@ import { skip } from 'rxjs';
 })
 export class TasksAppComponent implements OnInit {
 
-  constructor(private actionListener$: ActionsSubject) { }
+  constructor() { }
 
 
   ngOnInit() {
-    this.actionListener$.pipe(
-      skip(1) // optional: skips initial logging done by ngrx
-    ).subscribe((action) => console.info('ngrx action', action));
+
   }
 
 }

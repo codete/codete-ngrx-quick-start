@@ -2,7 +2,7 @@
 import * as _ from 'lodash';
 import { Injectable, InjectionToken, Type } from '@angular/core';
 import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
-import { firstValueFrom } from 'rxjs';
+import { combineLatest, concatMap, delay, firstValueFrom, map, of, take, withLatestFrom } from 'rxjs';
 import type { TasksContainer } from '../containers/tasks-ngrx-data/tasks-ngrx-data.container';
 import type { SubtasksComponent } from '../containers/subtasks/subtasks.container';
 import { SubtasksService } from '../services/subtasks.service';
@@ -24,6 +24,10 @@ export class TasksEngineService {
 
   helloWorld() {
     return 'Hello from ngrx/data application'
+  }
+
+  title() {
+    return of('HAMSTERS TASKS ("ngrx/data" application)')
   }
 
 
@@ -69,6 +73,20 @@ export class TasksEngineService {
   }
   //#endregion
 
+  //#region actions / remove task
+  async removeTaskAction(taskId: number) {
+    const tasks = await firstValueFrom(this.tasksService.entities$);
+    const task = tasks.find(t => t.id === taskId);
+    this.tasksService.delete(_.cloneDeep(task))
+  }
+  //#endregion
+
+  //#region actions / remove task
+  async removeSubTaskAction(subtask: SubTask) {
+    this.subtasksService.delete(_.cloneDeep(subtask));
+  }
+  //#endregion
+
   //#region actions / save task locally
   onSaveTaskAction(isDone: boolean, task: Task, context: TasksContainer) {
     task = _.cloneDeep(task) as Task;
@@ -102,9 +120,30 @@ export class TasksEngineService {
   }
   //#endregion
 
+  //#endregion
 
-  saveSubtaskAction(subtask: SubTask, context: SubtasksComponent) {
-
+  saveAll() {
+    return this.tasksService.entities$.pipe(
+      map(c => c.map(t => Task.from(t))),
+      withLatestFrom(this.subtasksService.entities$.pipe(map(c => c.map(t => SubTask.from(t))))),
+      concatMap(([tasks, subtasks]) => {
+        console.log({ tasks, subtasks })
+        return combineLatest([
+          Task.saveAll(tasks).pipe(
+            map(c => {
+              const newTasks = c.body.rawJson;
+              // this.tasksService.updateManyInCache(newTasks);
+              return newTasks;
+            })),
+          SubTask.saveAll(subtasks).pipe(
+            map(c => {
+              const newSubtasks = c.body.rawJson;
+              // this.subtasksService.updateManyInCache(newSubtasks);
+              return newSubtasks;
+            })),
+        ])
+      })
+    );
   }
 
 }
