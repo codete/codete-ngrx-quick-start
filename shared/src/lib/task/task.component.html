@@ -6,16 +6,18 @@
                   (click)="$event.stopPropagation()"
                   (change)="change($event)"></mat-checkbox>
   </column>
-  <column grow [ngClass]="{'done': !!task.isDone }" >
-    <span *ngIf="!editable"   > {{ task.name }} </span>
-    <input *ngIf="editable"
+  <column grow
+          [ngClass]="{'done': !!task.isDone }">
+    <input #taskinput
+           (dblclick)="onFocused($event)"
+           (change)="onInputChange($event)"
            [ngModel]="editableTask.name">
   </column>
-  <column [width]="30">
+  <column [width]="30"
+          *ngIf="isSubtask">
     <button mat-icon-button
-            *ngIf="isSubtask"
             (click)="remove.emit(task)">
-      <mat-icon>close</mat-icon>
+      <mat-icon>highlight_off</mat-icon>
     </button>
   </column>
 </columns-container>

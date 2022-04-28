@@ -113,8 +113,17 @@ export class TasksEngineService {
   //#endregion
 
   //#region actions / save task locally
+  onSaveTaskNameAction(name: string, task: Task, context: TasksContainer) {
+    task = _.cloneDeep(task) as Task;
+    task.name = name;
+    console.log({ name })
+    this.tasksService.update(task);
+  }
+  //#endregion
+
+  //#region actions / save task locally
   onSaveSubTaskAction(isDone: boolean, subtask: SubTask, context: SubtasksComponent) {
-    subtask = _.cloneDeep(subtask) as SubTask ;
+    subtask = _.cloneDeep(subtask) as SubTask;
     subtask.isDone = isDone;
     console.log({ isDone })
     this.subtasksService.updateOneInCache(subtask);

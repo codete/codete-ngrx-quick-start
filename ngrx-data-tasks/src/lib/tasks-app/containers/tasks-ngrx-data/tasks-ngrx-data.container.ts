@@ -1,10 +1,15 @@
-import { AfterViewInit, Component, HostBinding, Inject, OnInit, Optional, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostBinding, Inject, OnInit, Optional, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
+import { SubTask, Task, TaskComponent } from '@codete-ngrx-quick-start/shared';
 import * as _ from 'lodash';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { TasksEngineService } from '../../engine/tasks-engine.service';
-import { firstValueFrom } from 'rxjs';
+
+/**
+ * it is done for double click edit task name purpose
+ */
+const TASK_CLICK_WAIT_TIME = 200;
+const CLICK_OMIT_EVENT = 2;
 
 @Component({
   selector: 'app-tasks',
@@ -13,9 +18,13 @@ import { firstValueFrom } from 'rxjs';
 })
 export class TasksContainer implements OnInit, AfterViewInit {
 
+  @ViewChildren(TaskComponent) tasks: QueryList<TaskComponent>;
   @ViewChild('drawer') drawer?: MatDrawer;
   newTaskModel: string;
   toogled: Task;
+
+  focusTriggered
+
   constructor(
     private engine: TasksEngineService,
 
@@ -41,7 +50,9 @@ export class TasksContainer implements OnInit, AfterViewInit {
     this.drawer?.close();
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+
+  }
 
   async add(event: KeyboardEvent) {
     this.engine.addTaskAction(event, this);
@@ -51,7 +62,29 @@ export class TasksContainer implements OnInit, AfterViewInit {
     this.engine.onSaveTaskAction(isDone, task, this);
   }
 
+  onSaveName(name: string, task: Task) {
+    this.engine.onSaveTaskNameAction(name, task, this);
+  }
+
+  focusFired = 0;
+  focus() {
+    this.focusFired = CLICK_OMIT_EVENT;
+  }
+
   async toogle(event: Event, task: Task) {
-    this.engine.toogleSubtasksAction(event, task, this);
+    setTimeout(() => {
+      if (this.focusFired > 0) {
+        this.focusFired--;
+        event.stopImmediatePropagation();
+        event.stopPropagation();
+        if (this.focusFired === 0) {
+          const taskToFocus = this.tasks.find(t => t.task.id === task.id);
+          taskToFocus.focusTriggered.next();
+        }
+      } else {
+        this.engine.toogleSubtasksAction(event, task, this);
+      }
+    }, TASK_CLICK_WAIT_TIME)
+
   }
 }
