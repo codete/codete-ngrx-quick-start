@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { InitalAppState, InitalStoreState } from '../../store/app.models';
-import * as appActions from '../../store/app.actions';
 import { map } from 'rxjs';
+import { TasksEngineService } from '../../engine/tasks-engine.service';
 
 @Component({
   selector: 'app-synchonization',
@@ -11,14 +11,9 @@ import { map } from 'rxjs';
 })
 export class SynchonizationComponent {
   constructor(
-    private store: Store<InitalStoreState>
+    private engine: TasksEngineService,
   ) { }
 
-  state$ = this.store.pipe(map(s => { // TODO QUICK_FIX selector hould be better
-    return s?.appConfig?.syncState;
-  }))
+  state$ = this.engine.synchonizationSateSelector();
 
-  startSync() {
-    this.store.dispatch(appActions.SYNC())
-  }
 }

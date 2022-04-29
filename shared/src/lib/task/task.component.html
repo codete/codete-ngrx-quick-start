@@ -9,6 +9,7 @@
   <column grow
           [ngClass]="{'done': !!task.isDone }">
     <input #taskinput
+           [disabled]="isSavingTask"
            (dblclick)="onFocused($event)"
            (change)="onInputChange($event)"
            [ngModel]="editableTask.name">

@@ -32,6 +32,7 @@ export class TasksContainer implements OnInit, AfterViewInit {
   ) { }
   tasks$ = this.engine.allTasksSelector(this);
   title$ = this.engine.title()
+  isAddingTasks$ = this.engine.isProcessingTaskRequestSelector;
 
   async ngOnInit() {
     this.engine.initAction(this);
@@ -59,11 +60,11 @@ export class TasksContainer implements OnInit, AfterViewInit {
   }
 
   onSave(isDone: boolean, task: Task) {
-    this.engine.onSaveTaskAction(isDone, task, this);
+    this.engine.onSaveTaskAction({ isDone }, task);
   }
 
   onSaveName(name: string, task: Task) {
-    this.engine.onSaveTaskNameAction(name, task, this);
+    this.engine.onSaveTaskAction({ name }, task);
   }
 
   focusFired = 0;

@@ -1,4 +1,5 @@
 import { Firedev } from "firedev";
+import { ISubTask } from "..";
 import { host, PATH_FOR } from "../constants";
 import { TaskController } from "../task/task.controller";
 import { SubTask } from "./subtask";
@@ -12,6 +13,21 @@ export class SubTaskController extends Firedev.Base.Controller<SubTask> {
 
   saveAll<T = SubTask>(entites: T[]) {
     return this.bulkUpdate(entites as any).received.observable;
+  }
+
+  @Firedev.Http.GET(`/${Firedev.symbols.CRUD_TABLE_MODELS}`) // @ts-ignore
+  getAll(@Firedev.Http.Param.Query('taskId') taskId: number): Firedev.Response<ISubTask[]> {
+    //#region @backendFunc
+    return async (req, res) => {
+      const config = super.getAll();
+      const value = await Firedev.getResponseValue(config, req, res) as SubTask[];
+      const response = value.filter(t => t.taskId === Number(taskId));
+      // console.log(value);
+      // console.log({ taskId })
+      // console.log({ response })
+      return response as any;
+    }
+    //#endregion
   }
 
   //#region @backend

@@ -11,15 +11,22 @@
   </mat-icon>
 </button>
 <br>
-<app-task [task]="subtask"
-          [isSubtask]="true"
-          [editable]="true"
-          (remove)="onRemove(subtask)"
-          (isDone)="onSave($event,subtask)"
-          *ngFor="let subtask of (subtasks$ | async)"> </app-task>
-<mat-form-field class="new-subtask-input">
-  <input matInput
-         [(ngModel)]="tempSubtask"
-         (window:keypress)="onNewSubtask($event)"
-         placeholder="+ Add new subtask..">
-</mat-form-field> <br>
+<mat-progress-bar *ngIf="!tasksLoaded && (isLoadingSubtasks$ | async); else tasksList"
+                  mode="indeterminate"></mat-progress-bar>
+
+<ng-template #tasksList>
+  <app-task [task]="subtask"
+            [isSubtask]="true"
+            [editable]="true"
+            (remove)="onRemove(subtask)"
+            (isDone)="onSave($event,subtask)"
+            (saveName)="onSaveName($event,subtask)"
+            *ngFor="let subtask of (subtasks$ | async)"> </app-task>
+  <mat-form-field class="new-subtask-input">
+    <input matInput
+           [disabled]="(isAddingSubtask$ | async)"
+           [(ngModel)]="tempSubtask"
+           (window:keypress)="onNewSubtask($event)"
+           placeholder="+ Add new subtask..">
+  </mat-form-field> <br>
+</ng-template>

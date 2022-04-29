@@ -2,15 +2,13 @@
   <button *ngIf="state === 'idle'"
           mat-icon-button
           mat-raised-button
-          class="sync-button pointer"
-          (click)="startSync()">
+          class="sync-button pointer">
     <mat-icon>sync</mat-icon>
   </button>
   <button *ngIf="state === 'sync-problem'"
           mat-icon-button
           mat-raised-button
-          class="sync-button pointer-blocked"
-          (click)="startSync()">
+          class="sync-button pointer-blocked">
     <mat-icon>sync_problem</mat-icon>
   </button>
   <button *ngIf="state === 'syncing'"

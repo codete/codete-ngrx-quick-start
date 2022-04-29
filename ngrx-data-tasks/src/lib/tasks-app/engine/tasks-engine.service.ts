@@ -1,12 +1,13 @@
 
 import * as _ from 'lodash';
 import { Injectable, InjectionToken, Type } from '@angular/core';
-import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
-import { combineLatest, concatMap, delay, firstValueFrom, map, of, take, withLatestFrom } from 'rxjs';
+import { ISubTask, ITask, SubTask, Task } from '@codete-ngrx-quick-start/shared';
+import { combineLatest, concatMap, firstValueFrom, map, Observable, of, take, withLatestFrom } from 'rxjs';
 import type { TasksContainer } from '../containers/tasks-ngrx-data/tasks-ngrx-data.container';
 import type { SubtasksComponent } from '../containers/subtasks/subtasks.container';
 import { SubtasksService } from '../services/subtasks.service';
 import { TasksService } from '../services/tasks-ngrx-data.service';
+import { SyncState } from '../containers/synchonization/synchonization.models';
 
 export interface TasksEngineConfig {
   customEngineService: Type<TasksEngineService>;
@@ -15,13 +16,15 @@ export interface TasksEngineConfig {
 @Injectable()
 export class TasksEngineService {
 
+  //#region constructor
+
   constructor(
     private subtasksService: SubtasksService,
     private tasksService: TasksService,
-  ) {
+  ) { }
+  //#endregion
 
-  }
-
+  //#region helpers
   helloWorld() {
     return 'Hello from ngrx/data application'
   }
@@ -29,7 +32,7 @@ export class TasksEngineService {
   title() {
     return of('HAMSTERS TASKS ("ngrx/data" application)')
   }
-
+  //#endregion
 
   //#region selectors
 
@@ -39,14 +42,36 @@ export class TasksEngineService {
   }
   //#endregion
 
+  //#region selectors / is processing subtasks
+  get isProcessingSubtaskRequestSelector() {
+    return this.subtasksService.loading$;
+  }
+  //#endregion
+
+  //#region selectors / is adding subtasks
+  get isProcessingTaskRequestSelector() {
+    return this.tasksService.loading$;
+  }
+  //#endregion
+
   //#region selector / get subtasks for task
   allSubtasks(context: SubtasksComponent) {
     return this.subtasksService.entities$;
   }
   //#endregion
 
+  //#region selector / is syncing with db
+  synchonizationSateSelector(): Observable<SyncState> {
+    return this.tasksService.loading$.pipe(
+      withLatestFrom(this.subtasksService.loading$),
+      map(([a, b]) => {
+        return (a || b) ? 'syncing' : 'idle';
+      })
+    );
+  }
   //#endregion
 
+  //#endregion
 
   //#region actions
 
@@ -57,8 +82,8 @@ export class TasksEngineService {
   //#endregion
 
   //#region actions / init subtasks
-  fetchSubtaskAction() {
-    this.subtasksService.getAll();
+  fetchSubtaskAction(taskId: number) {
+    this.subtasksService.getWithQuery({ taskId: taskId?.toString() });
   }
   //#endregion
 
@@ -83,7 +108,7 @@ export class TasksEngineService {
         taskId: context.taskId,
       });
       const subtask = _.cloneDeep(subtaskInstance);
-      await firstValueFrom(this.subtasksService.add(subtask));
+      await firstValueFrom(this.subtasksService.add(subtask as any));
       context.tempSubtask = '';
     }
   }
@@ -99,34 +124,23 @@ export class TasksEngineService {
 
   //#region actions / remove task
   async removeSubTaskAction(subtask: SubTask) {
-    this.subtasksService.delete(_.cloneDeep(subtask));
+    this.subtasksService.delete(_.cloneDeep(subtask) as any);
   }
   //#endregion
 
-  //#region actions / save task locally
-  onSaveTaskAction(isDone: boolean, task: Task, context: TasksContainer) {
+  //#region actions / save task
+  onSaveTaskAction(updatedProps: Partial<ITask>, task: Task) {
     task = _.cloneDeep(task) as Task;
-    task.isDone = isDone;
-    console.log({ isDone })
-    this.tasksService.updateOneInCache(task);
-  }
-  //#endregion
-
-  //#region actions / save task locally
-  onSaveTaskNameAction(name: string, task: Task, context: TasksContainer) {
-    task = _.cloneDeep(task) as Task;
-    task.name = name;
-    console.log({ name })
+    _.merge(task, updatedProps);
     this.tasksService.update(task);
   }
   //#endregion
 
   //#region actions / save task locally
-  onSaveSubTaskAction(isDone: boolean, subtask: SubTask, context: SubtasksComponent) {
+  onSaveSubTaskAction(updatedProps: Partial<ISubTask>, subtask: SubTask) {
     subtask = _.cloneDeep(subtask) as SubTask;
-    subtask.isDone = isDone;
-    console.log({ isDone })
-    this.subtasksService.updateOneInCache(subtask);
+    _.merge(subtask, updatedProps);
+    this.subtasksService.update(subtask as any);
   }
   //#endregion
 
@@ -156,6 +170,9 @@ export class TasksEngineService {
 
   //#endregion
 
+  //#region crud operations
+
+  //#region crud operations / save all
   saveAll() {
     return this.tasksService.entities$.pipe(
       map(c => c.map(t => Task.from(t))),
@@ -179,5 +196,8 @@ export class TasksEngineService {
       })
     );
   }
+  //#endregion
+
+  //#endregion
 
 }

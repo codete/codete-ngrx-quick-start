@@ -3,13 +3,13 @@ import {
   Input, OnInit, Optional, Output, SimpleChanges
 } from '@angular/core';
 import { SubTask, Task } from '@codete-ngrx-quick-start/shared';
-import { map } from 'rxjs';
+import { map, tap, combineLatest, combineLatestWith, of } from 'rxjs';
 import { TasksEngineService } from '../../engine/tasks-engine.service';
 
 @Component({
   selector: 'app-subtasks',
   templateUrl: './subtasks.container.html',
-  styleUrls: ['./subtasks.container.scss']
+  styleUrls: ['./subtasks.container.scss'],
 })
 export class SubtasksComponent implements OnInit {
   @Input() taskId: number;
@@ -18,13 +18,26 @@ export class SubtasksComponent implements OnInit {
   @Output() removeSubtask = new EventEmitter<SubTask>();
   @Output() newSubtask = new EventEmitter<string>();
   tempSubtask: string;
+  tasksLoaded = false;
+
 
   constructor(
     private engine: TasksEngineService,
   ) { }
 
+  isLoadingSubtasks$ = this.engine.isProcessingSubtaskRequestSelector;
+
+  isAddingSubtask$ = this.engine.isProcessingSubtaskRequestSelector;
+
   ngOnChanges(changes: SimpleChanges): void {
-    this.engine.fetchSubtaskAction()
+    if (this.taskId) {
+      this.tasksLoaded = false;
+      this.engine.fetchSubtaskAction(this.taskId)
+    }
+  }
+
+  onSaveName(name: string, subtask: SubTask) {
+    this.engine.onSaveSubTaskAction({ name }, subtask);
   }
 
   onNewSubtask(event: KeyboardEvent) {
@@ -36,7 +49,7 @@ export class SubtasksComponent implements OnInit {
   }
 
   onSave(isDone: boolean, subtask: SubTask) {
-    this.engine.onSaveSubTaskAction(isDone, subtask, this);
+    this.engine.onSaveSubTaskAction({ isDone }, subtask);
   }
 
   subtasks$ = this.engine.allSubtasks(this).pipe(
@@ -45,7 +58,10 @@ export class SubtasksComponent implements OnInit {
         return [];
       }
       return subtaks.filter(f => f.taskId === this.taskId)
-    })
+    }),
+    tap(() => {
+      this.tasksLoaded = true;
+    }),
   )
 
   ngOnInit() {

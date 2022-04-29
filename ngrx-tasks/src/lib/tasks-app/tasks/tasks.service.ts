@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { TasksEngineService as BaseTasksEngineService } from '@codete-ngrx-quick-start/ngrx-data-tasks';
 import { SubtasksComponent } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/subtasks/subtasks.container';
 import { TasksContainer } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/tasks-ngrx-data/tasks-ngrx-data.container';
-import { Task, ISubTask, SubTask } from '@codete-ngrx-quick-start/shared';
+import { Task, ISubTask, SubTask, ITask } from '@codete-ngrx-quick-start/shared';
 import { Store } from '@ngrx/store';
 import { firstValueFrom, Observable, of } from 'rxjs';
 import { TasksInitialState } from './tasks.models';
@@ -52,10 +52,9 @@ export class TasksEngineService implements Omit<BaseTasksEngineService, Unwanter
     }
   }
 
-  onSaveTaskAction(isDone: boolean, task: Task, context: TasksContainer): void {
+  onSaveTaskAction(updatedProps: Partial<ITask>, task: Task) {
     task = _.cloneDeep(task) as Task;
-    task.isDone = isDone;
-    console.log({ isDone });
+    _.merge(task, updatedProps);
     this.store.dispatch(tasksActions.UPDATE_TASK_SUCCESS({ task }));
   }
 

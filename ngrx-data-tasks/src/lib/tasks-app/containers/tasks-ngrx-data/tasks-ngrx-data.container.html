@@ -22,6 +22,7 @@
       </columns-container>
       <mat-form-field class="new-task-input">
         <input matInput
+               [disabled]="(isAddingTasks$ | async)"
                autocomplete="off"
                [(ngModel)]="newTaskModel"
                placeholder="+ Add new task.."

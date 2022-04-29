@@ -14,8 +14,8 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
     SubTask: SubTask.URLS,
   },
   timeout: 3000, // request timeout
-  getDelay: isE2E ? 0 : 500,
-  saveDelay: isE2E ? 0 : 800
+  // getDelay: isE2E ? 0 : 500,
+  // saveDelay: isE2E ? 0 : 800
 };
 
 @NgModule({

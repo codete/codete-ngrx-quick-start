@@ -18,6 +18,7 @@ export class TaskComponent implements OnInit {
   @ViewChild('taskinput') taskInput: ElementRef;
   @Input() isSubtask: boolean;
   @Input() editable: boolean;
+  @Input() isSavingTask: boolean;
   focusTriggered = new Subject<void>();
   @Output() remove = new EventEmitter<Task>();
   @Output() focused = new EventEmitter<void>();
