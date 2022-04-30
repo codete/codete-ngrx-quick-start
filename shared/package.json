@@ -230,7 +230,5 @@
     "watch": "1.0.2",
     "zone.js": "~0.11.4"
   },
-  "devDependencies": {},
-  "license": "MIT",
-  "private": false
+  "devDependencies": {}
 }
