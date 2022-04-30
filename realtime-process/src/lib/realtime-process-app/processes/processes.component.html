@@ -1,7 +1,7 @@
-<p>
-  processes works!
-</p>
+<mat-card>
 
-<ul>
-  <li *ngFor="let p of (processes$ | async)"> {{p.id}} </li>
-</ul>
+  <h2>Processes</h2>
+  <br>
+  <app-process [process]="p"
+               *ngFor="let p of (processes$ | async)"> {{p.id}} </app-process>
+</mat-card>

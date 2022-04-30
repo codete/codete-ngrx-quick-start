@@ -29,6 +29,11 @@ export class NavigationComponent implements OnInit {
       imageLink: '/assets/backend-data-into-template.jpeg',
       link: '/realtime-process'
     },
+    {
+      title: 'canvas signature',
+      imageLink: '/assets/backend-data-into-template.jpeg',
+      link: '/canvas-signature'
+    },
   ]
 
 }

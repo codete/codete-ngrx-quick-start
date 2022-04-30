@@ -1,13 +1,15 @@
+import { Process } from '@codete-ngrx-quick-start/shared';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { processesFeatureKey } from '../processes.constants';
 import { ProcessesInitialState } from '../processes.models';
-import { adapter } from '../reducers/processes.reducers';
+import { selectAll } from '../reducers/processes.reducers';
 
 const processesFeatureSelector = createFeatureSelector<ProcessesInitialState>(processesFeatureKey);
 
-const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();
 
-export const allProceses = createSelector(processesFeatureSelector, selectAll);
+const all = createSelector(processesFeatureSelector, selectAll);
+
+export const allProceses = createSelector(all, s => s.map(p => Process.from(p)));
 
 export const isLoadingProcesses = createSelector(processesFeatureSelector, state => {
   return state.backgroundOperation === 'loading-processes';

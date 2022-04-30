@@ -8,8 +8,8 @@ import * as processesActions from '../actions/processes.actions';
 export const adapter: EntityAdapter<IProcess> = createEntityAdapter<IProcess>();
 
 const initialState: ProcessesInitialState = adapter.getInitialState({
-  backgroundOperation: 'nothing'
-} as ProcessesState);
+  backgroundOperation: 'nothing',
+});
 
 
 export const reducer = createReducer(
@@ -27,10 +27,12 @@ export const reducer = createReducer(
     })
   ),
   on(processesActions.FETCH_PROCESSES_SUCCESS,
-    (state, { processes }) => adapter.setAll(processes, {
-      ...state,
-      isLoadingProcesses: false
-    })
+    (state, { processes }) => {
+      return adapter.setAll(processes, {
+        ...state,
+        isLoadingProcesses: false
+      })
+    }
   ),
 
   on(processesActions.ADD_PROCESS,
@@ -67,7 +69,15 @@ export const reducer = createReducer(
     })
   ),
 
-
-
-
 );
+
+
+/**
+ * DO NOT PUT THIS INSIDE SELECTORS - ERROR
+ */
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal
+} = adapter.getSelectors();

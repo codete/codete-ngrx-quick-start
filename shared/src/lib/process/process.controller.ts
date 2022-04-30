@@ -16,6 +16,11 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       command: 'firedev showloopmessages'
     }));
 
+    await repo.save(Process.from({
+      command: 'firedev show:random:hamsters'
+    }));
+
+
   }
   //#endregion
 

@@ -35,6 +35,11 @@ const routes: Routes = [
     loadChildren: () => import(`@codete-ngrx-quick-start/realtime-process`)
       .then(m => m.RealtimeProcessAppModule),
   },
+  {
+    path: 'canvas-signature',
+    loadChildren: () => import(`@codete-ngrx-quick-start/canvas-signature`)
+      .then(m => m.CanvasSignatureAppModule),
+  },
 ];
 
 @Component({

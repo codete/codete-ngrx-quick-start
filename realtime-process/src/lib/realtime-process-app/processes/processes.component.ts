@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { ProcessesInitialState } from './processes.models';
 import * as processesActions from './actions/processes.actions';
 import * as selectors from './selectors/processes.selectors';
+import { map } from 'rxjs';
+import { Process } from '@codete-ngrx-quick-start/shared';
 
 @Component({
   selector: 'app-processes',

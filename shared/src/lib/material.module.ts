@@ -14,7 +14,6 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatIconModule } from "@angular/material/icon";
 
-
 export const materialModules = [
   MatCardModule,
   MatInputModule,

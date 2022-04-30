@@ -24,7 +24,7 @@ const routes: Routes = [
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
-      // maxAge: 25,
+      maxAge: 25,
       // logOnly: environment.production
     }),
     RouterModule.forChild(routes),

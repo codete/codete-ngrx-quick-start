@@ -1,3 +1,17 @@
-<p>
-  process works!
-</p>
+<mat-accordion *ngIf="process">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ process.command }}
+      </mat-panel-title>
+      <mat-panel-description>
+        <app-process-sync [process]="process"></app-process-sync>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field appearance="fill">
+      <mat-label> stdout </mat-label>
+      <textarea readonly  matInput></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>

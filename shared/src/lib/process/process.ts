@@ -2,6 +2,7 @@ import * as _ from 'lodash'
 import { Firedev } from "firedev";
 import type { ProcessController } from './process.controller';
 import { IProcess } from '../interfaces';
+import { ProcessState } from './process.models';
 
 @Firedev.Entity({
   className: 'Process',
@@ -35,7 +36,7 @@ export class Process extends Firedev.Base.Entity<Process> {
     default: 'created'
   })
   //#endregion
-  state: 'created' | 'starting' | 'restarting' | 'active' | 'killing' | 'killed' | 'ended-with-error' | 'ended-ok';
+  state: ProcessState;
 
   //#region @backend
   @Firedev.Orm.Column.Custom({

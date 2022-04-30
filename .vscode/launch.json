@@ -4,6 +4,23 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Server @codete-ngrx-quick-start/canvas-signature",
+      "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/canvas-signature",
+      "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/canvas-signature/run.js",
+      "args": [],
+      "runtimeArgs": [
+        "--nolazy",
+        "-r",
+        "ts-node/register",
+        "--experimental-worker"
+      ],
+      "presentation": {
+        "group": "workspaceServers"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Server @codete-ngrx-quick-start/layout",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout/run.js",

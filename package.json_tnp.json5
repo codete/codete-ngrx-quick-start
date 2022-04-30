@@ -18,6 +18,7 @@
     'ngrx-tasks',
     'shared',
     'realtime-process',
+    'canvas-signature',
   ],
   "libReleaseOptions": {
     "nodts": false,
