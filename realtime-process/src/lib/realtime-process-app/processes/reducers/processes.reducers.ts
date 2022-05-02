@@ -1,3 +1,4 @@
+import { _ } from 'tnp-core';
 import { IProcess } from "@codete-ngrx-quick-start/shared";
 import { createEntityAdapter, EntityAdapter } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
@@ -39,6 +40,7 @@ export const reducer = createReducer(
       ...state,
     })
   ),
+
   // on(processesActions.ADD_PROCESS,
   //   (state, action) => adapter.addOne(action.process, {
   //     ...state,

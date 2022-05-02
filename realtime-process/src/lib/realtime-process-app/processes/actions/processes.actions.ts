@@ -1,6 +1,7 @@
 import { IProcess, Process } from "@codete-ngrx-quick-start/shared";
 import { Update } from "@ngrx/entity";
 import { createAction, props } from "@ngrx/store";
+import { Observable } from "rxjs";
 
 export const INIT = createAction(
   '[processes] INIT'
@@ -23,7 +24,7 @@ export const FETCH_PROCESSES_ERROR = createAction(
 
 export const REALTIME_CHANGES_SUBSCRIBE = createAction(
   '[processes] REALTIME_CHANGES_SUBSCRIBE',
-  props<{ proces: Process }>()
+  props<{ process: Process }>()
 );
 
 export const REALTIME_CHANGES_NEW_DATA = createAction(
@@ -32,7 +33,7 @@ export const REALTIME_CHANGES_NEW_DATA = createAction(
 );
 
 export const START_PROCESS = createAction(
-  '[processes] REMOVE_PROCESS',
+  '[processes] START_PROCESS',
   props<{ process: Process; }>()
 );
 
@@ -41,7 +42,7 @@ export const START_PROCESS_SUCCESS = createAction(
 );
 
 export const UPDATE_PROCESS = createAction(
-  '[processes] REMOVE_PROCESS',
+  '[processes] UPDATE_PROCESS',
   props<{ process: Update<IProcess>; }>()
 );
 

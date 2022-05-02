@@ -3,5 +3,7 @@
   <h2>Processes</h2>
   <br>
   <app-process [process]="p"
+               (processAction)="onProcessAction($event,p)"
+               (subscribeRealtime)="onProcessRealtimeSubscribe(p)"
                *ngFor="let p of (processes$ | async)"> {{p.id}} </app-process>
 </mat-card>

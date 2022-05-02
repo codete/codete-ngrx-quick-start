@@ -13,7 +13,7 @@ export class Process extends Firedev.Base.Entity<Process> {
   static ctrl: ProcessController;
 
   static from(options: Pick<IProcess, 'command'>) {
-    return _.merge(new Process(), options);
+    return _.merge(new Process(), options) as Process;
   }
 
   start() {

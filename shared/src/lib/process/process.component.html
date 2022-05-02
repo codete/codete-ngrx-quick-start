@@ -5,12 +5,15 @@
         {{ process.command }}
       </mat-panel-title>
       <mat-panel-description>
-        <app-process-sync [process]="process"></app-process-sync>
+        <app-process-sync [process]="process"
+                          (processAction)="processAction.emit($event)"></app-process-sync>
         This is a summary of the content
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field appearance="fill">
-      <textarea readonly  matInput [ngModel]="process.stdout" ></textarea>
+      <textarea readonly
+                matInput
+                [ngModel]="process.stdout"></textarea>
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>

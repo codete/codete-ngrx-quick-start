@@ -6,3 +6,5 @@ export type ProcessState = 'created'
   | 'killed'
   | 'ended-with-error'
   | 'ended-ok';
+
+  export type ProcessAction = 'start' | 'stop';

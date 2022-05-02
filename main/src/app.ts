@@ -97,7 +97,6 @@ async function start() {
     host,
     controllers: [TaskController, SubTaskController, ProcessController],
     entities: [Task, SubTask, Process],
-    disabledRealtime: true,
     //#region @backend
     config: config as any
     //#endregion
