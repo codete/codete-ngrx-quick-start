@@ -6,9 +6,9 @@
 
 # Installation & build
 
-1. Install firedev, ts-node:
+1. Install firedev:
 ```
-npm i -g firedev ts-node
+npm i -g firedev
 ```
 
 2. Start build:
@@ -19,7 +19,7 @@ firedev build:watch main
 
 3. Start server:
 ```
-ts-node run.json
+npx ts-node run.json
 ```
 or in Visual Studi code select proper debug task and press F5 on keyboard
 
