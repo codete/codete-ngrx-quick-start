@@ -3,8 +3,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as processesActions from '../actions/processes.actions'
-import { switchMap, map, of } from "rxjs";
+import { switchMap, map, of, debounceTime, exhaustAll, exhaustMap } from "rxjs";
 import { ProcessesService } from '../services/processes.service';
+import { Firedev } from 'firedev';
+import { Process } from '@codete-ngrx-quick-start/shared';
 
 @Injectable()
 export class ProcessEffects {
@@ -24,6 +26,32 @@ export class ProcessEffects {
           return processesActions.FETCH_PROCESSES_SUCCESS({ processes })
         })
       ))
+  ));
+
+  startProcess = createEffect(() => this.actions$.pipe(
+    ofType(processesActions.START_PROCESS),
+    exhaustMap((action) => {
+      return action.process.start().pipe(
+        map(() => processesActions.START_PROCESS_SUCCESS())
+      )
+    })
+  ));
+
+
+  realtimeChanges = createEffect(() => this.actions$.pipe(
+    ofType(processesActions.REALTIME_CHANGES_SUBSCRIBE),
+    switchMap((action) => {
+      return Firedev.Realtime.Browser.listenChangesEntityObj(action.proces).pipe(
+        debounceTime(500),
+        exhaustMap(() => {
+          return Process.ctrl.getBy(action.proces.id).received.observable
+            .pipe(map(r => r.body.rawJson))
+        }),
+        map(process => {
+          return processesActions.REALTIME_CHANGES_NEW_DATA(process as any)
+        })
+      );
+    })
   ));
 
 }

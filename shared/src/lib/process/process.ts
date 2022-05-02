@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { _ } from 'tnp-core';
 import { Firedev } from "firedev";
 import type { ProcessController } from './process.controller';
 import { IProcess } from '../interfaces';
@@ -10,10 +10,14 @@ import { ProcessState } from './process.models';
 export class Process extends Firedev.Base.Entity<Process> {
 
   ctrl: ProcessController;
-  static crtl: ProcessController;
+  static ctrl: ProcessController;
 
   static from(options: Pick<IProcess, 'command'>) {
     return _.merge(new Process(), options);
+  }
+
+  start() {
+    return this.ctrl.start(this.id).received.observable;
   }
 
   //#region @backend

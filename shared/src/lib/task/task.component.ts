@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy, Component, ElementRef, EventEmitter,
   Input, OnInit, Output, SimpleChanges, ViewChild
 } from '@angular/core';
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { defer, fromEvent, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { SubTask } from '../subtask/subtask';

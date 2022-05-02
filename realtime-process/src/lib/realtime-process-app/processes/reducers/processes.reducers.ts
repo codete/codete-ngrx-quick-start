@@ -34,41 +34,36 @@ export const reducer = createReducer(
       })
     }
   ),
-
-  on(processesActions.ADD_PROCESS,
-    (state, action) => adapter.addOne(action.process, {
-      ...state,
-    })
-  ),
-
-  on(processesActions.REMOVE_PROCESS,
-    (state, action) => adapter.removeOne(action.process.id, {
-      ...state,
-    })
-  ),
-
   on(processesActions.UPDATE_PROCESS,
     (state, action) => adapter.updateOne(action.process, {
       ...state,
     })
   ),
+  // on(processesActions.ADD_PROCESS,
+  //   (state, action) => adapter.addOne(action.process, {
+  //     ...state,
+  //   })
+  // ),
 
-  on(processesActions.SYNC_PROCESSES,
-    (state, action) => {
-      return {
-        ...state,
-        isSyncingProcesses: true
-      }
-    }
-  ),
-
-  on(processesActions.SYNC_PROCESSES_SUCCESS,
-    (state, { processes }) => adapter.setAll(processes, {
-      ...state,
-      isSyncingProcesses: true,
-    })
-  ),
-
+  // on(processesActions.REMOVE_PROCESS,
+  //   (state, action) => adapter.removeOne(action.process.id, {
+  //     ...state,
+  //   })
+  // ),
+  // on(processesActions.SYNC_PROCESSES,
+  //   (state, action) => {
+  //     return {
+  //       ...state,
+  //       isSyncingProcesses: true
+  //     }
+  //   }
+  // ),
+  // on(processesActions.SYNC_PROCESSES_SUCCESS,
+  //   (state, { processes }) => adapter.setAll(processes, {
+  //     ...state,
+  //     isSyncingProcesses: true,
+  //   })
+  // ),
 );
 
 

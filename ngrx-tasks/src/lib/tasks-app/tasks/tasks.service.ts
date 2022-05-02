@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { Injectable } from '@angular/core';
 import { TasksEngineService as BaseTasksEngineService } from '@codete-ngrx-quick-start/ngrx-data-tasks';
 import { SubtasksComponent } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/subtasks/subtasks.container';

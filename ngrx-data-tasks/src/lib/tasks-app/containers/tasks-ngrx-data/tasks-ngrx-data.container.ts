@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, HostBinding, Inject, OnInit, Optional, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SubTask, Task, TaskComponent } from '@codete-ngrx-quick-start/shared';
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { TasksEngineService } from '../../engine/tasks-engine.service';
 

@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { EntityOp } from "@ngrx/data";
 import { ActionReducer, createReducer, on } from "@ngrx/store";
 import { InitalAppState } from "./app.models";

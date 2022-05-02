@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { ITask } from "@codete-ngrx-quick-start/shared";
 import * as subtasksAction from '../actions/subtasks.actions';
 import { SubTasksInitialState } from '../subtasks.models';

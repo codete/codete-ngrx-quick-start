@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { _ } from 'tnp-core';
 import { Firedev } from "firedev";
 import type { TaskController } from './task.controller';
 import { ITask } from '../interfaces';

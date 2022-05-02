@@ -1,5 +1,5 @@
 
-import * as _ from 'lodash';
+import { _ } from 'tnp-core';
 import { Injectable, InjectionToken, Type } from '@angular/core';
 import { ISubTask, ITask, SubTask, Task } from '@codete-ngrx-quick-start/shared';
 import { combineLatest, concatMap, firstValueFrom, map, Observable, of, take, withLatestFrom } from 'rxjs';
