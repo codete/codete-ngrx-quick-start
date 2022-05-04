@@ -35,7 +35,7 @@ export class SubTaskController extends Firedev.Base.Controller<SubTask> {
 
     const repo = this.connection.getRepository<SubTask>(SubTask);
     await repo.save(SubTask.from({
-      name: 'kabage',
+      name: 'kabbage',
       taskId: 1
     }));
     await repo.save(SubTask.from({
