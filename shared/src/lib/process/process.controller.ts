@@ -4,8 +4,9 @@ import { Process } from "./process";
 import { Helpers } from 'tnp-helpers';
 import { _ } from 'tnp-core';
 //#region @backend
-import { fse } from 'tnp-core';
+import { fse, dateformat } from 'tnp-core';
 import { ChildProcess } from "child_process";
+import { ProcessState } from "./process.models";
 //#endregion
 
 @Firedev.Controller({
@@ -26,20 +27,26 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         return;
       }
 
+      process.state = 'starting'
+      process.stdout = `${process.stdout}\n----- new session ${dateformat(new Date())} -----\n`;
+
+      await repo.update(processId, process);
+
       const proc = Helpers.run(process.command, {
         // stdio: ['pipe', 'pipe', 'ignore']
       }).async();
 
+      process.state = 'active';
       process.pid = proc.pid;
       await repo.update(processId, process);
 
       const updateProces = _.debounce(async (newData: string) => {
         process = await repo.findOne(processId);
+
         if (!process.stdout) {
           process.stdout = '';
         }
         process.stdout = `${process.stdout}${newData}`;
-        process.state = 'active';
         await repo.update(processId, process);
         console.log(`it shoudl update trigger change ${process?.id}`, process)
         Firedev.Realtime.Server.TrigggerEntityChanges(process);
@@ -63,6 +70,17 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         Firedev.Realtime.Server.TrigggerEntityChanges(process);
       });
 
+      proc.stderr.on('data', data => {
+        updateProces(data);
+      })
+
+      proc.stderr.on('error', async data => {
+        process.state = 'ended-with-error';
+        process.pid = void 0;
+        await repo.update(processId, process);
+        Firedev.Realtime.Server.TrigggerEntityChanges(process);
+      })
+
       return;
     }
     //#endregion
@@ -84,7 +102,6 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       process.state = 'killed';
       process.pid = void 0;
       await repo.update(processId, process);
-      Firedev.Realtime.Server.TrigggerEntityChanges(process);
     }
     //#endregion
   }
