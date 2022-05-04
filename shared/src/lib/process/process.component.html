@@ -2,18 +2,24 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ process.command }}
+        <columns-container>
+          <column grow>
+            <mat-icon class="terminal-icon" >terminal</mat-icon> {{ process.command }}
+          </column>
+          <column [width]="100">
+            <app-process-sync [process]="process"
+                              (processAction)="processAction.emit($event)"></app-process-sync>
+          </column>
+          <column grow>
+            <span class="proc-message">{{ process.pid ? ('Process pid: '+ process.pid) : '' }}</span>
+          </column>
+        </columns-container>
       </mat-panel-title>
-      <mat-panel-description>
-        <app-process-sync [process]="process"
-                          (processAction)="processAction.emit($event)"></app-process-sync>
-        {{ process.pid ? ('Process pid: '+ process.pid) : '' }}
-      </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field appearance="fill">
       <textarea readonly
                 matInput
-                [ngModel]="process.stdout"></textarea>
+                [ngModel]="process.output"></textarea>
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>

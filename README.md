@@ -28,3 +28,11 @@ or in Visual Studi code select proper debug task and press F5 on keyboard
 ![](vscode-debug.png)
 
 4. Open browser: http://localhost:4200
+
+# Screenshots
+
+1. Ngrx/data tasks
+<p style="text-align: center;"><img src="./tasks-data.png" ></p>
+3. Realtime node processes
+<p style="text-align: center;"><img src="./processes-start.png" ></p>
+<p style="text-align: center;"><img src="./processes.png" ></p>

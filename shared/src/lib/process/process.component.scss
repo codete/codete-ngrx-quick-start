@@ -28,3 +28,21 @@ mat-form-field {
     max-height: 300px;
   }
 }
+
+.terminal-icon {
+  position: relative;
+  top: 7px;
+}
+
+app-process-sync {
+  position: relative;
+  top: -2px;
+  z-index: 999;
+}
+
+.proc-message {
+  top: 11px;
+  position: relative;
+  font-style: italic;
+  color: gray;
+}

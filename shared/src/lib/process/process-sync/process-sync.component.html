@@ -1,34 +1,44 @@
 <button mat-icon-button
         *ngIf="process.state === 'created'"
         class="control"
-        (click)="action($event,'start')">
+        (click)="action($event,'start')"
+        matTooltip="Press button to start process"
+        matTooltipPosition="right">
   <mat-icon>play_circle_outline</mat-icon>
 </button>
 <button mat-icon-button
         *ngIf="process.state === 'killed'"
         class="control"
-        (click)="action($event,'start')">
+        (click)="action($event,'start')"
+        matTooltip="Press button to restart killed process"
+        matTooltipPosition="right">
   <mat-icon>replay</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'ended-with-error'"
         class="control"
-        (click)="action($event,'start')">
+        (click)="action($event,'start')"
+        matTooltip="Press button to restart process that eneded with error"
+        matTooltipPosition="right">
   <mat-icon>replay_circle_filled</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'ended-ok'"
         class="control"
-        (click)="action($event,'start')">
+        (click)="action($event,'start')"
+        matTooltip="Press button to restart process"
+        matTooltipPosition="right">
   <mat-icon>published_with_changes</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'active'"
         class="control"
-        (click)="action($event,'stop')">
+        (click)="action($event,'stop')"
+        matTooltip="Press to kill process"
+        matTooltipPosition="right">
   <mat-icon>stop_circle</mat-icon>
 </button>
 
@@ -36,6 +46,7 @@
         *ngIf="['starting','killing','restarting'].includes(process.state)"
         class="control"
         (click)="action($event,'stop')"
-        >
+        matTooltip="Please wait..."
+        matTooltipPosition="right">
   <mat-spinner [diameter]="20"> </mat-spinner>
 </button>

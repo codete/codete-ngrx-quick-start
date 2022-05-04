@@ -60,19 +60,11 @@ export class Process extends Firedev.Base.Entity<Process> {
   //#endregion
   ppid: number;
 
-  //#region @backend
-  @Firedev.Orm.Column.Custom({
+   //#region @backend
+   @Firedev.Orm.Column.Custom({
     type: 'text',
     default: '',
   })
   //#endregion
-  stdout: string;
-
-  //#region @backend
-  @Firedev.Orm.Column.Custom({
-    type: 'text',
-    default: '',
-  })
-  //#endregion
-  stder: string;
+  output: string;
 }
