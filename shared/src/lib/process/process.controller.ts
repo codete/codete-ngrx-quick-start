@@ -14,10 +14,6 @@ import { ChildProcess } from "child_process";
 })
 export class ProcessController extends Firedev.Base.Controller<Process>  {
 
-  //#region @backend
-  private proceses: { [procPid: string]: ChildProcess; } = {};
-  //#endregion
-
   @Firedev.Http.GET('/start/process/:processId')
   start(@Firedev.Http.Param.Path('processId') processId: number): Firedev.Response<void> {
     //#region @backendFunc
@@ -30,31 +26,43 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         return;
       }
 
-      const proc = Helpers.run(process.command).async();
-      this.proceses[proc.pid] = proc;
+      const proc = Helpers.run(process.command, {
+        // stdio: ['pipe', 'pipe', 'ignore']
+      }).async();
+
+      process.pid = proc.pid;
+      await repo.update(processId, process);
 
       const updateProces = _.debounce(async (newData: string) => {
         process = await repo.findOne(processId);
         if (!process.stdout) {
           process.stdout = '';
         }
-        process.stdout = `${process.stdout}\n${newData}`;
+        process.stdout = `${process.stdout}${newData}`;
         process.state = 'active';
         await repo.update(processId, process);
+        console.log(`it shoudl update trigger change ${process?.id}`, process)
         Firedev.Realtime.Server.TrigggerEntityChanges(process);
       }, 500)
 
       proc.stdout.on('data', data => {
-        console.log('should update process', data);
         updateProces(data);
       });
 
-      proc.stdout.on('end', (code) => {
-        setTimeout(async () => { // @ts-ignore
-          console.log('process ended', arguments)
-
-        });
+      proc.stdout.on('end', async (code) => {
+        process.state = 'ended-ok';
+        process.pid = void 0;
+        await repo.update(processId, process);
+        Firedev.Realtime.Server.TrigggerEntityChanges(process);
       });
+
+      proc.stdout.on('error', async (code) => {
+        process.state = 'ended-with-error';
+        process.pid = void 0;
+        await repo.update(processId, process);
+        Firedev.Realtime.Server.TrigggerEntityChanges(process);
+      });
+
       return;
     }
     //#endregion
@@ -70,8 +78,11 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       process.state = 'killing';
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);
-      Helpers.killProcess(process.pid);
+      try {
+        Helpers.killProcess(process.pid);
+      } catch (error) { }
       process.state = 'killed';
+      process.pid = void 0;
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);
     }
@@ -83,7 +94,12 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
 
     const repo = this.connection.getRepository<Process>(Process);
     await repo.save(Process.from({
-      command: 'firedev showloopmessages'
+      command: 'firedev show_loop_messages'
+    }));
+
+
+    await repo.save(Process.from({
+      command: 'firedev show:random:hamsters:types'
     }));
 
     await repo.save(Process.from({

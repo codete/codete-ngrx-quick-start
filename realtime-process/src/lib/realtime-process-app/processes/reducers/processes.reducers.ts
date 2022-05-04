@@ -36,9 +36,29 @@ export const reducer = createReducer(
     }
   ),
   on(processesActions.UPDATE_PROCESS,
-    (state, action) => adapter.updateOne(action.process, {
-      ...state,
-    })
+    (state, action) => {
+      const actionProcess = _.cloneDeep(action.process);
+
+      let onlyAllowedNext = [];
+      const existed = state.entities[action.process.id];
+      if (existed === 'killing') {
+        onlyAllowedNext = ['killed', 'ended-with-error', 'ended-ok']
+      }
+
+      if (existed === 'starting') {
+        onlyAllowedNext = ['active']
+      }
+      if (onlyAllowedNext.length > 0) {
+        if (actionProcess.changes.state && !onlyAllowedNext.includes(actionProcess.changes.state)) {
+          console.warn(`Changing state to ${existed.state}... `);
+          actionProcess.changes.state = existed.state;
+        }
+      }
+
+      return adapter.updateOne(actionProcess, {
+        ...state,
+      })
+    }
   ),
 
   // on(processesActions.ADD_PROCESS,

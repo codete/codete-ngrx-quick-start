@@ -20,6 +20,10 @@ export class Process extends Firedev.Base.Entity<Process> {
     return this.ctrl.start(this.id).received.observable;
   }
 
+  stop() {
+    return this.ctrl.stop(this.id).received.observable;
+  }
+
   //#region @backend
   @Firedev.Orm.Column.Generated()
   //#endregion

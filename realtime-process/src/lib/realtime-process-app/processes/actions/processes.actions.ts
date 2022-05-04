@@ -41,6 +41,15 @@ export const START_PROCESS_SUCCESS = createAction(
   '[processes] START_PROCESS_SUCCESS'
 );
 
+export const STOP_PROCESS = createAction(
+  '[processes] STOP_PROCESS',
+  props<{ process: Process; }>()
+);
+
+export const STOP_PROCESS_SUCCESS = createAction(
+  '[processes] STOP_PROCESS_SUCCESS'
+);
+
 export const UPDATE_PROCESS = createAction(
   '[processes] UPDATE_PROCESS',
   props<{ process: Update<IProcess>; }>()

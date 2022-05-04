@@ -7,33 +7,35 @@
 <button mat-icon-button
         *ngIf="process.state === 'killed'"
         class="control"
-        (click)="action($event)">
+        (click)="action($event,'start')">
   <mat-icon>replay</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'ended-with-error'"
         class="control"
-        (click)="action($event)">
+        (click)="action($event,'start')">
   <mat-icon>replay_circle_filled</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'ended-ok'"
         class="control"
-        (click)="action($event)">
+        (click)="action($event,'start')">
   <mat-icon>published_with_changes</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="process.state === 'active'"
         class="control"
-        (click)="action($event)">
+        (click)="action($event,'stop')">
   <mat-icon>stop_circle</mat-icon>
 </button>
 
 <button mat-icon-button
         *ngIf="['starting','killing','restarting'].includes(process.state)"
-        class="control">
+        class="control"
+        (click)="action($event,'stop')"
+        >
   <mat-spinner [diameter]="20"> </mat-spinner>
 </button>

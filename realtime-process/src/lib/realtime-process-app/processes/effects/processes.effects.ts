@@ -1,9 +1,8 @@
-
-
+import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as processesActions from '../actions/processes.actions'
-import { switchMap, map, of, debounceTime, exhaustAll, exhaustMap, tap } from "rxjs";
+import { switchMap, map, of, debounceTime, exhaustAll, exhaustMap, tap, mergeMap } from "rxjs";
 import { ProcessesService } from '../services/processes.service';
 import { Firedev } from 'firedev';
 import { Process } from '@codete-ngrx-quick-start/shared';
@@ -46,9 +45,28 @@ export class ProcessEffects {
         }
       }));
     }),
-    exhaustMap((action) => {
+    mergeMap((action) => {
       return action.process.start().pipe(
         map(() => processesActions.START_PROCESS_SUCCESS())
+      )
+    })
+  ));
+
+  stopProcess = createEffect(() => this.actions$.pipe(
+    ofType(processesActions.STOP_PROCESS),
+    tap((action) => {
+      this.store.dispatch(processesActions.UPDATE_PROCESS({
+        process: {
+          id: action.process.id,
+          changes: {
+            state: 'killing'
+          }
+        }
+      }));
+    }),
+    mergeMap((action) => {
+      return action.process.stop().pipe(
+        map(() => processesActions.STOP_PROCESS_SUCCESS())
       )
     })
   ));
@@ -56,7 +74,7 @@ export class ProcessEffects {
 
   realtimeChanges = createEffect(() => this.actions$.pipe(
     ofType(processesActions.REALTIME_CHANGES_SUBSCRIBE),
-    switchMap((action) => {
+    mergeMap((action) => {
       return Firedev.Realtime.Browser.listenChangesEntityObj(action.process).pipe(
         debounceTime(500),
         exhaustMap(() => {
@@ -64,7 +82,12 @@ export class ProcessEffects {
             .pipe(map(r => r.body.rawJson))
         }),
         map(process => {
-          return processesActions.REALTIME_CHANGES_NEW_DATA(process as any)
+          return processesActions.UPDATE_PROCESS({
+            process: {
+              id: process.id,
+              changes: process
+            }
+          })
         })
       );
     })

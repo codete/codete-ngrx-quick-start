@@ -34,9 +34,13 @@ export class ProcessesComponent implements OnInit {
       this.store.dispatch(processesActions.START_PROCESS({ process }));
     }
     if (action === 'stop') {
-
+      this.store.dispatch(processesActions.STOP_PROCESS({ process }));
     }
 
+  }
+
+  trackByMethod(index: number, process: Process): number {
+    return process.id;
   }
 
 }
