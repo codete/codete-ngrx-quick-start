@@ -5,7 +5,7 @@ import * as processesActions from './actions/processes.actions';
 import * as selectors from './selectors/processes.selectors';
 import { distinctUntilChanged, map, Observable, Subject, tap } from 'rxjs';
 import { Process } from '@codete-ngrx-quick-start/shared';
-import { ProcessAction } from '@codete-ngrx-quick-start/shared/process/process.models';
+import { ProcessAction } from '@codete-ngrx-quick-start/shared';
 
 @Component({
   selector: 'app-processes',

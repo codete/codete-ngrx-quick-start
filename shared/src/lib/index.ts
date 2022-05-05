@@ -16,3 +16,5 @@ export * from './process/process.controller';
 export * from './process/process.component';
 // @browserLine
 export * from './process/process.module';
+
+export * from './process/process.models';

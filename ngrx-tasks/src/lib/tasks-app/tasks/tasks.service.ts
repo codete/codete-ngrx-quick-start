@@ -1,8 +1,8 @@
 import { _ } from 'tnp-core';
 import { Injectable } from '@angular/core';
 import { TasksEngineService as BaseTasksEngineService } from '@codete-ngrx-quick-start/ngrx-data-tasks';
-import { SubtasksComponent } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/subtasks/subtasks.container';
-import { TasksContainer } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/tasks-ngrx-data/tasks-ngrx-data.container';
+import type { SubtasksComponent } from '@codete-ngrx-quick-start/ngrx-data-tasks';
+import type { TasksContainer } from '@codete-ngrx-quick-start/ngrx-data-tasks';
 import { Task, ISubTask, SubTask, ITask } from '@codete-ngrx-quick-start/shared';
 import { Store } from '@ngrx/store';
 import { firstValueFrom, Observable, of } from 'rxjs';
