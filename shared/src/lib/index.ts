@@ -16,5 +16,10 @@ export * from './process/process.controller';
 export * from './process/process.component';
 // @browserLine
 export * from './process/process.module';
-
+// @browserLine
 export * from './process/process.models';
+// @browserLine
+export * from './canvas-drawer/canvas-drawer.component';
+// @browserLine
+export * from './canvas-drawer/canvas-drawer.module';
+

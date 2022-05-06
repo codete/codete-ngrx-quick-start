@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CanvasSignatureAppComponent } from './canvas-signature-app.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CanvasSignatureModule } from './containers/canvas-signature/canvas-signature.module';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    CanvasSignatureModule,
     RouterModule.forChild(routes),
   ],
   declarations: [CanvasSignatureAppComponent]
