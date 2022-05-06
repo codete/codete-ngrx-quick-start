@@ -76,17 +76,6 @@ export class MainModule { }
 
 async function start() {
   // Firedev.enableProductionMode();
-  //#region @backend
-  const config = {
-    host,
-    type: "sqlite",
-    database: 'tmp-db.sqlite',
-    synchronize: true,
-    dropSchema: true,
-    logging: false,
-
-  } as Firedev.IConnectionOptions;
-  //#endregion
 
   if (Firedev.isBrowser) {
     const appDiv: HTMLElement = document.getElementsByTagName('head').item(0);
@@ -98,7 +87,13 @@ async function start() {
     controllers: [TaskController, SubTaskController, ProcessController],
     entities: [Task, SubTask, Process],
     //#region @backend
-    config: config as any
+    config: {
+      type: 'better-sqlite3',
+      database: 'tmp-db.sqlite',
+      synchronize: true,
+      dropSchema: true,
+      logging: false,
+    }
     //#endregion
   });
   //#region @backend
