@@ -1,4 +1,4 @@
-<canvas #canvas></canvas>
-<input type="button"
-       value="Clear"
-       class="canvas-clear" />
+<div #sketch
+     (window:resize)="recalculate()">
+  <canvas #canvas></canvas>
+</div>

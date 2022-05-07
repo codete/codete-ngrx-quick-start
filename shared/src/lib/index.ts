@@ -22,4 +22,5 @@ export * from './process/process.models';
 export * from './canvas-drawer/canvas-drawer.component';
 // @browserLine
 export * from './canvas-drawer/canvas-drawer.module';
+export * from './canvas-drawer/canvas-drawer.models';
 
