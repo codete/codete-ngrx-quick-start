@@ -14,6 +14,6 @@ export const CLEAR = createAction(
 );
 
 export const NEW_CANVAS_DATA_BATCH = createAction(
-  '[canvas] TOOGLE_SUBTASKS_MENU',
+  '[canvas] NEW_CANVAS_DATA_BATCH',
   props<{ batch: PixelsBatch; }>()
 );

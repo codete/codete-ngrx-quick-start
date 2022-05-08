@@ -15,24 +15,6 @@ export class AppEffects {
     private engine: TasksEngineService,
   ) { }
 
-  syncAll = createEffect(() => this.actions$.pipe(
-    ofType(appActions.SYNC),
-    tap(() => {
-      console.log('should trigger exhause mpa')
-    }),
-    switchMap(() => { // this should be exhause map
-      console.log('Syncing')
-      return this.engine.saveAll().pipe(
-        map(([tasks, subtasks]) => {
-          return appActions.SYNC_SUCCESS({
-            tasks,
-            subtasks: subtasks as any,
-          })
-        })
-      )
-    }),
-  ));
-
   syncingDone = createEffect(() => this.actions$.pipe(
     ofType(appActions.SYNC_SUCCESS),
     map(() => {

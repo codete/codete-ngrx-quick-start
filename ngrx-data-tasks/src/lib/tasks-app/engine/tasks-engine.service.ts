@@ -76,7 +76,7 @@ export class TasksEngineService {
   //#region actions
 
   //#region actions / init tasks
-  initAction(context: TasksContainer) {
+  initAction() {
     this.tasksService.getAll();
   }
   //#endregion
@@ -99,7 +99,7 @@ export class TasksEngineService {
   //#endregion
 
   //#region actions / add sub task
-  async addSubTaskAction(event: KeyboardEvent, context: SubtasksComponent) {
+  addSubTaskAction(event: KeyboardEvent, context: SubtasksComponent) {
     event.stopImmediatePropagation();
     event.stopPropagation();
     if (event.code === 'Enter' && context.tempSubtask) {
@@ -108,22 +108,20 @@ export class TasksEngineService {
         taskId: context.taskId,
       });
       const subtask = _.cloneDeep(subtaskInstance);
-      await firstValueFrom(this.subtasksService.add(subtask as any));
+      this.subtasksService.add(subtask as any);
       context.tempSubtask = '';
     }
   }
   //#endregion
 
   //#region actions / remove task
-  async removeTaskAction(taskId: number) {
-    const tasks = await firstValueFrom(this.tasksService.entities$);
-    const task = tasks.find(t => t.id === taskId);
-    this.tasksService.delete(_.cloneDeep(task))
+  removeTaskAction(taskId: number) {
+    this.tasksService.delete({ id: taskId } as any)
   }
   //#endregion
 
   //#region actions / remove task
-  async removeSubTaskAction(subtask: SubTask) {
+  removeSubTaskAction(subtask: SubTask) {
     this.subtasksService.delete(_.cloneDeep(subtask) as any);
   }
   //#endregion
@@ -165,36 +163,6 @@ export class TasksEngineService {
       }
       event.stopPropagation();
     });
-  }
-  //#endregion
-
-  //#endregion
-
-  //#region crud operations
-
-  //#region crud operations / save all
-  saveAll() {
-    return this.tasksService.entities$.pipe(
-      map(c => c.map(t => Task.from(t))),
-      withLatestFrom(this.subtasksService.entities$.pipe(map(c => c.map(t => SubTask.from(t))))),
-      concatMap(([tasks, subtasks]) => {
-        console.log({ tasks, subtasks })
-        return combineLatest([
-          Task.saveAll(tasks).pipe(
-            map(c => {
-              const newTasks = c.body.rawJson;
-              // this.tasksService.updateManyInCache(newTasks);
-              return newTasks;
-            })),
-          SubTask.saveAll(subtasks).pipe(
-            map(c => {
-              const newSubtasks = c.body.rawJson;
-              // this.subtasksService.updateManyInCache(newSubtasks);
-              return newSubtasks;
-            })),
-        ])
-      })
-    );
   }
   //#endregion
 

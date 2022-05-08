@@ -23,8 +23,6 @@ export class TasksContainer implements OnInit, AfterViewInit {
   newTaskModel: string;
   toogled: Task;
 
-  focusTriggered
-
   constructor(
     private engine: TasksEngineService,
 
@@ -34,17 +32,17 @@ export class TasksContainer implements OnInit, AfterViewInit {
   title$ = this.engine.title()
   isAddingTasks$ = this.engine.isProcessingTaskRequestSelector;
 
-  async ngOnInit() {
-    this.engine.initAction(this);
+  ngOnInit() {
+    this.engine.initAction();
   }
 
-  async onRemoveTask(taskId: number) {
+  onRemoveTask(taskId: number) {
     this.drawer?.close();
     this.engine.removeTaskAction(taskId);
   }
 
-  async onRemoveSubTask(subtask: SubTask) {
-    this.engine.removeSubTaskAction(subtask);
+  onRemoveSubTask(subtask: SubTask) {
+    this.engine.removeSubTaskAction(subtask as any);
   }
 
   onCloseSubtaskMenu() {
@@ -55,7 +53,7 @@ export class TasksContainer implements OnInit, AfterViewInit {
 
   }
 
-  async add(event: KeyboardEvent) {
+  add(event: KeyboardEvent) {
     this.engine.addTaskAction(event, this);
   }
 
@@ -72,7 +70,7 @@ export class TasksContainer implements OnInit, AfterViewInit {
     this.focusFired = CLICK_OMIT_EVENT;
   }
 
-  async toogle(event: Event, task: Task) {
+  toogle(event: Event, task: Task) {
     setTimeout(() => {
       if (this.focusFired > 0) {
         this.focusFired--;
@@ -85,7 +83,6 @@ export class TasksContainer implements OnInit, AfterViewInit {
       } else {
         this.engine.toogleSubtasksAction(event, task, this);
       }
-    }, TASK_CLICK_WAIT_TIME)
-
+    }, TASK_CLICK_WAIT_TIME);
   }
 }

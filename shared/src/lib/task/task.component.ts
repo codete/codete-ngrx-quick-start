@@ -49,7 +49,7 @@ export class TaskComponent implements OnInit {
   editTask(event?: InputEvent) {
     event?.stopImmediatePropagation();
     event?.stopPropagation();
-    (this.taskInput.nativeElement as HTMLElement).focus();
+    (this.taskInput?.nativeElement as HTMLElement).focus();
   }
 
   ngOnInit(): void {

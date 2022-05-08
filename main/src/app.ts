@@ -88,7 +88,7 @@ async function start() {
     entities: [Task, SubTask, Process],
     //#region @backend
     config: {
-      type: 'better-sqlite3',
+      type: 'sqlite',
       database: 'tmp-db.sqlite',
       synchronize: true,
       dropSchema: true,
