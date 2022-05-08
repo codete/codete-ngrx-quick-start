@@ -23,8 +23,8 @@ npx ts-node run.json
 ```
 or in Visual Studi code select proper debug task and press F5 on keyboard
 
-![](proper-debug.png)
+![](./_images/proper-debug.png)
 
-![](vscode-debug.png)
+![](./_images/vscode-debug.png)
 
 4. Open browser: http://localhost:4200
