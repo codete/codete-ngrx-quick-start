@@ -6,3 +6,11 @@ const canvasSignatureFeatureSelector = createFeatureSelector<CanvasSignatureInit
 export const allBatches = createSelector(canvasSignatureFeatureSelector, state => {
   return state.batches;
 });
+
+export const allowedToUndo = createSelector(canvasSignatureFeatureSelector, state => {
+  return state.batches.length > 0;
+});
+
+export const allowedToRedo = createSelector(canvasSignatureFeatureSelector, state => {
+  return state.stack.length > 0;
+});

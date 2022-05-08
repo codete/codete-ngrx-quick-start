@@ -1,0 +1,21 @@
+:host {
+  position      : relative;
+  z-index       : 99999;
+  pointer-events: none;
+  width         : 60%;
+  height        : 20px;
+  display       : block;
+  top           : -150px;
+  border-bottom : 2px dotted lightgray;
+  margin        : 20%;
+  margin-top    : 0px;
+  margin-bottom : 0px;
+}
+
+h6 {
+  top           : 25px;
+  position      : relative;
+  text-transform: uppercase;
+  text-align    : center;
+  pointer-events: none;
+}

@@ -4,4 +4,5 @@ export const canvasSignatureFeatureKey = 'canvas';
 
 export interface CanvasSignatureInitialState {
   batches: PixelsBatch[];
+  stack: PixelsBatch[];
 };

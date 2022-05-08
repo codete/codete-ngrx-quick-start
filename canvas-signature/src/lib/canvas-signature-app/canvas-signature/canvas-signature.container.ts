@@ -15,13 +15,25 @@ export class CanvasSignatureContainer implements OnInit {
     private store: Store<CanvasSignatureInitialState>
   ) { }
   allData$ = this.store.select(canvasSignatureSelectors.allBatches);
+  allowedToUndo$ = this.store.select(canvasSignatureSelectors.allowedToUndo);
+  allowedToRedo$ = this.store.select(canvasSignatureSelectors.allowedToRedo);
 
-  newData(batch: PixelsBatch) {
+  onNewData(batch: PixelsBatch) {
     this.store.dispatch(canvasSignatureAction.NEW_CANVAS_DATA_BATCH({ batch }));
   }
 
-
-  ngOnInit() {
+  onClear() {
+    this.store.dispatch(canvasSignatureAction.CLEAR());
   }
+
+  undo() {
+    this.store.dispatch(canvasSignatureAction.UNDO());
+  }
+
+  redo() {
+    this.store.dispatch(canvasSignatureAction.REDO());
+  }
+
+  ngOnInit() { }
 
 }

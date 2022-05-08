@@ -1,4 +1,3 @@
+#  Ngrx Tasks ( ngrx/data version )
 
-  #  Ngrx Data Tasks
-
-    
+<p style="text-align: center;"><img src="../_images/tasks-data.png" ></p>

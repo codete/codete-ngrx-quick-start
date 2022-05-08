@@ -1,30 +1,30 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Canvas Signature</mat-card-title>
-    <mat-card-subtitle>
-
-    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-
-    <app-canvas-drawer (newBatchOfPixels)="newData($event)"
+    <app-canvas-drawer (newBatchOfPixels)="onNewData($event)"
                        [batches]="allData$ | async"></app-canvas-drawer>
-
   </mat-card-content>
   <mat-card-actions>
     &nbsp;
     &nbsp;
-    <button mat-raised-button>
+    <button mat-raised-button
+            [disabled]="!(allowedToUndo$ | async)"
+            (click)="undo()">
       Undo
       <mat-icon>undo</mat-icon>
     </button>
 
-    <button mat-raised-button>
+    <button mat-raised-button
+            [disabled]="!(allowedToRedo$ | async)"
+            (click)="redo()">
       Redo
       <mat-icon>redo</mat-icon>
     </button>
 
-    <button mat-button>
+    <button mat-button
+            (click)="onClear()">
       Clear
       <mat-icon>clear</mat-icon>
     </button>

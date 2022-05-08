@@ -1,4 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import * as _ from 'lodash';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter,
+  HostListener, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild
+} from '@angular/core';
 import { defer, fromEvent, merge, Subject, takeUntil } from 'rxjs';
 import { PixelsBatch } from './canvas-drawer.models';
 
@@ -7,10 +11,30 @@ import { PixelsBatch } from './canvas-drawer.models';
   templateUrl: './canvas-drawer.component.html',
   styleUrls: ['./canvas-drawer.component.scss']
 })
-export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   destroyed$ = new Subject<void>();
-  @Input() batches: PixelsBatch[];
+  private _batches: PixelsBatch[] = [];
+  undoWasUsed = false;
+
+  @Input() set batches(newBatches: PixelsBatch[]) {
+    const oldBatches = this._batches;
+    const tempDraw = (newBatches.length === oldBatches.length + 1);
+    this._batches = newBatches;
+
+    if (!tempDraw || (tempDraw && this.undoWasUsed)) {
+      this.undoWasUsed = true;
+      this.clearCanvas();
+      this._batches.forEach(batch => {
+        this.drawBatch(batch);
+      })
+    }
+  }
+
+  get batches() {
+    return this._batches;
+  }
   @Output() newBatchOfPixels = new EventEmitter<PixelsBatch>();
+  @Output() clear = new EventEmitter<void>();
   @ViewChild('canvas', { static: true }) _canvas: ElementRef;
   @ViewChild('sketch', { static: true }) _sketch: ElementRef;
   ctx: CanvasRenderingContext2D;
@@ -42,6 +66,10 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
     };
   }
 
+  ngOnChanges() {
+
+  }
+
   recalculate(readCtx = false) {
     if (readCtx) {
       this.ctx = this.canvas.getContext('2d');
@@ -62,6 +90,9 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngOnInit() { }
 
+  clearCanvas() {
+    this.ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
 
   drawCurrentPixels() {
     if (this.batches) {
@@ -92,11 +123,14 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy {
         if (event.type === 'mousedown') {
           this.mousedown = true;
           this.tempBatch = [];
+          this.undoWasUsed = false;
         }
         if ((event.type === 'mouseup') || (event.type === 'mouseout')) {
           this.mousedown = false;
-          this.newBatchOfPixels.emit(this.tempBatch);
-          this.tempBatch = [];
+          if (this.tempBatch.length > 0) {
+            this.newBatchOfPixels.emit(this.tempBatch);
+            this.tempBatch = [];
+          }
         }
         if (event.type === 'mousemove') {
           this.last_mouse.x = this.mouse.x;
