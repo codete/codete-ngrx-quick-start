@@ -15,23 +15,23 @@ export class NavigationComponent implements OnInit {
 
   topics: Topic[] = [
     {
-      title: '<b>ngrx/data task</b> with subtask',
-      imageLink: '/assets/backend-data-into-template.jpeg',
+      title: 'ngrx/data - <b>tasks with subtask</b>',
+      imageLink: '',
       link: '/ngrx-data-tasks'
     },
     {
-      title: '<b>ngrx task</b> with subtask',
-      imageLink: '/assets/backend-data-into-template.jpeg',
+      title: 'standard ngrx - <b>tasks with subtask</b>',
+      imageLink: '',
       link: '/ngrx-tasks'
     },
     {
       title: 'realtime <b>node process</b>',
-      imageLink: '/assets/backend-data-into-template.jpeg',
+      imageLink: '',
       link: '/realtime-process'
     },
     {
-      title: 'canvas signature',
-      imageLink: '/assets/backend-data-into-template.jpeg',
+      title: 'html <b>canvas</b> - drawing <b>signature</b>',
+      imageLink: '',
       link: '/canvas-signature'
     },
   ]
