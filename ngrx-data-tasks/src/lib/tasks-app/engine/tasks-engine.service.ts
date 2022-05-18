@@ -15,7 +15,6 @@ export interface TasksEngineConfig {
 
 @Injectable()
 export class TasksEngineService {
-
   //#region constructor
 
   constructor(
@@ -23,44 +22,38 @@ export class TasksEngineService {
     private tasksService: TasksService,
   ) { }
   //#endregion
-
   //#region helpers
   helloWorld() {
     return 'Hello from ngrx/data application'
   }
 
   title() {
-    return of('HAMSTERS TASKS ("ngrx/data" application)')
+    return of('TASKS ("ngrx/data" application)')
   }
   //#endregion
 
   //#region selectors
-
   //#region selectors / get all tasks
-  allTasksSelector(context: TasksContainer) {
+  allTasksSelector() {
     return this.tasksService.entities$;
   }
   //#endregion
-
   //#region selectors / is processing subtasks
   get isProcessingSubtaskRequestSelector() {
     return this.subtasksService.loading$;
   }
   //#endregion
-
   //#region selectors / is adding subtasks
   get isProcessingTaskRequestSelector() {
     return this.tasksService.loading$;
   }
   //#endregion
-
   //#region selector / get subtasks for task
   allSubtasks(context: SubtasksComponent) {
     return this.subtasksService.entities$;
   }
   //#endregion
-
-  //#region selector / is syncing with db
+  //#region selector / is processing tasks
   synchonizationSateSelector(): Observable<SyncState> {
     return this.tasksService.loading$.pipe(
       withLatestFrom(this.subtasksService.loading$),
@@ -70,23 +63,19 @@ export class TasksEngineService {
     );
   }
   //#endregion
-
   //#endregion
 
   //#region actions
-
   //#region actions / init tasks
   initAction() {
     this.tasksService.getAll();
   }
   //#endregion
-
   //#region actions / init subtasks
   fetchSubtaskAction(taskId: number) {
     this.subtasksService.getWithQuery({ taskId: taskId?.toString() });
   }
   //#endregion
-
   //#region actions / add task
   async addTaskAction(event: KeyboardEvent, context: TasksContainer) {
     if (event.code === 'Enter' && context.newTaskModel) {
@@ -97,7 +86,6 @@ export class TasksEngineService {
     }
   }
   //#endregion
-
   //#region actions / add sub task
   addSubTaskAction(event: KeyboardEvent, context: SubtasksComponent) {
     event.stopImmediatePropagation();
@@ -113,19 +101,16 @@ export class TasksEngineService {
     }
   }
   //#endregion
-
   //#region actions / remove task
   removeTaskAction(taskId: number) {
     this.tasksService.delete({ id: taskId } as any)
   }
   //#endregion
-
-  //#region actions / remove task
+  //#region actions / remove sub task
   removeSubTaskAction(subtask: SubTask) {
     this.subtasksService.delete(_.cloneDeep(subtask) as any);
   }
   //#endregion
-
   //#region actions / save task
   onSaveTaskAction(updatedProps: Partial<ITask>, task: Task) {
     task = _.cloneDeep(task) as Task;
@@ -133,7 +118,6 @@ export class TasksEngineService {
     this.tasksService.update(task);
   }
   //#endregion
-
   //#region actions / save task locally
   onSaveSubTaskAction(updatedProps: Partial<ISubTask>, subtask: SubTask) {
     subtask = _.cloneDeep(subtask) as SubTask;
@@ -141,8 +125,7 @@ export class TasksEngineService {
     this.subtasksService.update(subtask as any);
   }
   //#endregion
-
-  //#region actions / toogle subtasks for task
+  //#region actions / toogle subtasks panel for task
   toogleSubtasksAction(event: Event, task: Task, context: TasksContainer) {
     context.toogled = task;
     setTimeout(async () => {
@@ -165,7 +148,6 @@ export class TasksEngineService {
     });
   }
   //#endregion
-
   //#endregion
 
 }

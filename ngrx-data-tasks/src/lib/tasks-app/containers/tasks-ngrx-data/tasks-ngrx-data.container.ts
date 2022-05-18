@@ -28,7 +28,7 @@ export class TasksContainer implements OnInit, AfterViewInit {
 
     protected breakpointObserver: BreakpointObserver,
   ) { }
-  tasks$ = this.engine.allTasksSelector(this);
+  tasks$ = this.engine.allTasksSelector();
   title$ = this.engine.title()
   isAddingTasks$ = this.engine.isProcessingTaskRequestSelector;
 

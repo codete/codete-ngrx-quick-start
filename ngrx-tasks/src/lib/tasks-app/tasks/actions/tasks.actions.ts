@@ -16,17 +16,14 @@ export const TOOGLE_SUBTASKS_MENU = createAction(
 export const FETCH_TASKS = createAction(
   '[tasks] FETCH_TASKS',
 );
-
 export const FETCH_TASKS_SUCCESS = createAction(
   '[tasks] FETCH_TASKS_SUCCESS',
   props<{ tasks: ITask[] }>()
 );
-
 export const FETCH_TASKS_ERROR = createAction(
   '[tasks] FETCH_TASKS_ERROR',
   props<{ error: any; }>()
 );
-
 //#endregion
 
 //#region add task
@@ -34,12 +31,10 @@ export const ADD_TASK = createAction(
   '[tasks] ADD_TASK',
   props<{ task: ITask }>()
 );
-
 export const ADD_TASK_SUCCESS = createAction(
   '[tasks] ADD_TASK_SUCCESS',
   props<{ task: ITask }>()
 );
-
 export const ADD_TASK_ERROR = createAction(
   '[tasks] ADD_TASK_ERROR',
   props<{ error: any; }>()
