@@ -1,6 +1,5 @@
 import { Firedev } from 'firedev';
 import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
-import { CLASS } from 'typescript-class-helpers';
 
 // @browserLine
 import { NgModule, ViewEncapsulation } from '@angular/core';
@@ -58,6 +57,11 @@ export class MainComponent implements OnInit {
   ngOnInit() { }
 }
 
+if (Firedev.isBrowser) {
+  start()
+}
+
+
 @NgModule({
   imports: [
     CodeteLayoutBlogModule,
@@ -108,9 +112,6 @@ async function start() {
   // console.log(`HEHEHEHHEHEH: ${SubTask.name}: ${CLASS.getName(SubTask)}`);
 }
 
-if (Firedev.isBrowser) {
-  start()
-}
 
 
 export default start;
