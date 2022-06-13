@@ -2,7 +2,7 @@ import { Firedev } from 'firedev';
 import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
 
 // @browserLine
-import { NgModule, ViewEncapsulation } from '@angular/core';
+import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
 // @browserLine
 import { Component, OnInit } from '@angular/core';
 // @browserLine
@@ -52,7 +52,11 @@ const routes: Routes = [
   `
 })
 export class MainComponent implements OnInit {
-  constructor() { }
+  constructor(
+    ngZone: NgZone
+  ) {
+    Firedev.initNgZone(ngZone);
+  }
 
   ngOnInit() { }
 }
