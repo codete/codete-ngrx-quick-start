@@ -1,14 +1,12 @@
 import { Firedev } from 'firedev';
 import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
 
-// @browserLine
+//#region @browser
 import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
-// @browserLine
 import { Component, OnInit } from '@angular/core';
-// @browserLine
 import { CodeteLayoutBlogModule } from "@codete-ngrx-quick-start/layout";
-// @browserLine
 import { RouterModule, Routes } from "@angular/router";
+//#endregion
 import { ProcessController, Process } from '@codete-ngrx-quick-start/shared';
 
 
@@ -79,7 +77,6 @@ if (Firedev.isBrowser) {
 })
 export class MainModule { }
 //#endregion
-
 
 
 async function start() {

@@ -1,36 +1,34 @@
 //#region @notForNpm
 
-// @browserLine
-    import { NgModule } from '@angular/core';
-// @browserLine
-    import { Component, OnInit } from '@angular/core';
-
 //#region @browser
-    @Component({
-      selector: 'app-ngrx-tasks',
-      template: 'hello from ngrx-tasks'
-    })
-    export class NgrxTasksComponent implements OnInit {
-      constructor() { }
+import { NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-      ngOnInit() { }
-    }
+@Component({
+  selector: 'app-ngrx-tasks',
+  template: 'hello from ngrx-tasks'
+})
+export class NgrxTasksComponent implements OnInit {
+  constructor() { }
 
-    @NgModule({
-      imports: [],
-      exports: [NgrxTasksComponent],
-      declarations: [NgrxTasksComponent],
-      providers: [],
-    })
-    export class NgrxTasksModule { }
-    //#endregion
+  ngOnInit() { }
+}
 
-    //#region @backend
-    async function start(port: number) {
-      console.log('hello world from backend');
-    }
+@NgModule({
+  imports: [],
+  exports: [NgrxTasksComponent],
+  declarations: [NgrxTasksComponent],
+  providers: [],
+})
+export class NgrxTasksModule { }
+//#endregion
 
-    export default start;
+//#region @backend
+async function start(port: number) {
+  console.log('hello world from backend');
+}
+
+export default start;
 
 //#endregion
 

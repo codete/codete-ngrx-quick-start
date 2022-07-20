@@ -1,36 +1,34 @@
 //#region @notForNpm
 
-// @browserLine
-    import { NgModule } from '@angular/core';
-// @browserLine
-    import { Component, OnInit } from '@angular/core';
-
 //#region @browser
-    @Component({
-      selector: 'app-realtime-process',
-      template: 'hello from realtime-process'
-    })
-    export class RealtimeProcessComponent implements OnInit {
-      constructor() { }
+import { NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-      ngOnInit() { }
-    }
+@Component({
+  selector: 'app-realtime-process',
+  template: 'hello from realtime-process'
+})
+export class RealtimeProcessComponent implements OnInit {
+  constructor() { }
 
-    @NgModule({
-      imports: [],
-      exports: [RealtimeProcessComponent],
-      declarations: [RealtimeProcessComponent],
-      providers: [],
-    })
-    export class RealtimeProcessModule { }
-    //#endregion
+  ngOnInit() { }
+}
 
-    //#region @backend
-    async function start(port: number) {
-      console.log('hello world from backend');
-    }
+@NgModule({
+  imports: [],
+  exports: [RealtimeProcessComponent],
+  declarations: [RealtimeProcessComponent],
+  providers: [],
+})
+export class RealtimeProcessModule { }
+//#endregion
 
-    export default start;
+//#region @backend
+async function start(port: number) {
+  console.log('hello world from backend');
+}
+
+export default start;
 
 //#endregion
 

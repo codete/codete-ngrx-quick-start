@@ -4,8 +4,9 @@ import { Firedev } from "firedev";
 import { Helpers } from "tnp-helpers";
 import { CLASS } from "typescript-class-helpers";
 
-// @browserLine
+//#region @browser
 export const isE2E = window.location.search.includes('e2e');
+//#endregion
 export const host = `http://localhost:4199`;
 
 export const URL_FOR = (taget: Function) => {

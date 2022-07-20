@@ -1,36 +1,34 @@
 //#region @notForNpm
 
-// @browserLine
-    import { NgModule } from '@angular/core';
-// @browserLine
-    import { Component, OnInit } from '@angular/core';
-
 //#region @browser
-    @Component({
-      selector: 'app-shared',
-      template: 'hello from shared'
-    })
-    export class SharedComponent implements OnInit {
-      constructor() { }
+import { NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-      ngOnInit() { }
-    }
+@Component({
+  selector: 'app-shared',
+  template: 'hello from shared'
+})
+export class SharedComponent implements OnInit {
+  constructor() { }
 
-    @NgModule({
-      imports: [],
-      exports: [SharedComponent],
-      declarations: [SharedComponent],
-      providers: [],
-    })
-    export class SharedModule { }
-    //#endregion
+  ngOnInit() { }
+}
 
-    //#region @backend
-    async function start(port: number) {
-      console.log('hello world from backend');
-    }
+@NgModule({
+  imports: [],
+  exports: [SharedComponent],
+  declarations: [SharedComponent],
+  providers: [],
+})
+export class SharedModule { }
+//#endregion
 
-    export default start;
+//#region @backend
+async function start(port: number) {
+  console.log('hello world from backend');
+}
+
+export default start;
 
 //#endregion
 
