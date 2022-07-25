@@ -1,8 +1,8 @@
 //#region @browser
 export * from './material.module';
 export * from './task/task.component';
-//#endregion
 export * from './task/task.module';
+//#endregion
 export * from './interfaces';
 export * from './task/task';
 export * from './task/task.controller'
@@ -16,7 +16,7 @@ export * from './process/process.component';
 export * from './process/process.module';
 export * from './process/process.models';
 export * from './canvas-drawer/canvas-drawer.component';
-//#endregion
 export * from './canvas-drawer/canvas-drawer.module';
 export * from './canvas-drawer/canvas-drawer.models';
+//#endregion
 

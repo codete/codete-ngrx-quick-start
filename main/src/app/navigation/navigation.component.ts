@@ -1,3 +1,4 @@
+//#region @browser
 import { Component, OnInit } from '@angular/core';
 import { Topic, MaterialModule } from "@codete-ngrx-quick-start/shared";
 
@@ -37,3 +38,4 @@ export class NavigationComponent implements OnInit {
   ]
 
 }
+//#endregion
