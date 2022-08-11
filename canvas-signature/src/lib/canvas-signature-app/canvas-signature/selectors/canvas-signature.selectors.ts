@@ -1,3 +1,4 @@
+//#region @browser
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { canvasSignatureFeatureKey, CanvasSignatureInitialState } from '../canvas-signature.models';
 
@@ -14,3 +15,4 @@ export const allowedToUndo = createSelector(canvasSignatureFeatureSelector, stat
 export const allowedToRedo = createSelector(canvasSignatureFeatureSelector, state => {
   return state.stack.length > 0;
 });
+//#endregion

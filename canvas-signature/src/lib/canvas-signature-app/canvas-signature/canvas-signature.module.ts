@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CanvasSignatureContainer } from './canvas-signature.container';
@@ -20,3 +21,4 @@ import { canvasSignatureReducer } from './reducers/canvas-signature.reducers';
   exports: [CanvasSignatureContainer],
 })
 export class CanvasSignatureModule { }
+//#endregion

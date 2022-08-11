@@ -1,3 +1,4 @@
+//#region @browser
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ProcessesInitialState } from './processes.models';
@@ -44,3 +45,4 @@ export class ProcessesComponent implements OnInit {
   }
 
 }
+//#endregion

@@ -1,3 +1,4 @@
+//#region @browser
 import { PixelsBatch } from "@codete-ngrx-quick-start/shared";
 import { createAction, props } from "@ngrx/store";
 
@@ -17,3 +18,4 @@ export const NEW_CANVAS_DATA_BATCH = createAction(
   '[canvas] NEW_CANVAS_DATA_BATCH',
   props<{ batch: PixelsBatch; }>()
 );
+//#endregion

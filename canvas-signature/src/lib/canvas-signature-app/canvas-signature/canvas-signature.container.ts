@@ -1,3 +1,4 @@
+//#region @browser
 import { Component, OnInit } from '@angular/core';
 import { PixelsBatch } from '@codete-ngrx-quick-start/shared';
 import { Store } from '@ngrx/store';
@@ -37,3 +38,4 @@ export class CanvasSignatureContainer implements OnInit {
   ngOnInit() { }
 
 }
+//#endregion

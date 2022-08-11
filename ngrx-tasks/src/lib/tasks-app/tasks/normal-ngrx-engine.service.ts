@@ -1,3 +1,4 @@
+//#region @browser
 import { _ } from 'tnp-core';
 import { Injectable } from '@angular/core';
 import { TasksEngineService } from '@codete-ngrx-quick-start/ngrx-data-tasks';
@@ -142,3 +143,4 @@ export class NormalNgrxEngineService
 
   //#endregion
 }
+//#endregion

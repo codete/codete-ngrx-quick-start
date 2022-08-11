@@ -1,3 +1,4 @@
+//#region @browser
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TasksContainer } from './tasks-ngrx-data.container';
@@ -29,3 +30,4 @@ import { StaticColumnsModule } from "static-columns";
   exports: [TasksContainer]
 })
 export class TasksNgrxDataContainerModule { }
+//#endregion

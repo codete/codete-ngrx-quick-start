@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TasksAppComponent } from './tasks-app.component';
@@ -21,3 +22,4 @@ const routes: Routes = [
   declarations: [TasksAppComponent]
 })
 export class TasksAppModule1 { }
+//#endregion

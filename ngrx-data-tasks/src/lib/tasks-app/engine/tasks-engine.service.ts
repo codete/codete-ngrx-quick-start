@@ -1,4 +1,5 @@
 
+//#region @browser
 import { _ } from 'tnp-core';
 import { Injectable, InjectionToken, Type } from '@angular/core';
 import { ISubTask, ITask, SubTask, Task } from '@codete-ngrx-quick-start/shared';
@@ -151,3 +152,4 @@ export class TasksEngineService {
   //#endregion
 
 }
+//#endregion

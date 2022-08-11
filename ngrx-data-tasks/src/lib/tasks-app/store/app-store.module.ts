@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -21,3 +22,4 @@ export const metaReducers: MetaReducer<any>[] = [
   ],
 })
 export class AppStoreModule { }
+//#endregion

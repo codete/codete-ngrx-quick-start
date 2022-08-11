@@ -1,3 +1,4 @@
+//#region @browser
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TasksEngineComponent } from './tasks-engine.component';
@@ -30,3 +31,4 @@ export class TasksEngineModule {
   }
 
 }
+//#endregion

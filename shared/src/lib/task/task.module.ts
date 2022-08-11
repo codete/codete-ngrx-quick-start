@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskComponent } from './task.component';
@@ -16,3 +17,4 @@ import { StaticColumnsModule } from "static-columns";
   exports: [TaskComponent],
 })
 export class TaskModule { }
+//#endregion

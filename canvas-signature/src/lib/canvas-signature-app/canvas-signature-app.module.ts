@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CanvasSignatureAppComponent } from './canvas-signature-app.component';
@@ -32,3 +33,4 @@ const routes: Routes = [
   declarations: [CanvasSignatureAppComponent]
 })
 export class CanvasSignatureAppModule { }
+//#endregion

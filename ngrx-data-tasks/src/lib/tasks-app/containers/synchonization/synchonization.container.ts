@@ -1,3 +1,4 @@
+//#region @browser
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { InitalAppState, InitalStoreState } from '../../store/app.models';
@@ -17,3 +18,4 @@ export class SynchonizationComponent {
   state$ = this.engine.synchonizationSateSelector();
 
 }
+//#endregion

@@ -1,3 +1,4 @@
+//#region @browser
 import {
   Component, EventEmitter, Inject,
   Input, OnInit, Optional, Output, SimpleChanges
@@ -70,3 +71,4 @@ export class SubtasksComponent implements OnInit {
   }
 
 }
+//#endregion

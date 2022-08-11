@@ -1,3 +1,4 @@
+//#region @browser
 import { createReducer, on } from '@ngrx/store';
 import * as _ from 'lodash';
 import * as canvasSignatureActions from '../actions/canvas-signature.actions'
@@ -45,3 +46,4 @@ export const canvasSignatureReducer = createReducer(
   ),
 
 );
+//#endregion

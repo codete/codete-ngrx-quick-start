@@ -1,3 +1,4 @@
+//#region @browser
 import { AfterViewInit, Component, HostBinding, Inject, OnInit, Optional, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { SubTask, Task, TaskComponent } from '@codete-ngrx-quick-start/shared';
@@ -86,3 +87,4 @@ export class TasksContainer implements OnInit, AfterViewInit {
     }, TASK_CLICK_WAIT_TIME);
   }
 }
+//#endregion

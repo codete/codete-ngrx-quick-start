@@ -1,3 +1,4 @@
+//#region @browser
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SubtasksComponent as SubtasksContainer } from './subtasks.container';
@@ -17,3 +18,4 @@ import { FormsModule } from '@angular/forms';
 })
 export class SubtasksContainerModule {
 }
+//#endregion

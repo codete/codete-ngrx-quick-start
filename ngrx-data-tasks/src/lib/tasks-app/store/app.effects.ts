@@ -1,3 +1,4 @@
+//#region @browser
 import { Injectable } from "@angular/core";
 import { EntityOp } from "@ngrx/data";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
@@ -23,3 +24,4 @@ export class AppEffects {
   ))
 
 }
+//#endregion

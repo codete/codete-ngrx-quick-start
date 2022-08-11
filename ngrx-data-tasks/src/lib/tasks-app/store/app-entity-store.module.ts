@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 
 import {
@@ -29,3 +30,4 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
   ]
 })
 export class AppEntityStoreModule { }
+//#endregion

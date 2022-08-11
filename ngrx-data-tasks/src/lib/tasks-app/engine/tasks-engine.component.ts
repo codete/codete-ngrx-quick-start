@@ -1,3 +1,4 @@
+//#region @browser
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActionsSubject, Store } from '@ngrx/store';
 import { skip, debounceTime, Subject, takeUntil, tap } from 'rxjs';
@@ -43,3 +44,4 @@ export class TasksEngineComponent implements OnInit, OnDestroy {
   }
 
 }
+//#endregion

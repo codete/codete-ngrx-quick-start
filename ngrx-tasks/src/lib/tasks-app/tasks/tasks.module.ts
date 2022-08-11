@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { TasksComponent } from './tasks.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -32,3 +33,4 @@ import { SubTasksModule } from '../subtasks/subtasks.module';
   ],
 })
 export class TasksModule { }
+//#endregion

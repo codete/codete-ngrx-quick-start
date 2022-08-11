@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProcessesComponent } from './processes.component';
@@ -22,3 +23,4 @@ import { reducer } from './reducers/processes.reducers';
   providers: [ProcessesService, ProcessController]
 })
 export class ProcessesModule { }
+//#endregion
