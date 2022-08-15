@@ -20,7 +20,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
     //#region @backendFunc
     return async (req, res) => {
       const repo = await this.connection.getRepository<Process>(Process);
-      let process = await repo.findOne(processId);
+      let process = await repo.findOneBy({ id: processId });
 
       if (process.state === 'active') {
         Helpers.warn('[ProcesController] process already stated')
@@ -39,7 +39,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       await repo.update(processId, process);
 
       const updateProces = _.debounce(async (newData: string) => {
-        process = await repo.findOne(processId);
+        process = await repo.findOneBy({ id: processId });
 
         if (!process.output) {
           process.output = '';
@@ -58,7 +58,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       })
 
       proc.on('exit', async (code, data) => {
-        process.state  = (code === 0) ? 'ended-ok': 'ended-with-error';
+        process.state = (code === 0) ? 'ended-ok' : 'ended-with-error';
         process.pid = void 0;
         await repo.update(processId, process);
         Firedev.Realtime.Server.TrigggerEntityChanges(process);
@@ -74,7 +74,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
     //#region @backendFunc
     return async (req, res) => {
       const repo = await this.connection.getRepository<Process>(Process);
-      let process = await repo.findOne(processId);
+      let process = await repo.findOneBy({ id: processId });
       process.state = 'killing';
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);

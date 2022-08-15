@@ -7,9 +7,7 @@
     ],
     "includeAsDev": [],
     "includeOnly": [],
-    "dependencies": {
-      "sqlite3": "4.0.9"
-    }
+    "dependencies": {}
   },
   "linkedProjects": [
     'main',
