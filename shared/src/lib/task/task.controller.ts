@@ -31,7 +31,7 @@ export class TaskController extends Firedev.Base.Controller<Task> {
     }))
 
     await repo.save(Task.from({
-      name: 'buy hasmter food',
+      name: 'buy hamster food',
       isDone: true,
     }))
 
