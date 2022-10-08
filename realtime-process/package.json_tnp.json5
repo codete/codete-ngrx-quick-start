@@ -1,5 +1,6 @@
 {
   "resources": [],
+
   "overrided": {
     "linkedFolders": [],
     "ignoreDepsPattern": [
@@ -9,17 +10,21 @@
     "includeOnly": [],
     "dependencies": {}
   },
+
   "linkedProjects": [],
+  'linkedRepos': [],
+
   "libReleaseOptions": {
     "nodts": false,
     "obscure": false,
     "ugly": false
   },
+
   "type": "isomorphic-lib",
   "version": "v3",
   "isCoreProject": false,
   "isGenerated": false,
   "useFramework": false,
   "required": [],
-  "requiredServers": []
+  "requiredServers": [],
 }
