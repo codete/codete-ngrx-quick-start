@@ -13,12 +13,13 @@
 
   "linkedProjects": [],
   'linkedRepos': [],
-
   "libReleaseOptions": {
     "nodts": false,
     "obscure": false,
     "ugly": false
   },
+
+  'smartContainerTarget': '',
 
   "type": "isomorphic-lib",
   "version": "v3",
