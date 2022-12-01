@@ -12,7 +12,9 @@
   },
 
   "linkedProjects": [],
+  'smartContainerBuildTarget': '',
   'linkedRepos': [],
+
   "libReleaseOptions": {
     "nodts": false,
     "obscure": false,
@@ -20,7 +22,6 @@
   },
 
   'smartContainerTarget': '',
-
   "type": "isomorphic-lib",
   "version": "v3",
   "isCoreProject": false,

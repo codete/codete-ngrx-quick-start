@@ -21,7 +21,7 @@
     'canvas-signature',
   ],
 
-  'smartContainerBuildTarget': '',
+  'smartContainerBuildTarget': 'main',
   'linkedRepos': [],
 
   "libReleaseOptions": {
@@ -30,7 +30,6 @@
     "ugly": false
   },
 
-  'smartContainerTarget': '',
   "type": "container",
   "version": "v3",
   "smart": true,

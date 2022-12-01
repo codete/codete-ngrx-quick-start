@@ -12,7 +12,7 @@ import * as tasksSelectors from './selectors/tasks.selectors';
 import * as tasksActions from './actions/tasks.actions';
 import * as subtasksSelectors from '../subtasks/selectors/subtasks.selectors';
 import * as subtasksActions from '../subtasks/actions/subtasks.actions';
-import { SyncState } from '@codete-ngrx-quick-start/ngrx-data-tasks/tasks-app/containers/synchonization/synchonization.models';
+import { SyncState } from '@codete-ngrx-quick-start/ngrx-data-tasks';
 
 type UnwanterServices = 'subtasksService' | 'tasksService';
 @Injectable()
