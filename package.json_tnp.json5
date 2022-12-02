@@ -21,14 +21,14 @@
     'canvas-signature',
   ],
 
-  'smartContainerBuildTarget': 'main',
   'linkedRepos': [],
-
   "libReleaseOptions": {
     "nodts": false,
     "obscure": false,
     "ugly": false
   },
+
+  'smartContainerBuildTarget': 'main',
 
   "type": "container",
   "version": "v3",
