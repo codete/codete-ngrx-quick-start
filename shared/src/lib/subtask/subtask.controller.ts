@@ -15,6 +15,10 @@ export class SubTaskController extends Firedev.Base.Controller<SubTask> {
     return this.bulkUpdate(entites as any).received.observable;
   }
 
+  hello() {
+    return '';
+  }
+
   @Firedev.Http.GET(`/${Firedev.symbols.CRUD_TABLE_MODELS}`) // @ts-ignore
   getAll(@Firedev.Http.Param.Query('taskId') taskId: number): Firedev.Response<ISubTask[]> {
     //#region @backendFunc

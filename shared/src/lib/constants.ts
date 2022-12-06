@@ -1,5 +1,6 @@
 /** True if running under e2e testing (e.g., launch URL ends `?e2e`) */
 
+// @is-from-shared=constants
 import { Firedev } from "firedev";
 import { Helpers } from "tnp-helpers";
 import { CLASS } from "typescript-class-helpers";
@@ -19,3 +20,4 @@ export const URL_FOR = (taget: Function) => {
 export const PATH_FOR = (taget: Function) => {
   return Helpers.strings.plural(CLASS.getName(taget).toLowerCase())
 }
+// @is-from-shared-end=constants

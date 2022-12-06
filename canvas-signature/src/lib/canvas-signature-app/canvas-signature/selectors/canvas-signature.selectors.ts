@@ -16,3 +16,4 @@ export const allowedToRedo = createSelector(canvasSignatureFeatureSelector, stat
   return state.stack.length > 0;
 });
 //#endregion
+console.log; // @module=canvas-signature
