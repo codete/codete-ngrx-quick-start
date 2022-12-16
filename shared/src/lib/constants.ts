@@ -20,4 +20,3 @@ export const URL_FOR = (taget: Function) => {
 export const PATH_FOR = (taget: Function) => {
   return Helpers.strings.plural(CLASS.getName(taget).toLowerCase())
 }
-// @is-from-shared-end=constants

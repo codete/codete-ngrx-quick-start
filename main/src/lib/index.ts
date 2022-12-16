@@ -1,3 +1,3 @@
-export function helloWorld () {
-  console.log('helo niga')
+export function helloWorld ():string {
+  return ''
 }

@@ -12,7 +12,6 @@ export class CodeteLayoutBlogComponent implements OnInit {
   destroyed$ = new Subject<void>();
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router
   ) { }
 
