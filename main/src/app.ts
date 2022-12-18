@@ -1,6 +1,5 @@
 import { Firedev } from 'firedev';
 import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
-
 //#region @browser
 import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
