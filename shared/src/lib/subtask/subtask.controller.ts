@@ -21,9 +21,10 @@ export class SubTaskController extends Firedev.Base.Controller<SubTask> {
 
   @Firedev.Http.GET(`/${Firedev.symbols.CRUD_TABLE_MODELS}`) // @ts-ignore
   getAll(@Firedev.Http.Param.Query('taskId') taskId: number): Firedev.Response<ISubTask[]> {
-    //#region @backendFunc
+    //#region @websqlFunc
+    const config = super.getAll();
     return async (req, res) => {
-      const config = super.getAll();
+
       const value = await Firedev.getResponseValue(config, req, res) as SubTask[];
       const response = value.filter(t => t.taskId === Number(taskId));
       // console.log(value);
@@ -34,7 +35,7 @@ export class SubTaskController extends Firedev.Base.Controller<SubTask> {
     //#endregion
   }
 
-  //#region @backend
+  //#region @websql
   async initExampleDbData() {
 
     const repo = this.connection.getRepository<SubTask>(SubTask);

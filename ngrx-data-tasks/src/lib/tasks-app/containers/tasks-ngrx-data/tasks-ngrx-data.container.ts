@@ -33,7 +33,7 @@ export class TasksContainer implements OnInit, AfterViewInit {
   title$ = this.engine.title()
   isAddingTasks$ = this.engine.isProcessingTaskRequestSelector;
 
-  ngOnInit() {
+  async ngOnInit() {
     this.engine.initAction();
   }
 

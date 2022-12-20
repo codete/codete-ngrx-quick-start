@@ -88,7 +88,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
     //#endregion
   }
 
-  //#region @backend
+  //#region @websql
   async initExampleDbData() {
 
     const repo = this.connection.getRepository<Process>(Process);

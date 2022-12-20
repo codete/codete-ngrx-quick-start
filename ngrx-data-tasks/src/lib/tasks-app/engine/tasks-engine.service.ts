@@ -1,6 +1,6 @@
 
 //#region @browser
-import { _ } from 'tnp-core';
+import { Helpers, _ } from 'tnp-core';
 import { Injectable, InjectionToken, Type } from '@angular/core';
 import { ISubTask, ITask, SubTask, Task } from '@codete-ngrx-quick-start/shared';
 import { combineLatest, concatMap, firstValueFrom, map, Observable, of, take, withLatestFrom } from 'rxjs';
@@ -68,13 +68,26 @@ export class TasksEngineService {
 
   //#region actions
   //#region actions / init tasks
-  initAction() {
-    this.tasksService.getAll();
+  async initAction() {
+    if (Helpers.isWebSQL) {
+      const tasks = await Task.ctrl.getAll().received;
+      this.tasksService.addManyToCache(tasks.body.json);
+    } else {
+      this.tasksService.getAll();
+    }
+
   }
   //#endregion
   //#region actions / init subtasks
-  fetchSubtaskAction(taskId: number) {
-    this.subtasksService.getWithQuery({ taskId: taskId?.toString() });
+  async fetchSubtaskAction(taskId: number) {
+    if (Helpers.isWebSQL) {
+      const subtasks = await SubTask.ctrl.getAll(taskId).received;
+      this.subtasksService.clearCache()
+      this.subtasksService.addManyToCache(subtasks.body.json);
+    } else {
+      this.subtasksService.getWithQuery({ taskId: taskId?.toString() });
+    }
+
   }
   //#endregion
   //#region actions / add task

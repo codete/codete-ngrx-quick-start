@@ -8,6 +8,7 @@ export class SubtasksService extends EntityCollectionServiceBase<ISubTask>{
   constructor(
     serviceElementsFactory: EntityCollectionServiceElementsFactory
   ) {
+    // @ts-ignore
     super(CLASS.getName(SubTask), serviceElementsFactory);
   }
 

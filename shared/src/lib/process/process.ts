@@ -24,12 +24,12 @@ export class Process extends Firedev.Base.Entity<Process> {
     return this.ctrl.stop(this.id).received.observable;
   }
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Generated()
   //#endregion
   id: number;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
     type: 'varchar',
     length: 500
@@ -37,7 +37,7 @@ export class Process extends Firedev.Base.Entity<Process> {
   //#endregion
   command: string;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
     type: 'varchar',
     length: 10,
@@ -46,21 +46,23 @@ export class Process extends Firedev.Base.Entity<Process> {
   //#endregion
   state: ProcessState;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
+    type: 'int',
     default: null
   })
   //#endregion
   pid: number;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
+    type: 'int',
     default: null
   })
   //#endregion
   ppid: number;
 
-   //#region @backend
+   //#region @websql
    @Firedev.Orm.Column.Custom({
     type: 'text',
     default: '',

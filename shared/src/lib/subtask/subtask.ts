@@ -24,8 +24,10 @@ export class SubTask extends Task {
     return _.merge(t, subtask);
   }
 
-  //#region @backend
-  @Firedev.Orm.Column.Custom()
+  //#region @websql
+  @Firedev.Orm.Column.Custom({
+    type: 'int'
+  })
   //#endregion
   taskId: number;
 }

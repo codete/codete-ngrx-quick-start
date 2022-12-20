@@ -22,12 +22,12 @@ export class Task extends Firedev.Base.Entity<Task> {
     return _.merge(t, task);
   }
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Generated()
   //#endregion
   id: number;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
     type: 'varchar',
     length: 100
@@ -35,8 +35,9 @@ export class Task extends Firedev.Base.Entity<Task> {
   //#endregion
   name?: string;
 
-  //#region @backend
+  //#region @websql
   @Firedev.Orm.Column.Custom({
+    type: 'boolean',
     default: false
   })
   //#endregion

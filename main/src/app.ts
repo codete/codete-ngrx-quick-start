@@ -49,17 +49,19 @@ const routes: Routes = [
   `
 })
 export class MainComponent implements OnInit {
+
+
   constructor(
-    ngZone: NgZone
+    private ngZone: NgZone
   ) {
     Firedev.initNgZone(ngZone);
+    Firedev.loadedSqlJs().subscribe(async () => {
+      Firedev.initNgZone(this.ngZone);
+      await start();
+    });
   }
 
   ngOnInit() { }
-}
-
-if (Firedev.isBrowser) {
-  start()
 }
 
 
@@ -90,7 +92,7 @@ async function start() {
     host,
     controllers: [TaskController, SubTaskController, ProcessController],
     entities: [Task, SubTask, Process],
-    //#region @backend
+    //#region @websql
     config: {
       type: 'better-sqlite3',
       database: 'tmp-db.sqlite',

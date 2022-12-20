@@ -17,6 +17,7 @@ export class TasksService extends EntityCollectionServiceBase<Task> {
   constructor(
     serviceElementsFactory: EntityCollectionServiceElementsFactory
   ) {
+    // @ts-ignore
     super(CLASS.getName(Task), serviceElementsFactory);
   }
 

@@ -61,7 +61,7 @@ export class NormalNgrxEngineService
   }
   //#endregion
   //#region actions / init
-  initAction() {
+  async initAction() {
     this.store.dispatch(tasksActions.INIT());
   }
   //#endregion
@@ -94,7 +94,7 @@ export class NormalNgrxEngineService
   }
   //#endregion
   //#region actions / fetch subtasks
-  fetchSubtaskAction(taskId: number): void {
+  async fetchSubtaskAction(taskId: number) {
     this.store.dispatch(subtasksActions.FETCH_SUBTASKS({ taskId }));
   }
   //#endregion
