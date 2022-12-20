@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1671536797393,
+  "timestamp": 1671544198246,
   "index": "codete-ngrx-quick-start/index.html",
   "assetGroups": [
     {
@@ -20,7 +20,7 @@
         "codete-ngrx-quick-start/common.c9f42b2648b0618a.js",
         "codete-ngrx-quick-start/favicon.ico",
         "codete-ngrx-quick-start/index.html",
-        "codete-ngrx-quick-start/main.17a3bbfc0fb94063.js",
+        "codete-ngrx-quick-start/main.d98a76255bb06e41.js",
         "codete-ngrx-quick-start/manifest.webmanifest",
         "codete-ngrx-quick-start/polyfills.d22a29c4bcf35204.js",
         "codete-ngrx-quick-start/runtime.b61ecbdf60ec6531.js",
@@ -86,8 +86,8 @@
     "codete-ngrx-quick-start/assets/assets-for/shared/.gitkeep": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     "codete-ngrx-quick-start/common.c9f42b2648b0618a.js": "3e686b2e159b71c397f672f8466947ff8cfe8d61",
     "codete-ngrx-quick-start/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "codete-ngrx-quick-start/index.html": "d070e1adc6eaf3620d4486e27409dadbf41b2943",
-    "codete-ngrx-quick-start/main.17a3bbfc0fb94063.js": "bca3fceb4dd7e45cc9c3bc948c480bdae7637996",
+    "codete-ngrx-quick-start/index.html": "bad0671ae480814596ebfcb8f4a4c21161c7ed48",
+    "codete-ngrx-quick-start/main.d98a76255bb06e41.js": "059ab2bd6e4f415f0a360c0d90f377c0cd7a004d",
     "codete-ngrx-quick-start/manifest.webmanifest": "4a27325508fc352f0b90643142f5924dfd96ceb7",
     "codete-ngrx-quick-start/polyfills.d22a29c4bcf35204.js": "eeb466ae718468fee19b55a5c7b56b7bada5c891",
     "codete-ngrx-quick-start/runtime.b61ecbdf60ec6531.js": "aff28063f624e645315b1fc931da6d6f6a21880d",
