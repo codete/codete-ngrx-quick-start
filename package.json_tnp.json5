@@ -12,13 +12,13 @@
   },
 
   "linkedProjects": [
-    'main',
+    'canvas-signature',
     'layout',
+    'main',
     'ngrx-data-tasks',
     'ngrx-tasks',
-    'shared',
     'realtime-process',
-    'canvas-signature',
+    'shared',
   ],
 
   'smartContainerBuildTarget': 'main',
