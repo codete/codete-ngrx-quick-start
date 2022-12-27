@@ -71,6 +71,10 @@ export class TasksEngineService {
   async initAction() {
     if (Helpers.isWebSQL) {
       const tasks = await Task.ctrl.getAll().received;
+      console.log({
+        tasksFromWebsq: tasks
+      })
+      this.tasksService.clearCache();
       this.tasksService.addManyToCache(tasks.body.json);
     } else {
       this.tasksService.getAll();

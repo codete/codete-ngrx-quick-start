@@ -49,19 +49,14 @@ const routes: Routes = [
   `
 })
 export class MainComponent implements OnInit {
-
-
   constructor(
     private ngZone: NgZone
-  ) {
-    Firedev.initNgZone(ngZone);
-    Firedev.loadedSqlJs().subscribe(async () => {
-      Firedev.initNgZone(this.ngZone);
-      await start();
-    });
-  }
+  ) { }
 
-  ngOnInit() { }
+  async ngOnInit() {
+    Firedev.initNgZone(this.ngZone);
+    await start();
+  }
 }
 
 
