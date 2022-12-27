@@ -1,6 +1,6 @@
 {
   "name": "codete-ngrx-quick-start",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "dependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
     "@angular-devkit/core": "~13.3.9",
@@ -235,5 +235,5 @@
   },
   "devDependencies": {},
   "private": true,
-  "lastBuildTagHash": "44ebe77c4066170638a97d4a8c70e25127db0c91"
+  "lastBuildTagHash": "0558304dabb2acfa499c7df0269f8a7e0b670af1"
 }
