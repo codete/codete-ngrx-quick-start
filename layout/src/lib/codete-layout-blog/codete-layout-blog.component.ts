@@ -1,3 +1,4 @@
+import { PlatformLocation, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { filter, map, share, Subject, takeUntil, tap } from "rxjs";
@@ -12,8 +13,19 @@ export class CodeteLayoutBlogComponent implements OnInit {
   destroyed$ = new Subject<void>();
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private platformLocation: PlatformLocation,
+    public location: Location
+  ) {
+    console.log((platformLocation as any).location);
+    console.log((platformLocation as any).location.href);
+    console.log((platformLocation as any).location.origin);
+    console.log(location);
+  }
+
+  gotoroot() {
+    this.router.navigateByUrl('/');
+  }
 
   useOpenLayout$ = this.router.events.pipe(
     filter(val => {

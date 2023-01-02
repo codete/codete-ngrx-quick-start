@@ -70,12 +70,11 @@ export class TasksEngineService {
   //#region actions / init tasks
   async initAction() {
     if (Helpers.isWebSQL) {
+      //#region @websql
       const tasks = await Task.ctrl.getAll().received;
-      console.log({
-        tasksFromWebsq: tasks
-      })
       this.tasksService.clearCache();
       this.tasksService.addManyToCache(tasks.body.json);
+      //#endregion
     } else {
       this.tasksService.getAll();
     }
