@@ -1,9 +1,18 @@
 mat-card {
   background-color: white;
-  color: black;
-  cursor: pointer;
-  opacity: 0.9;
+  color           : black;
+  cursor          : pointer;
+  opacity         : 0.9;
+
   &:hover {
     opacity: 1;
   }
+}
+
+::ng-deep .mat-tab-label-content {
+  color: white !important;
+}
+
+::ng-deep mat-ink-bar {
+  background-color: white !important;
 }

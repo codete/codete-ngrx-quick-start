@@ -4,6 +4,8 @@ export * from './task/task.component';
 export * from './task/task.module';
 //#endregion
 export * from './interfaces';
+export * from './simple-task/simple-task';
+export * from './simple-task/simple-task.controller';
 export * from './task/task';
 export * from './task/task.controller'
 export * from './subtask/subtask';

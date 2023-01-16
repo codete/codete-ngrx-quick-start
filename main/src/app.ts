@@ -1,5 +1,8 @@
 import { Firedev } from 'firedev';
-import { TaskController, Task, host, SubTaskController, SubTask } from '@codete-ngrx-quick-start/shared';
+import {
+  TaskController, Task, host, SubTaskController,
+  SubTask, SimpleTask, SimpleTaskController
+} from '@codete-ngrx-quick-start/shared';
 //#region @browser
 import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
@@ -17,16 +20,6 @@ const routes: Routes = [
       .then(m => m.NavigationModule),
   },
   {
-    path: 'ngrx-data-tasks',
-    loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-data-tasks`)
-      .then(m => m.TasksAppModule1),
-  },
-  {
-    path: 'ngrx-tasks',
-    loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-tasks`)
-      .then(m => m.TasksAppModule2),
-  },
-  {
     path: 'realtime-process',
     loadChildren: () => import(`@codete-ngrx-quick-start/realtime-process`)
       .then(m => m.RealtimeProcessAppModule),
@@ -36,6 +29,23 @@ const routes: Routes = [
     loadChildren: () => import(`@codete-ngrx-quick-start/canvas-signature`)
       .then(m => m.CanvasSignatureAppModule),
   },
+  {
+    path: 'simple-tasks',
+    loadChildren: () => import(`@codete-ngrx-quick-start/simple-tasks`)
+      .then(m => m.SimpleTasksAppModule),
+  },
+
+  {
+    path: 'ngrx-data-tasks',
+    loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-data-tasks`)
+      .then(m => m.TasksAppModule1),
+  },
+  {
+    path: 'ngrx-tasks',
+    loadChildren: () => import(`@codete-ngrx-quick-start/ngrx-tasks`)
+      .then(m => m.TasksAppModule2),
+  },
+
 ];
 
 @Component({
@@ -85,8 +95,8 @@ async function start() {
 
   const context = await Firedev.init({
     host,
-    controllers: [TaskController, SubTaskController, ProcessController],
-    entities: [Task, SubTask, Process],
+    controllers: [SimpleTaskController, TaskController, SubTaskController, ProcessController],
+    entities: [SimpleTask, Task, SubTask, Process],
     //#region @websql
     config: {
       type: 'better-sqlite3',
