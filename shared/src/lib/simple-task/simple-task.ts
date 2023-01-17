@@ -8,6 +8,12 @@ export class SimpleTask {
   public ctrl: SimpleTaskController;
   public static ctrl: SimpleTaskController;
 
+  public static from(content: string) {
+    const ins = new SimpleTask();
+    ins.content = content;
+    return ins;
+  }
+
   //#region @websql
   @Firedev.Orm.Column.Generated()
   //#endregion
@@ -19,5 +25,7 @@ export class SimpleTask {
     length: 100
   })
   //#endregion
-  name?: string;
+  content?: string;
 }
+
+export type ISimpleTask = Omit<Partial<SimpleTask>, 'ctrl'>;

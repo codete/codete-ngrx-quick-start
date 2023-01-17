@@ -1,3 +1,4 @@
+//#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SimpleTasksAppComponent } from './simple-tasks-app.component';
@@ -12,6 +13,7 @@ import { MaterialModule } from '@codete-ngrx-quick-start/shared';
 import { StaticColumnsModule } from "static-columns";
 
 import { reducer } from './simple-tasks-app.reducer';
+import { SimpleTasksModule } from './simple-tasks/simple-tasks.module';
 
 const routes: Routes = [
   {
@@ -35,7 +37,10 @@ const routes: Routes = [
       // logOnly: environment.production
     }),
     RouterModule.forChild(routes),
+    SimpleTasksModule,
   ],
-  declarations: [SimpleTasksAppComponent]
+  declarations: [SimpleTasksAppComponent],
+  providers: []
 })
 export class SimpleTasksAppModule { }
+//#endregion
