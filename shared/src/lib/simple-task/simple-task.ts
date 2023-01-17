@@ -1,4 +1,5 @@
 import { Firedev } from 'firedev';
+import { _ } from 'tnp-core';
 import type { SimpleTaskController } from './simple-task.controller';
 
 @Firedev.Entity({
@@ -8,10 +9,13 @@ export class SimpleTask {
   public ctrl: SimpleTaskController;
   public static ctrl: SimpleTaskController;
 
-  public static from(content: string) {
-    const ins = new SimpleTask();
-    ins.content = content;
-    return ins;
+  public static from(contentOrObject: string | ISimpleTask) {
+    if (_.isString(contentOrObject)) {
+      const ins = new SimpleTask();
+      ins.content = contentOrObject;
+      return ins;
+    }
+    return _.merge(new SimpleTask(), contentOrObject);
   }
 
   //#region @websql

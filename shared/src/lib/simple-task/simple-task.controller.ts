@@ -8,12 +8,12 @@ import { SimpleTask } from './simple-task';
 export class SimpleTaskController extends Firedev.Base.Controller<SimpleTask> {
   //#region @websql
   async initExampleDbData() {
-    const repo = await this.connection.getRepository(SimpleTask);
-    await repo.save(SimpleTask.from('my first task'));
-    await repo.save(SimpleTask.from('my second task'));
+    // const repo = await this.connection.getRepository(SimpleTask);
+    // await repo.save(SimpleTask.from('my first task'));
+    // await repo.save(SimpleTask.from('my second task'));
 
-    const allTasks = await repo.find();
-    console.log({ allTasks })
+    // const allTasks = await repo.find();
+    // console.log({ allTasks })
   }
   //#endregion
 }

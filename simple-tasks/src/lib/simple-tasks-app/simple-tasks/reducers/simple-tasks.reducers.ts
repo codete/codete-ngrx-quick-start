@@ -16,4 +16,25 @@ export const simpleTasksReducer = createReducer(
       return { ...state, simpleTasks: _.cloneDeep(simpleTasks) };
     }
   ),
+  on(
+    simpleTasksAction.ADD_TASK_SUCCESS,
+    (state, { task }) => {
+      return {
+        ...state, simpleTasks: [
+          ...state.simpleTasks,
+          task,
+        ]
+      };
+    }
+  ),
+  on(
+    simpleTasksAction.DELETE_TASK_SUCCESS,
+    (state, { task }) => {
+      return {
+        ...state, simpleTasks: [
+          ...state.simpleTasks.filter(t => t.id !== task.id)
+        ],
+      };
+    }
+  ),
 );

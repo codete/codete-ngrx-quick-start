@@ -7,22 +7,38 @@
 
     <!-- {{$simpleTasks | async | json}} -->
 
-    <mat-form-field *ngFor="let simpleTask of $simpleTasks | async as simpleTasks">
-      <!-- <mat-label>Input</mat-label> -->
-      <input matInput
-             [(ngModel)]="simpleTask.content"
-             [disabled]="true">
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
-      <input matInput>
+
+    <!-- <mat-label>Input</mat-label> -->
+
+    <columns-container *ngFor="let simpleTask of $simpleTasks | async as simpleTasks; let i = index">
+      <column grow>
+        <mat-form-field>
+          <input matInput
+                 value="{{ i + 1 + '. ' + simpleTask.content }}"
+                 [disabled]="true">
+        </mat-form-field>
+      </column>
+      <column [width]="50">
+        <button mat-icon-button
+                class="delete"
+                (click)="remove(simpleTask)">
+          <mat-icon>
+            delete_forever
+          </mat-icon>
+        </button>
+      </column>
+    </columns-container>
+
+
+    <mat-form-field >
+      <!-- <mat-label>New task</mat-label> -->
+      <input matInput
+             (keydown.enter)="newTask($event)"
+             placeholder="Type your task and press 'ENTER'...">
     </mat-form-field>
 
 
 
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>Ok</button>
-  </mat-card-actions>
 </mat-card>

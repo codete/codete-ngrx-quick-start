@@ -102,7 +102,7 @@ async function start() {
       type: 'better-sqlite3',
       database: 'tmp-db.sqlite',
       synchronize: true,
-      dropSchema: true,
+      dropSchema: false,
       logging: false,
     }
     //#endregion
