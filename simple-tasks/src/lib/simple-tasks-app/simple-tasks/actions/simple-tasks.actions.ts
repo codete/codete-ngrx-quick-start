@@ -48,3 +48,12 @@ export const DELETE_TASK_ERROR = createAction(
   '[simple-tasks] DELETE_TASK_ERROR',
   props<{ error: any; }>()
 );
+
+export const REALTIME_CHANGES_SUBSCRIBE = createAction(
+  '[simple-tasks] REALTIME_CHANGES_SUBSCRIBE'
+);
+
+export const REALTIME_CHANGES_NEW_DATA = createAction(
+  '[simple-tasks] REALTIME_CHANGES_NEW_DATA',
+  props<{ simpleTasks: ISimpleTask[]; }>()
+);
