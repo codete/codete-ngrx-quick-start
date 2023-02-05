@@ -2,9 +2,9 @@
 import { Firedev } from "firedev";
 import { Process } from "./process";
 import { Helpers } from 'tnp-helpers';
-import { _ } from 'tnp-core';
+import { _, dateformat } from 'tnp-core';
 //#region @backend
-import { fse, dateformat } from 'tnp-core';
+import { fse } from 'tnp-core';
 import { ChildProcess } from "child_process";
 import { ProcessState } from "./process.models";
 //#endregion
@@ -17,7 +17,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
 
   @Firedev.Http.GET('/start/process/:processId')
   start(@Firedev.Http.Param.Path('processId') processId: number): Firedev.Response<void> {
-    //#region @backendFunc
+    //#region @websqlFunc
     return async (req, res) => {
       const repo = await this.connection.getRepository<Process>(Process);
       let process = await repo.findOneBy({ id: processId });
@@ -32,10 +32,20 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
 
       await repo.update(processId, process);
 
-      const proc = Helpers.run(process.command).async();
+      const realProcess = Helpers.run(process.command).async(
+        false,
+        //#region @browser
+        ((stdout, stder) => {
+          _.times(10, (n) => {
+            stdout(`Pluszka`);
+          })
+          return 0;
+        })
+        //#endregion
+      );
 
       process.state = 'active';
-      process.pid = proc.pid;
+      process.pid = realProcess.pid;
       await repo.update(processId, process);
 
       const updateProces = _.debounce(async (newData: string) => {
@@ -49,15 +59,15 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         Firedev.Realtime.Server.TrigggerEntityChanges(process);
       }, 500)
 
-      proc.stdout.on('data', data => {
+      realProcess.stdout.on('data', data => {
         updateProces(data);
       });
 
-      proc.stderr.on('data', data => {
+      realProcess.stderr.on('data', data => {
         updateProces(data);
       })
 
-      proc.on('exit', async (code, data) => {
+      realProcess.on('exit', async (code, data) => {
         process.state = (code === 0) ? 'ended-ok' : 'ended-with-error';
         process.pid = void 0;
         await repo.update(processId, process);
@@ -71,16 +81,21 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
 
   @Firedev.Http.GET('/stop/process/:processId')
   stop(@Firedev.Http.Param.Path('processId') processId: number): Firedev.Response<void> {
-    //#region @backendFunc
+    //#region @websqlFunc
     return async (req, res) => {
       const repo = await this.connection.getRepository<Process>(Process);
       let process = await repo.findOneBy({ id: processId });
       process.state = 'killing';
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);
+      //#region @backend
       try {
         Helpers.killProcess(process.pid);
       } catch (error) { }
+      //#endregion
+      //#region @browser
+      await Helpers.wait(1)
+      //#endregion
       process.state = 'killed';
       process.pid = void 0;
       await repo.update(processId, process);
