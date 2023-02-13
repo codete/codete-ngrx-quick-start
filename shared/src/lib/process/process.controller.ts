@@ -35,10 +35,14 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       const realProcess = Helpers.run(process.command).async(
         false,
         //#region @browser
-        ((stdout, stder) => {
-          _.times(10, (n) => {
+        (async (stdout, stder, shouldProcesBeDead) => {
+          for (let i = 1; i < 11; i++) {
             stdout(`Pluszka`);
-          })
+            await Helpers.wait(2)
+            if (shouldProcesBeDead()) {
+              return 0;
+            }
+          }
           return 0;
         })
         //#endregion
@@ -88,14 +92,11 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       process.state = 'killing';
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);
-      //#region @backend
+
       try {
         Helpers.killProcess(process.pid);
       } catch (error) { }
-      //#endregion
-      //#region @browser
-      await Helpers.wait(1)
-      //#endregion
+
       process.state = 'killed';
       process.pid = void 0;
       await repo.update(processId, process);
