@@ -114,25 +114,25 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       command: 'firedev show:random:hamsters:types'
     }));
 
-    await repo.save(Process.from({
-      command: 'firedev show:random:hamsters'
-    }));
+    // await repo.save(Process.from({
+    //   command: 'firedev show:random:hamsters'
+    // }));
 
-    await repo.save(Process.from({
-      command: 'firedev show:loop:messages'
-    }));
+    // await repo.save(Process.from({
+    //   command: 'firedev show:loop:messages'
+    // }));
 
-    await repo.save(Process.from({
-      command: 'firedev show:loop:messages --max 2'
-    }));
+    // await repo.save(Process.from({
+    //   command: 'firedev show:loop:messages --max 2'
+    // }));
 
-    await repo.save(Process.from({
-      command: 'firedev show:loop:messages --max 1 --err'
-    }));
+    // await repo.save(Process.from({
+    //   command: 'firedev show:loop:messages --max 1 --err'
+    // }));
 
-    await repo.save(Process.from({
-      command: 'firedev show:loop:messages --max 1 --throw'
-    }));
+    // await repo.save(Process.from({
+    //   command: 'firedev show:loop:messages --max 1 --throw'
+    // }));
 
 
   }
