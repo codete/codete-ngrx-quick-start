@@ -6,6 +6,7 @@ import { switchMap, map, of, exhaustMap, catchError, concatMap, mergeMap, deboun
 import { SimpleTasksService } from '../services/simple-tasks.service';
 import { Firedev } from 'firedev';
 import { SimpleTask } from '@codete-ngrx-quick-start/shared';
+
 @Injectable()
 export class SimpleTasksEffects {
   constructor(private actions$: Actions, private service: SimpleTasksService) { }
@@ -57,7 +58,6 @@ export class SimpleTasksEffects {
       ))
   ));
 
-  // @LAST fix realtiem
   realtimeChanges = createEffect(() => this.actions$.pipe(
     ofType(simpleTasksActions.REALTIME_CHANGES_SUBSCRIBE),
     mergeMap((action) => {

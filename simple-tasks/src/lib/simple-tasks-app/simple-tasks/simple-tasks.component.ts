@@ -15,10 +15,12 @@ export class SimpleTasksComponent implements OnInit {
   constructor(
     private store: Store<SimpleTasksInitialState>
 
-  ) { }
+  ) {
+    this.store.dispatch(simpleTasksActions.INIT());
+  }
 
   ngOnInit() {
-    this.store.dispatch(simpleTasksActions.INIT());
+    this.store.dispatch(simpleTasksActions.REALTIME_CHANGES_SUBSCRIBE());
   }
 
   newTask(e: KeyboardEvent) {
