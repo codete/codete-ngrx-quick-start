@@ -101,8 +101,6 @@ async function start() {
     config: {
       type: 'better-sqlite3',
       database: 'tmp-db.sqlite',
-      synchronize: true,
-      dropSchema: true,
       logging: false,
     }
     //#endregion
