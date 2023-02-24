@@ -1,6 +1,6 @@
 {
   "name": "codete-ngrx-quick-start",
-  "version": "0.0.22",
+  "version": "0.0.24",
   "dependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
     "@angular-devkit/core": "~13.3.9",
