@@ -1,7 +1,7 @@
 //#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProcessesComponent } from './processes.component';
+import { ProcessesContainer } from './processes.container';
 import { ProcessesService } from './services/processes.service';
 import { MaterialModule, ProcessController, ProcessModule } from '@codete-ngrx-quick-start/shared';
 import { StoreModule } from '@ngrx/store';
@@ -18,8 +18,8 @@ import { reducer } from './reducers/processes.reducers';
     StoreModule.forFeature(processesFeatureKey, reducer),
     EffectsModule.forFeature([ProcessEffects]),
   ],
-  declarations: [ProcessesComponent],
-  exports: [ProcessesComponent],
+  declarations: [ProcessesContainer],
+  exports: [ProcessesContainer],
   providers: [ProcessesService, ProcessController]
 })
 export class ProcessesModule { }

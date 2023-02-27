@@ -4,16 +4,15 @@ import { Store } from '@ngrx/store';
 import { ProcessesInitialState } from './processes.models';
 import * as processesActions from './actions/processes.actions';
 import * as selectors from './selectors/processes.selectors';
-import { distinctUntilChanged, map, Observable, Subject, tap } from 'rxjs';
 import { Process } from '@codete-ngrx-quick-start/shared';
 import { ProcessAction } from '@codete-ngrx-quick-start/shared';
 
 @Component({
   selector: 'app-processes',
-  templateUrl: './processes.component.html',
-  styleUrls: ['./processes.component.scss']
+  templateUrl: './processes.container.html',
+  styleUrls: ['./processes.container.scss']
 })
-export class ProcessesComponent implements OnInit {
+export class ProcessesContainer implements OnInit {
   constructor(
     private store: Store<ProcessesInitialState>
   ) { }
