@@ -1,13 +1,14 @@
 import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, EffectNotification, ofType } from '@ngrx/effects';
 import * as processesActions from '../actions/processes.actions'
-import { switchMap, map, of, debounceTime, exhaustAll, exhaustMap, tap, mergeMap } from "rxjs";
+import { switchMap, map, of, debounceTime, exhaustAll, exhaustMap, tap, mergeMap, Observable, takeUntil } from "rxjs";
 import { ProcessesService } from '../services/processes.service';
 import { Firedev } from 'firedev';
 import { Process } from '@codete-ngrx-quick-start/shared';
 import { Store } from '@ngrx/store';
 import { ProcessesInitialState } from '../processes.models';
+import { Helpers } from 'tnp-helpers';
 
 @Injectable()
 export class ProcessEffects {
@@ -76,6 +77,7 @@ export class ProcessEffects {
     ofType(processesActions.REALTIME_CHANGES_SUBSCRIBE),
     mergeMap((action) => {
       return Firedev.Realtime.Browser.listenChangesEntityObj(action.process).pipe(
+        takeUntil(Helpers.ng.deserialize(action.destroy$)),
         debounceTime(500),
         exhaustMap(() => {
           return Process.ctrl.getBy(action.process.id).received.observable
@@ -92,5 +94,6 @@ export class ProcessEffects {
       );
     })
   ));
+
 
 }

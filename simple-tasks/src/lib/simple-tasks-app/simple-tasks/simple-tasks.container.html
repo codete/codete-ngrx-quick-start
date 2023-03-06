@@ -5,13 +5,13 @@
   </mat-card-header>
   <mat-card-content>
 
-    <!-- {{$simpleTasks | async | json}} -->
+    <!-- {{simpleTasks$ | async | json}} -->
 
 
 
     <!-- <mat-label>Input</mat-label> -->
 
-    <columns-container *ngFor="let simpleTask of $simpleTasks | async as simpleTasks; let i = index">
+    <columns-container *ngFor="let simpleTask of simpleTasks$ | async as simpleTasks; let i = index">
       <column grow>
         <mat-form-field>
           <input matInput

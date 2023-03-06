@@ -1,5 +1,7 @@
 import { ISimpleTask, SimpleTask } from "@codete-ngrx-quick-start/shared";
 import { createAction, props } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { SerializedSubject } from "tnp-helpers";
 
 export const INIT = createAction(
   '[simple-tasks] INIT'
@@ -50,7 +52,8 @@ export const DELETE_TASK_ERROR = createAction(
 );
 
 export const REALTIME_CHANGES_SUBSCRIBE = createAction(
-  '[simple-tasks] REALTIME_CHANGES_SUBSCRIBE'
+  '[simple-tasks] REALTIME_CHANGES_SUBSCRIBE',
+  props<{ destroy$: SerializedSubject<any>; }>()
 );
 
 export const REALTIME_CHANGES_NEW_DATA = createAction(

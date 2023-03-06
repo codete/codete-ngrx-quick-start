@@ -4,14 +4,20 @@ import * as simpleTasksSelectors from './selectors/simple-tasks.selectors';
 import * as simpleTasksActions from './actions/simple-tasks.actions';
 import { SimpleTasksInitialState } from './simple-tasks.models';
 import { SimpleTask } from '@codete-ngrx-quick-start/shared';
+import { Observable, Subject } from 'rxjs';
+import { Helpers } from 'tnp-helpers';
+
+
 
 @Component({
   selector: 'app-simple-tasks',
-  templateUrl: './simple-tasks.component.html',
-  styleUrls: ['./simple-tasks.component.scss']
+  templateUrl: './simple-tasks.container.html',
+  styleUrls: ['./simple-tasks.container.scss']
 })
-export class SimpleTasksComponent implements OnInit {
-  $simpleTasks = this.store.select(simpleTasksSelectors.allSimpleTasks);
+export class SimpleTasksContainer implements OnInit {
+  destroy$ = new Subject();
+  simpleTasks$ = this.store.select(simpleTasksSelectors.allSimpleTasks);
+
   constructor(
     private store: Store<SimpleTasksInitialState>
 
@@ -20,7 +26,15 @@ export class SimpleTasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(simpleTasksActions.REALTIME_CHANGES_SUBSCRIBE());
+    this.store.dispatch(simpleTasksActions.REALTIME_CHANGES_SUBSCRIBE({
+      destroy$: Helpers.ng.serialize(this.destroy$),
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(void 0);
+    this.destroy$.unsubscribe();
+    Helpers.ng.unsubscribe(this.destroy$);
   }
 
   newTask(e: KeyboardEvent) {

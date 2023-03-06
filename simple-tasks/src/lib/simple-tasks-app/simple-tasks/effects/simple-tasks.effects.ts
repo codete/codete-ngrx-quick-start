@@ -1,11 +1,13 @@
 //#region @browser
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, EffectNotification, ofType } from '@ngrx/effects';
 import * as simpleTasksActions from '../actions/simple-tasks.actions'
-import { switchMap, map, of, exhaustMap, catchError, concatMap, mergeMap, debounceTime } from "rxjs";
+import { switchMap, map, of, exhaustMap, catchError, concatMap, mergeMap, debounceTime, Observable, takeUntil } from "rxjs";
 import { SimpleTasksService } from '../services/simple-tasks.service';
 import { Firedev } from 'firedev';
 import { SimpleTask } from '@codete-ngrx-quick-start/shared';
+import { _ } from 'tnp-core';
+import { Helpers } from 'tnp-helpers';
 
 @Injectable()
 export class SimpleTasksEffects {
@@ -62,6 +64,7 @@ export class SimpleTasksEffects {
     ofType(simpleTasksActions.REALTIME_CHANGES_SUBSCRIBE),
     mergeMap((action) => {
       return Firedev.Realtime.Browser.listenChangesTableEntity(SimpleTask).pipe(
+        takeUntil(Helpers.ng.deserialize(action.destroy$)),
         debounceTime(500),
         exhaustMap(() => {
           // TODO compare versions
@@ -70,10 +73,11 @@ export class SimpleTasksEffects {
         }),
         map(simpleTasks => {
           return simpleTasksActions.FETCH_ALL_TASKS_SUCCESS({ simpleTasks });
-        })
+        }),
       );
     })
   ));
+
 }
 
 //#endregion

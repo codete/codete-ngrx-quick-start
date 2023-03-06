@@ -1,7 +1,7 @@
 //#region @browser
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SimpleTasksComponent } from './simple-tasks.component';
+import { SimpleTasksContainer } from './simple-tasks.container';
 import { MaterialModule } from '@codete-ngrx-quick-start/shared';
 import { FormsModule } from '@angular/forms';
 import { StaticColumnsModule } from 'static-columns';
@@ -21,8 +21,8 @@ import { SimpleTasksService } from './services/simple-tasks.service';
     StoreModule.forFeature(simpleTasksFeatureKey, simpleTasksReducer),
     EffectsModule.forFeature([SimpleTasksEffects]),
   ],
-  declarations: [SimpleTasksComponent],
-  exports: [SimpleTasksComponent],
+  declarations: [SimpleTasksContainer],
+  exports: [SimpleTasksContainer],
   providers: [
     SimpleTasksService,
   ]

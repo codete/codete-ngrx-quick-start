@@ -6,6 +6,8 @@ import * as processesActions from './actions/processes.actions';
 import * as selectors from './selectors/processes.selectors';
 import { Process } from '@codete-ngrx-quick-start/shared';
 import { ProcessAction } from '@codete-ngrx-quick-start/shared';
+import { Helpers } from 'tnp-helpers';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-processes',
@@ -13,6 +15,7 @@ import { ProcessAction } from '@codete-ngrx-quick-start/shared';
   styleUrls: ['./processes.container.scss']
 })
 export class ProcessesContainer implements OnInit {
+  destroy$ = new Subject();
   constructor(
     private store: Store<ProcessesInitialState>
   ) { }
@@ -23,9 +26,14 @@ export class ProcessesContainer implements OnInit {
     this.store.dispatch(processesActions.INIT());
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(void 0);
+    this.destroy$.unsubscribe();
+    Helpers.ng.unsubscribe(this.destroy$);
+  }
   onProcessRealtimeSubscribe(process: Process,) {
     this.store.dispatch((processesActions.REALTIME_CHANGES_SUBSCRIBE({
-      process,
+      process, destroy$: Helpers.ng.serialize(this.destroy$),
     })));
   }
 

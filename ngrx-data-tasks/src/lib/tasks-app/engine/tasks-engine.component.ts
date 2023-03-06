@@ -12,7 +12,7 @@ import * as appActions from '../store/app.actions';
 })
 export class TasksEngineComponent implements OnInit, OnDestroy {
 
-  destroy$ = new Subject();
+  $destroy = new Subject();
   message?: string;
   constructor(
     private engine: TasksEngineService,
@@ -20,8 +20,8 @@ export class TasksEngineComponent implements OnInit, OnDestroy {
     private actionListener$: ActionsSubject,
   ) { }
   ngOnDestroy(): void {
-    this.destroy$.next(void 0);
-    this.destroy$.unsubscribe();
+    this.$destroy.next(void 0);
+    this.$destroy.unsubscribe();
   }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class TasksEngineComponent implements OnInit, OnDestroy {
   activeteSynchonization() {
     this.actionListener$.pipe(
       skip(1), // optional: skips initial logging done by ngrx,
-      takeUntil(this.destroy$),
+      takeUntil(this.$destroy),
       // debounceTime(5000),
       // tap(() => {
       //   this.store.dispatch(appActions.SYNC());

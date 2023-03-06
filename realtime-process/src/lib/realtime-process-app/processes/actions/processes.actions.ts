@@ -1,7 +1,7 @@
 import { IProcess, Process } from "@codete-ngrx-quick-start/shared";
 import { Update } from "@ngrx/entity";
 import { createAction, props } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { SerializedSubject } from "tnp-helpers";
 
 export const INIT = createAction(
   '[processes] INIT'
@@ -21,10 +21,9 @@ export const FETCH_PROCESSES_ERROR = createAction(
   props<{ error: any; }>()
 );
 
-
 export const REALTIME_CHANGES_SUBSCRIBE = createAction(
   '[processes] REALTIME_CHANGES_SUBSCRIBE',
-  props<{ process: Process }>()
+  props<{ process: Process, destroy$: SerializedSubject<any>; }>()
 );
 
 export const REALTIME_CHANGES_NEW_DATA = createAction(
@@ -54,28 +53,3 @@ export const UPDATE_PROCESS = createAction(
   '[processes] UPDATE_PROCESS',
   props<{ process: Update<IProcess>; }>()
 );
-
-// export const ADD_PROCESS = createAction(
-//   '[processes] ADD_PROCESS',
-//   props<{ process: IProcess; }>()
-// );
-
-// export const REMOVE_PROCESS = createAction(
-//   '[processes] REMOVE_PROCESS',
-//   props<{ process: IProcess; }>()
-// );
-
-
-// export const SYNC_PROCESSES = createAction(
-//   '[processes] SYNC_PROCESSES'
-// );
-
-// export const SYNC_PROCESSES_SUCCESS = createAction(
-//   '[processes] SYNC_PROCESSES_SUCCESS',
-//   props<{ processes: IProcess[] }>()
-// );
-
-// export const SYNC_PROCESSES_ERRRO = createAction(
-//   '[processes] SYNC_PROCESSES_ERRRO',
-//   props<{ error: any; }>()
-// );

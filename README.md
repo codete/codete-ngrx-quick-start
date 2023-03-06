@@ -11,20 +11,55 @@
 npm i -g firedev
 ```
 
+2. Clone project:
+```
+git clone https://github.com/codete/codete-ngrx-quick-start.git
+```
+
+2. Open it in Visual Studio Code:
+```
+code codete-ngrx-quick-start
+```
+
 2. Start build:
 ```
-cd codete-ngrx-quick-start
-firedev build:watch main
+firedev start
 ```
 
 3. Start server:
-```
-npx ts-node run.json
-```
-or in Visual Studi code select proper debug task and press F5 on keyboard
 
-![](./_images/proper-debug.png)
+Select proper debug task and press F5 on keyboard
+![](./_images/code-debug.png)
 
-![](./_images/vscode-debug.png)
+
+
+
+
 
 4. Open browser: http://localhost:4200
+
+# QA
+
+- **How to start application on different port ?**
+
+*firedev start --port 3333*
+
+
+- **How to start server on different port ?**
+
+*modify host variable in ./shared/src/lib/constants.ts*
+
+- **How to start server wihout Visual Studio Code ?**
+
+*npx ts-node run.js*
+
+
+
+
+
+# Technologies
+- Sqlite/MySql/Sql.js (database)
+- Node JS/ExpressJs/TypeOrm (backend)
+- Socket.io (realtime communication)
+- Angular/NgRx/RxJS (frontend engine)
+- Angular Material (frontend UI)
