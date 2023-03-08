@@ -16,27 +16,29 @@ npm i -g firedev
 git clone https://github.com/codete/codete-ngrx-quick-start.git
 ```
 
-2. Open it in Visual Studio Code:
+3. Open it in Visual Studio Code:
 ```
 code codete-ngrx-quick-start
 ```
 
-2. Start build:
+4. Start library build (in first terminal and wait for green message about build completion):
 ```
-firedev start
+firedev build:lib
 ```
 
-3. Start server:
+5. Start angular app build (in second terminal):
+```
+firedev build:app
+```
+
+6. Start server:
 
 Select proper debug task and press F5 on keyboard
 ![](./_images/code-debug.png)
 
 
+7. Open browser: http://localhost:4200
 
-
-
-
-4. Open browser: http://localhost:4200
 
 # QA
 
