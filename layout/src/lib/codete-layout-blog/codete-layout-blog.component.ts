@@ -14,14 +14,7 @@ export class CodeteLayoutBlogComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private platformLocation: PlatformLocation,
-    public location: Location
-  ) {
-    console.log((platformLocation as any).location);
-    console.log((platformLocation as any).location.href);
-    console.log((platformLocation as any).location.origin);
-    console.log(location);
-  }
+  ) { }
 
   gotoroot() {
     this.router.navigateByUrl('/');
