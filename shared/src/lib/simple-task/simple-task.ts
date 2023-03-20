@@ -25,6 +25,14 @@ export class SimpleTask {
 
   //#region @websql
   @Firedev.Orm.Column.Custom({
+    type: 'boolean',
+    default: false
+  })
+  //#endregion
+  love: boolean;
+
+  //#region @websql
+  @Firedev.Orm.Column.Custom({
     type: 'varchar',
     length: 100
   })

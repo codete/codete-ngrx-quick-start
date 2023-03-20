@@ -51,6 +51,41 @@ export const DELETE_TASK_ERROR = createAction(
   props<{ error: any; }>()
 );
 
+export const LOVE_TASK = createAction(
+  '[simple-tasks] LOVE_TASK',
+  props<{ task: SimpleTask; }>()
+);
+
+export const LOVE_TASK_SUCCESS = createAction(
+  '[simple-tasks] LOVE_TASK_SUCCESS',
+  props<{ task: ISimpleTask; }>()
+);
+
+export const LOVE_TASK_ERROR = createAction(
+  '[simple-tasks] LOVE_TASK_ERROR',
+  props<{ error: any; }>()
+);
+
+export const UNLOVE_TASK = createAction(
+  '[simple-tasks] UNLOVE_TASK',
+  props<{ task: SimpleTask; }>()
+);
+
+export const UNLOVE_TASK_SUCCESS = createAction(
+  '[simple-tasks] UNLOVE_TASK_SUCCESS',
+  props<{ task: ISimpleTask; }>()
+);
+
+export const UNLOVE_TASK_ERROR = createAction(
+  '[simple-tasks] UNLOVE_TASK_ERROR',
+  props<{ error: any; }>()
+);
+
+export const ORDER_LOVE_FIRST = createAction(
+  '[simple-tasks] ORDER_LOVE_FIRST',
+  props<{ loveFirst: boolean; }>()
+);
+
 export const REALTIME_CHANGES_SUBSCRIBE = createAction(
   '[simple-tasks] REALTIME_CHANGES_SUBSCRIBE',
   props<{ destroy$: SerializedSubject<any>; }>()

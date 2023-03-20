@@ -1,8 +1,13 @@
+@font-face {
+  font-family: 'MainFont';
+  src: url('layout/src/assets/fonts/Roboto/Roboto-Thin.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 :host {
   width: 100%;
   height: 100%;
   // margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "MainFont";
   // padding: 5px;
 }
 

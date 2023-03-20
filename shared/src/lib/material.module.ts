@@ -14,6 +14,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+
 export const materialModules = [
   MatCardModule,
   MatInputModule,
@@ -29,6 +31,7 @@ export const materialModules = [
   MatCheckboxModule,
   MatIconModule,
   MatTooltipModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({

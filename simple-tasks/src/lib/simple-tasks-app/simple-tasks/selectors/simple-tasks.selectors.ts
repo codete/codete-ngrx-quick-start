@@ -8,3 +8,7 @@ const tasksFeatureSelector = createFeatureSelector<SimpleTasksInitialState>(simp
 export const allSimpleTasks = createSelector(tasksFeatureSelector, state => {
   return state.simpleTasks.map(t => SimpleTask.from(t));
 });
+
+export const loveFirstEnable = createSelector(tasksFeatureSelector, state => {
+  return state.loveFirst;
+});

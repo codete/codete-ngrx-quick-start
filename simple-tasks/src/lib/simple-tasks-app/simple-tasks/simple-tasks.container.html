@@ -4,20 +4,41 @@
     <mat-card-subtitle>with realtime/socket syncing</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-
+    <mat-slide-toggle [checked]="loveFirstChecked$ | async"  (change)="orderLoveFirst($event)" >Love first!</mat-slide-toggle>
+    <br>
     <!-- {{simpleTasks$ | async | json}} -->
 
 
 
     <!-- <mat-label>Input</mat-label> -->
 
-    <columns-container *ngFor="let simpleTask of simpleTasks$ | async as simpleTasks; let i = index">
+    <columns-container *ngFor="let simpleTask of (simpleTasks$ | async); trackBy: trackByMethod; let i = index">
       <column grow>
         <mat-form-field>
           <input matInput
                  value="{{ i + 1 + '. ' + simpleTask.content }}"
                  [disabled]="true">
         </mat-form-field>
+      </column>
+      <column [width]="50"
+              *ngIf="!simpleTask.love">
+        <button mat-icon-button
+                class="favorite_border"
+                (click)="love(simpleTask)">
+          <mat-icon>
+            favorite_border
+          </mat-icon>
+        </button>
+      </column>
+      <column [width]="50"
+              *ngIf="simpleTask.love">
+        <button mat-icon-button
+                class="favorite"
+                (click)="unlove(simpleTask)">
+          <mat-icon>
+            favorite
+          </mat-icon>
+        </button>
       </column>
       <column [width]="50">
         <button mat-icon-button
@@ -31,7 +52,7 @@
     </columns-container>
 
 
-    <mat-form-field >
+    <mat-form-field>
       <!-- <mat-label>New task</mat-label> -->
       <input matInput
              (keydown.enter)="newTask($event)"

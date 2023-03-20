@@ -1,3 +1,4 @@
+import { ISimpleTask } from '@codete-ngrx-quick-start/shared';
 import { createReducer, on } from '@ngrx/store';
 import * as _ from 'lodash';
 import * as simpleTasksAction from '../actions/simple-tasks.actions';
@@ -5,7 +6,8 @@ import { SimpleTasksInitialState } from '../simple-tasks.models';
 
 
 const initialState: SimpleTasksInitialState = {
-  simpleTasks: []
+  simpleTasks: [],
+  loveFirst: false,
 };
 
 export const simpleTasksReducer = createReducer(
@@ -37,4 +39,44 @@ export const simpleTasksReducer = createReducer(
       };
     }
   ),
+
+  on(
+    simpleTasksAction.ORDER_LOVE_FIRST,
+    (state, { loveFirst }) => {
+      return {
+        ...state,
+        simpleTasks: [
+          ...state.simpleTasks,
+        ],
+        loveFirst
+      };
+    }
+  ),
+
+  on(
+    simpleTasksAction.LOVE_TASK,
+    (state, { task }) => {
+      const simpleTasks = _.cloneDeep(state.simpleTasks) as ISimpleTask[];
+      const taskToLove = simpleTasks.find(({ id }) => task.id === id);
+      taskToLove.love = true;
+      return {
+        ...state,
+        simpleTasks
+      };
+    }
+  ),
+
+  on(
+    simpleTasksAction.UNLOVE_TASK,
+    (state, { task }) => {
+      const simpleTasks = _.cloneDeep(state.simpleTasks) as ISimpleTask[];
+      const taskToLove = simpleTasks.find(({ id }) => task.id === id);
+      taskToLove.love = false;
+      return {
+        ...state,
+        simpleTasks
+      };
+    }
+  ),
+
 );

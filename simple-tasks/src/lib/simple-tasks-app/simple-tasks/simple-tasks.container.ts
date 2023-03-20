@@ -6,6 +6,7 @@ import { SimpleTasksInitialState } from './simple-tasks.models';
 import { SimpleTask } from '@codete-ngrx-quick-start/shared';
 import { Observable, Subject } from 'rxjs';
 import { Helpers } from 'tnp-helpers';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 
 
@@ -17,6 +18,7 @@ import { Helpers } from 'tnp-helpers';
 export class SimpleTasksContainer implements OnInit {
   destroy$ = new Subject();
   simpleTasks$ = this.store.select(simpleTasksSelectors.allSimpleTasks);
+  loveFirstChecked$ = this.store.select(simpleTasksSelectors.loveFirstEnable);
 
   constructor(
     private store: Store<SimpleTasksInitialState>
@@ -44,6 +46,22 @@ export class SimpleTasksContainer implements OnInit {
 
   remove(task: SimpleTask) {
     this.store.dispatch(simpleTasksActions.DELETE_TASK({ task }))
+  }
+
+  orderLoveFirst(e: MatSlideToggleChange) {
+    this.store.dispatch(simpleTasksActions.ORDER_LOVE_FIRST({ loveFirst: e.checked }));
+  }
+
+  love(task: SimpleTask) {
+    this.store.dispatch(simpleTasksActions.LOVE_TASK({ task }))
+  }
+
+  unlove(task: SimpleTask) {
+    this.store.dispatch(simpleTasksActions.UNLOVE_TASK({ task }))
+  }
+
+  trackByMethod(index: number, task: SimpleTask): number {
+    return task.id;
   }
 
 }
