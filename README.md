@@ -21,12 +21,12 @@ git clone https://github.com/codete/codete-ngrx-quick-start.git
 code codete-ngrx-quick-start
 ```
 
-4. Start build
+4. Start build (no need to npm install)
 ```
 firedev start
 ```
 
-5. Start server:
+5. Start server ( if your see console message : *open your browser on http://localhost:4200* ):
 
 Select proper debug task and press F5 on keyboard
 
@@ -55,7 +55,7 @@ Select proper debug task and press F5 on keyboard
 
 - **Can I use different editor than Visual Studio Code ?**
 
-*sure .. but remember that firedev cli generates lots of additional things for VSCode like: config for hidden files, launching server and gonna have to create these things by yourself*
+*sure .. but remember that firedev cli generates configs for VSCode (hidden files, server launch etc.)*
 
 
 
