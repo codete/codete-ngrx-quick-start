@@ -1,4 +1,4 @@
-# CODETE NGRX QUICK START
+# Codete NgRx Quick Start
 
 <p style="text-align: center;"><img src="./_images/baner.jpeg" ></p>
 
