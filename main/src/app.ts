@@ -4,6 +4,7 @@ import {
   SubTask, SimpleTask, SimpleTaskController
 } from '@codete-ngrx-quick-start/shared';
 //#region @browser
+import { FiredevGithubForkMeCornerModule } from 'firedev-ui';
 import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CodeteLayoutBlogModule } from "@codete-ngrx-quick-start/layout";
@@ -52,11 +53,7 @@ const routes: Routes = [
   selector: 'app-main',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./app.scss'],
-  template: `
-  <app-codete-layout-blog>
-    <router-outlet></router-outlet>
-  </app-codete-layout-blog>
-  `
+  templateUrl: './app.html',
 })
 export class MainComponent implements OnInit {
   constructor(
@@ -76,6 +73,7 @@ export class MainComponent implements OnInit {
     RouterModule.forRoot(routes, {
       useHash: true,
     }),
+    FiredevGithubForkMeCornerModule,
   ],
   exports: [MainComponent],
   declarations: [MainComponent],

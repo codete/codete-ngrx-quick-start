@@ -4,7 +4,7 @@ var { config } = { config: {} };
 
 config = {
 
-    domain: 'main.example.domain.com',
+  title: 'Codete NgRx Quick Start'
 
 
 }
