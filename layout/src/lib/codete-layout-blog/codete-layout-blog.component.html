@@ -1,16 +1,19 @@
 <div class="bg-image"></div>
-<a href="https://codete.com/blog"
-   target="_blank"
-   rel="noopener"
-   class="bg-logo"></a>
-<a href="javascript:void(0)" (click)="gotoroot()"
-   class="bg-logo-heart"></a>
-<a href="https://ngrx.io/docs"
-   target="_blank"
-   rel="noopener"
-   class="bg-logo-rxjs">
-  <span>NgRx</span>
-</a>
+<div class="logo-header" >
+  <a href="https://codete.com/blog"
+     target="_blank"
+     rel="noopener"
+     class="bg-logo"></a>
+  <a href="javascript:void(0)"
+     (click)="gotoroot()"
+     class="bg-logo-heart"></a>
+  <a href="https://ngrx.io/docs"
+     target="_blank"
+     rel="noopener"
+     class="bg-logo-rxjs">
+    <span>NgRx</span>
+  </a>
+</div>
 
 <ng-template #content>
   <ng-content></ng-content>
@@ -18,7 +21,7 @@
 
 <ng-container *ngIf="useCloseLayout$ | async">
   <div class="bg-text-open">
-  <ng-container [ngTemplateOutlet]="content"></ng-container>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
   </div>
 </ng-container>
 
