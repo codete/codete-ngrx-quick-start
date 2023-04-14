@@ -7,7 +7,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/canvas-signature",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/canvas-signature",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/canvas-signature/run.js",
-      "args": [],
+      "args": [
+        "child=canvas-signature"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -24,7 +26,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/layout",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/layout/run.js",
-      "args": [],
+      "args": [
+        "child=layout"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -41,7 +45,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/main",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/main",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/main/run.js",
-      "args": [],
+      "args": [
+        "child=main"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -58,7 +64,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/ngrx-data-tasks",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-data-tasks",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-data-tasks/run.js",
-      "args": [],
+      "args": [
+        "child=ngrx-data-tasks"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -75,7 +83,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/ngrx-tasks",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-tasks",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/ngrx-tasks/run.js",
-      "args": [],
+      "args": [
+        "child=ngrx-tasks"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -92,7 +102,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/realtime-process",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/realtime-process",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/realtime-process/run.js",
-      "args": [],
+      "args": [
+        "child=realtime-process"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -109,7 +121,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/shared",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/shared/run.js",
-      "args": [],
+      "args": [
+        "child=shared"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",
@@ -126,7 +140,9 @@
       "name": "Launch Server @codete-ngrx-quick-start/simple-tasks",
       "cwd": "${workspaceFolder}/dist/codete-ngrx-quick-start/simple-tasks",
       "program": "${workspaceFolder}/dist/codete-ngrx-quick-start/simple-tasks/run.js",
-      "args": [],
+      "args": [
+        "child=simple-tasks"
+      ],
       "runtimeArgs": [
         "--nolazy",
         "-r",

@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'MainFont';
-  src: url('layout/src/assets/fonts/Roboto/Roboto-Thin.ttf')  format('truetype'); /* Safari, Android, iOS */
+  src: url('layout/src/assets/fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+  /* Safari, Android, iOS */
 }
 
 :host {
@@ -15,16 +16,18 @@ $padding: 16px;
 
 .bg-image {
   position: absolute;
-  /* The image used asds */
-  background-image: url("/layout/src/assets/background1.webp");
+  /* The image used */
+  background-image: url('/layout/src/assets/background1.webp');
 
   /* Add the blur effect */
   filter: blur(8px);
   -webkit-filter: blur(8px);
 
   /* Full height */
-  height: calc(100% - $padding);
-  width: calc(100% - $padding);
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -34,7 +37,6 @@ $padding: 16px;
 
 /* Position text in the middle of the page/image */
 .bg-text {
-
   background-color: rgb(0, 0, 0);
   /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4);
@@ -42,19 +44,18 @@ $padding: 16px;
   color: white;
   font-weight: bold;
   // border: 3px solid #f1f1f1;
-  position: absolute;
-  top: 40%;
+  position: relative;
+  top: 100px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   z-index: 2;
   width: calc(100% - 10px);
-  max-width: 600px;
+  max-width: 1000px;
   // height: 50%;
   padding: 20px;
   text-align: center;
-  overflow: hidden;
-  // overflow-x: auto;
-  // overflow-y: scroll;
+  overflow-x: auto;
+  overflow-y: scroll;
   border-radius: 10px;
 }
 
@@ -101,6 +102,7 @@ $padding: 16px;
   }
 
   text-decoration: none !important;
+
   span {
     font-size: 50px;
     left: 75px;
