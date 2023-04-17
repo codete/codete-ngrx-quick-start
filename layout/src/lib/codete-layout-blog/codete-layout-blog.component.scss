@@ -41,6 +41,7 @@ $padding: 16px;
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
+  overflow: hidden !important;
 }
 
 .bg-text {
@@ -67,7 +68,6 @@ $padding: 16px;
   max-width: $maxWidth;
   top: $headerLogoSize;
   width: calc(100% - 10px);
-  transform: translate(-50%, 0);
   height: calc(100% - $headerLogoSize - 20px);
 }
 
