@@ -68,6 +68,8 @@ $padding: 16px;
   top: $headerLogoSize;
   width: calc(100% - 10px);
   height: calc(100% - $headerLogoSize - 20px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .bg-logo {
@@ -152,8 +154,9 @@ mat-card-subtitle {
 footer {
   position: absolute;
   z-index: 10;
-  left: calc(50% - 50px);
   bottom: 5px;
+  width: 100%;
+  text-align: center;
   color: white;
   font-size: 10px;
 }
