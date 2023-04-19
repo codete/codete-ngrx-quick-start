@@ -50,6 +50,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
 
       process.state = 'active';
       process.pid = realProcess.pid;
+      console.log(`Starting child process with pid: ${realProcess.pid}`)
       await repo.update(processId, process);
 
       const updateProces = _.debounce(async (newData: string) => {
@@ -71,6 +72,12 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         updateProces(data);
       })
 
+      /**
+       * 15 - soft kill
+       * 9 - hard kill
+       * 1 - from code exit
+       * 0 - process done
+       */
       realProcess.on('exit', async (code, data) => {
         process.state = (code === 0) ? 'ended-ok' : 'ended-with-error';
         process.pid = void 0;
@@ -90,12 +97,17 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
       const repo = await this.connection.getRepository<Process>(Process);
       let process = await repo.findOneBy({ id: processId });
       process.state = 'killing';
+      console.log(`Killing child process with pid: ${process.pid}`)
+
       await repo.update(processId, process);
       Firedev.Realtime.Server.TrigggerEntityChanges(process);
 
       try {
         Helpers.killProcess(process.pid);
-      } catch (error) { }
+        console.info(`Process killed successfully (by pid = ${process.pid})`)
+      } catch (error) {
+        console.error(`Not able to kill process by pid ${process.pid}`)
+      }
 
       process.state = 'killed';
       process.pid = void 0;
