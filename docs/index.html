@@ -11,7 +11,7 @@
     xmlhttp.open("GET", url, false);
     xmlhttp.send(null);
     if (xmlhttp.status === 200) {
-      myFunction(xmlhttp.responseText);
+      myFunction(JSON.parse(xmlhttp.responseText));
     }
 
     function myFunction(myDynamicManifest) {
