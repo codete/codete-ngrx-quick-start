@@ -1,92 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
   <title>Codete NgRx Quick Start</title>
   <base href="/codete-ngrx-quick-start/">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-  <link rel="icon"
-        type="image/x-icon"
-        href="favicon.ico">
-  <!-- <link rel="manifest" href="manifest.webmanifest"> -->
-  <link rel="manifest"
-        id="my-manifest-placeholder">
-  <script type="text/javascript">
-    // var xmlhttp = new XMLHttpRequest();
-    // var url = "pwa.json";
-    // xmlhttp.open("GET", url, false);
-    // xmlhttp.send(null);
-    // if (xmlhttp.status === 200) {
-      // myFunction(JSON.parse(xmlhttp.responseText));
-    // }
-
-    myFunction({
-      "name": "Main",
-      "short_name": "main",
-      "theme_color": "#1976d2",
-      "background_color": "#fafafa",
-      "display": "standalone",
-      "scope": "./",
-      "start_url": "https://darekf77.github.io/codete-ngrx-quick-start/",
-      "icons": [
-        {
-          "src": "assets/icons/icon-128x128.png",
-          "sizes": "128x128",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-144x144.png",
-          "sizes": "144x144",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-152x152.png",
-          "sizes": "152x152",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-384x384.png",
-          "sizes": "384x384",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-72x72.png",
-          "sizes": "72x72",
-          "type": "image/png",
-          "purpose": "maskable any"
-        },
-        {
-          "src": "assets/icons/icon-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png",
-          "purpose": "maskable any"
-        }
-      ]
-    });
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" id="my-manifest-placeholder">
+  <meta name="theme-color" content="#1976d2">
+<link rel="stylesheet" href="styles.106adc5fefc24396.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.106adc5fefc24396.css"></noscript></head>
+<body>
+  <script>
+     var xmlhttp = new XMLHttpRequest();
+    var url = "manifest.webmanifest";
+    xmlhttp.open("GET", url, false);
+    xmlhttp.send(null);
+    if (xmlhttp.status === 200) {
+      myFunction(JSON.parse(xmlhttp.responseText));
+    }
 
     function myFunction(myDynamicManifest) {
-      myDynamicManifest.start_url = window.location.origin + window.location.pathname;
+      myDynamicManifest.start_url = window.location.origin + window.location.pathname+ '?hello=world';
 
       const stringManifest = JSON.stringify(myDynamicManifest);
-      const blob = new Blob([stringManifest], { type: 'application/json' });
+      const blob = new Blob([stringManifest], {type: 'application/json'});
       const manifestURL = URL.createObjectURL(blob);
       document.querySelector('#my-manifest-placeholder').setAttribute('href', manifestURL);
       var link = document.createElement('Link');
@@ -94,25 +29,6 @@
       link.setAttribute('href', 'data:application/json;charset=8' + stringManifest)
     }
   </script>
-  <meta name="theme-color"
-        content="#1976d2">
-  <link rel="stylesheet"
-        href="styles.106adc5fefc24396.css"
-        media="print"
-        onload="this.media='all'"><noscript>
-    <link rel="stylesheet"
-          href="styles.106adc5fefc24396.css">
-  </noscript>
-</head>
-
-<body>
   <app-root></app-root>
-  <script src="runtime.32702489ec4bb2d0.js"
-          type="module"></script>
-  <script src="polyfills.7e87936c017d51a3.js"
-          type="module"></script>
-  <script src="main.8f91aedcff5c902e.js"
-          type="module"></script>
-</body>
-
-</html>
+  <script src="runtime.32702489ec4bb2d0.js" type="module"></script><script src="polyfills.7e87936c017d51a3.js" type="module"></script><script src="main.8f91aedcff5c902e.js" type="module"></script>
+</body></html>
