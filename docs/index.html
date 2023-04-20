@@ -25,7 +25,7 @@
     var manifestURL = URL.createObjectURL(blob);
     document.querySelector('#my-manifest-placeholder').setAttribute(
       'href',
-      'data:application/json;charset=8' + stringManifest);
+      'data:application/json;charset=8' + stringManifest.replace(/(\n|\r)/g,' ') );
 
       //  document.querySelector('#my-manifest-placeholder').setAttribute('href', manifestURL);
 
