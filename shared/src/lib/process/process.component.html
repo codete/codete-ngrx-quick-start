@@ -1,17 +1,29 @@
+<ng-template #procPid>
+  <span class="proc-message">{{ process.pid ? ('Process pid: '+ process.pid) : '' }}</span>
+</ng-template>
+
+
 <mat-accordion *ngIf="process">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         <columns-container>
-          <column grow style="min-width: 250px;" >
-            <mat-icon class="terminal-icon" >terminal</mat-icon> {{ process.command }}
+          <column grow class="command-title-line"
+                  style="min-width: 180px;">
+            <mat-icon class="terminal-icon">terminal</mat-icon> {{ process.command }}
           </column>
-          <column [width]="100">
+          <column [width]="100"
+                  class="action-button">
             <app-process-sync [process]="process"
                               (processAction)="processAction.emit($event)"></app-process-sync>
+            <div class="inline-pid" >
+              <ng-container [ngTemplateOutlet]="procPid"></ng-container>
+            </div>
           </column>
-          <column grow>
-            <span class="proc-message">{{ process.pid ? ('Process pid: '+ process.pid) : '' }}</span>
+          <column grow
+                  class="pid-column">
+            <ng-container [ngTemplateOutlet]="procPid"></ng-container>
+
           </column>
         </columns-container>
       </mat-panel-title>

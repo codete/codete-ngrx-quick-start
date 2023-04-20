@@ -4,7 +4,7 @@ import {
   HostListener, Input, OnChanges, OnDestroy, OnInit, Output, ViewChild
 } from '@angular/core';
 import { defer, fromEvent, merge, Subject, takeUntil } from 'rxjs';
-import { PixelsBatch } from './canvas-drawer.models';
+import { EventDraw, PixelsBatch } from './canvas-drawer.models';
 
 @Component({
   selector: 'app-canvas-drawer',
@@ -44,10 +44,15 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy, 
   last_mouse = { x: 0, y: 0 };
 
   mouseActions$ = merge(
-    defer(() => fromEvent<MouseEvent>(this.canvas, 'mousemove')),
-    defer(() => fromEvent<MouseEvent>(this.canvas, 'mousedown')),
-    defer(() => fromEvent<MouseEvent>(this.canvas, 'mouseup')),
-    defer(() => fromEvent<MouseEvent>(this.canvas, 'mouseout')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'mousemove')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'mousedown')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'mouseup')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'mouseout')),
+
+    defer(() => fromEvent<EventDraw>(this.canvas, 'touchstart')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'touchmove')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'touchend')),
+    defer(() => fromEvent<EventDraw>(this.canvas, 'touchcancel')),
   );
 
   get canvas() {
@@ -107,11 +112,11 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy, 
   }
 
   private drawLine(x1: number, y1: number, x2: number, y2: number) {
-    this.ctx.beginPath();
-    this.ctx.moveTo(x1, y1);
-    this.ctx.lineTo(x2, y2);
-    this.ctx.closePath();
-    this.ctx.stroke();
+    this.ctx?.beginPath();
+    this.ctx?.moveTo(x1, y1);
+    this.ctx?.lineTo(x2, y2);
+    this.ctx?.closePath();
+    this.ctx?.stroke();
   }
 
   ngAfterViewInit() {
@@ -120,23 +125,32 @@ export class CanvasDrawerComponent implements OnInit, AfterViewInit, OnDestroy, 
       this.mouseActions$.pipe(
         takeUntil(this.destroyed$),
       ).subscribe(event => {
-        if (event.type === 'mousedown') {
+        if ((event.type === 'mousedown') || (event.type === 'touchstart')) {
           this.mousedown = true;
           this.tempBatch = [];
           this.undoWasUsed = false;
         }
-        if ((event.type === 'mouseup') || (event.type === 'mouseout')) {
+        if (
+          (event.type === 'mouseup') || (event.type === 'mouseout')
+          || (event.type === 'touchend') || (event.type === 'touchcancel')
+        ) {
           this.mousedown = false;
           if (this.tempBatch.length > 0) {
             this.newBatchOfPixels.emit(this.tempBatch);
             this.tempBatch = [];
           }
         }
-        if (event.type === 'mousemove') {
+        if ((event.type === 'mousemove') || (event.type === 'touchmove')) {
           this.last_mouse.x = this.mouse.x;
           this.last_mouse.y = this.mouse.y;
-          this.mouse.x = event.pageX - this.offset.left;
-          this.mouse.y = event.pageY - this.offset.top;
+          this.mouse.x = ((event.type === 'touchmove') // @ts-ignore
+            ? _.first(event.changedTouches)?.pageX
+            : event.pageX) - this.offset.left;
+
+          this.mouse.y = ((event.type === 'touchmove') // @ts-ignore
+            ? _.first(event.changedTouches)?.pageY
+            : event.pageY) - this.offset.top;
+
           if (this.mousedown) {
             this.tempBatch.push(
               [this.last_mouse.x, this.last_mouse.y, this.mouse.x, this.mouse.y]

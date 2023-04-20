@@ -1,5 +1,5 @@
 <div class="bg-image"></div>
-<div class="logo-header" >
+<div class="logo-header">
   <a href="https://codete.com/blog"
      target="_blank"
      rel="noopener"
@@ -21,7 +21,9 @@
 
 <ng-container *ngIf="useCloseLayout$ | async">
   <div class="bg-text-open">
-    <ng-container [ngTemplateOutlet]="content"></ng-container>
+    <ng-scrollbar>
+      <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </ng-scrollbar>
   </div>
 </ng-container>
 

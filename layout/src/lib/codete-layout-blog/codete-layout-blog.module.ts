@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CodeteLayoutBlogComponent } from './codete-layout-blog.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   imports: [
-    CommonModule
+    NgScrollbarModule,
+    CommonModule,
   ],
   declarations: [CodeteLayoutBlogComponent],
   exports: [CodeteLayoutBlogComponent]

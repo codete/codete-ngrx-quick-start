@@ -1,13 +1,13 @@
 :host {
   margin-bottom: 5px;
-  display: block;
+  display      : block;
 }
 
 .control {
   opacity: 0.7;
 
   &:hover {
-    opacity: 1;
+    opacity  : 1;
     transform: scale(1.2, 1.2);
   }
 }
@@ -23,6 +23,7 @@
 
 mat-form-field {
   width: 100%;
+
   textarea {
     min-height: 100px;
     max-height: 300px;
@@ -31,18 +32,41 @@ mat-form-field {
 
 .terminal-icon {
   position: relative;
-  top: 7px;
+  top     : 7px;
 }
 
 app-process-sync {
   position: relative;
-  top: -2px;
-  z-index: 999;
+  top     : -2px;
+  z-index : 999;
 }
 
 .proc-message {
-  top: 11px;
-  position: relative;
+  top       : 11px;
+  position  : relative;
   font-style: italic;
-  color: gray;
+  color     : gray;
+}
+
+.inline-pid {
+  display: none;
+}
+
+@media (max-width:600px) {
+
+  .command-title-line {
+    word-break: break-all;
+  }
+
+  .inline-pid {
+    display    : block;
+    top        : -20px;
+    position   : relative;
+    white-space: nowrap;
+    left       : -35px;
+  }
+
+  .pid-column {
+    display: none;
+  }
 }
