@@ -4,7 +4,7 @@
   <base href="/codete-ngrx-quick-start/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="manifest" id="my-manifest-placeholder">
+  
   <meta name="theme-color" content="#1976d2">
 <link rel="stylesheet" href="styles.106adc5fefc24396.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.106adc5fefc24396.css"></noscript></head>
 <body>
@@ -23,10 +23,17 @@
       const stringManifest = JSON.stringify(myDynamicManifest);
       const blob = new Blob([stringManifest], {type: 'application/json'});
       const manifestURL = URL.createObjectURL(blob);
-      document.querySelector('#my-manifest-placeholder').setAttribute('href', manifestURL);
+      // document.querySelector('#my-manifest-placeholder').setAttribute('href', manifestURL);
       var link = document.createElement('Link');
       link.rel = "manifest";
       link.setAttribute('href', 'data:application/json;charset=8' + stringManifest)
+
+      // const link = document.createElement('link');
+      // link.href = 'href';
+      // link.rel = 'rel';
+
+      document.getElementsByTagName('head')[0].appendChild(link);
+      
     }
   </script>
   <app-root></app-root>
