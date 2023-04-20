@@ -18,7 +18,7 @@
     }
 
     function myFunction(myDynamicManifest) {
-      myDynamicManifest.start_url = window.location.origin + window.location.pathname+ '?hello=world';
+      myDynamicManifest.start_url = window.location.origin + window.location.pathname;
 
       const stringManifest = JSON.stringify(myDynamicManifest);
       const blob = new Blob([stringManifest], {type: 'application/json'});
