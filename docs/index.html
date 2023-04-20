@@ -10,8 +10,8 @@
     var url = "manifest.webmanifest";
     xmlhttp.open("GET", url, false);
     xmlhttp.send(null);
-    if (request.status === 200) {
-      myFunction(request.responseText);
+    if (xmlhttp.status === 200) {
+      myFunction(xmlhttp.responseText);
     }
 
     function myFunction(myDynamicManifest) {
