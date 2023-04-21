@@ -6,8 +6,10 @@ config = {
 
   title: 'Codete NgRx Quick Start',
   pwa: {
-    start_url: 'https://codete.github.io/codete-ngrx-quick-start/'
+    name: 'Codete NgRx Quick Start',
+    short_name: 'codete-ngrx-start',
   }
+
 
 
 }
