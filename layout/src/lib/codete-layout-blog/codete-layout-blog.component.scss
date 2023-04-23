@@ -57,8 +57,7 @@ $padding: 16px;
   max-width: $maxWidth;
   padding: 20px;
   text-align: center;
-  overflow-x: auto;
-  overflow-y: scroll;
+  overflow: hidden;
   border-radius: 10px;
 }
 
