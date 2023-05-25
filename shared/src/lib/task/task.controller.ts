@@ -23,7 +23,6 @@ export class TaskController extends Firedev.Base.Controller<Task> {
   async initExampleDbData() {
 
     const repo = this.connection.getRepository<Task>(Task);
-    console.log('CONNECTION',this.connection);
 
     await repo.save(Task.from({
       name: 'feed hamster',

@@ -19,15 +19,17 @@
   <ng-content></ng-content>
 </ng-template>
 
-<ng-container *ngIf="useCloseLayout$ | async">
+<ng-container *ngIf="!useOpenLayout">
   <div class="bg-text-open">
     <ng-scrollbar>
-      <ng-container [ngTemplateOutlet]="content"></ng-container>
+      <mat-card>
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+      </mat-card>
     </ng-scrollbar>
   </div>
 </ng-container>
 
-<ng-container *ngIf="useOpenLayout$ | async">
+<ng-container *ngIf="useOpenLayout">
   <div class="bg-text">
     <ng-container [ngTemplateOutlet]="content"></ng-container>
   </div>

@@ -9,34 +9,32 @@ import { filter, map, share, Subject, takeUntil, tap } from "rxjs";
   styleUrls: ['./codete-layout-blog.component.scss']
 })
 export class CodeteLayoutBlogComponent implements OnInit {
-
+  useOpenLayout = true;
   destroyed$ = new Subject<void>();
 
   constructor(
     private router: Router,
-  ) { }
+  ) {
+    this.router.events.pipe(
+      filter(val => {
+        return val instanceof NavigationEnd;
+      }),
+      map(v => {
+        return (v as NavigationEnd).url;
+      }),
+      map(u => {
+        return u !== '/';
+      }),
+      tap((useOpenLayout) => {
+        this.useOpenLayout = useOpenLayout;
+      })
+    );
+  }
 
   gotoroot() {
     this.router.navigateByUrl('/');
   }
 
-  useOpenLayout$ = this.router.events.pipe(
-    filter(val => {
-      return val instanceof NavigationEnd;
-    }),
-    map(v => {
-      return (v as NavigationEnd).url;
-    }),
-    map(u => {
-      return u === '/';
-    }),
-    takeUntil(this.destroyed$),
-    share()
-  );
-
-  useCloseLayout$ = this.useOpenLayout$.pipe(
-    map(v => !v)
-  );
 
   ngOnInit() {
 

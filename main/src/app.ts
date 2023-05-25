@@ -55,15 +55,11 @@ const routes: Routes = [
   styleUrls: ['./app.scss'],
   templateUrl: './app.html',
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   constructor(
     private ngZone: NgZone
   ) { }
 
-  async ngOnInit() {
-    Firedev.initNgZone(this.ngZone);
-    await start();
-  }
 }
 
 
