@@ -10,31 +10,6 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
-
-/* fallback */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(layout/src/assets/fonts/material-icons.woff2) format('woff2');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
 // prevent ios zoom
 input[type="color"],
 input[type="date"],
@@ -54,4 +29,32 @@ input[matinput=""],
 select:focus,
 textarea {
   font-size: 16px !important;
+}
+
+.bg-text {
+  .mat-tab-label-content {
+    color: white !important;
+  }
+}
+
+mat-ink-bar {
+  background-color: white !important;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: gray;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: black;
+}
+
+.mat-form-field-infix {
+  border-top: 0px;
+}
+
+mat-form-field {
+  width: 100%;
 }
