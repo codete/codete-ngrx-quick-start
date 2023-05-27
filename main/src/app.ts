@@ -80,7 +80,7 @@ export class MainModule { }
 
 
 async function start() {
-  // Firedev.enableProductionMode();
+  Firedev.Websql.useFakeTimeout(500);
 
   if (Firedev.isBrowser) {
     const appDiv: HTMLElement = document.getElementsByTagName('head').item(0);

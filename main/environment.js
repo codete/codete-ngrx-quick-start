@@ -3,12 +3,18 @@ const path = require('path')
 var { config } = { config: {} };
 
 config = {
+  plugins: {
+    'ngx-progressbar': {
+      spinnerPosition: 'left'
+    }
+  },
   loading: {
     preAngularBootstrap: {
-      loader: {
-        name: 'lds-heart',
-        color: '#c75a59'
-      },
+      loader: 'layout/src/assets/logo2.svg',
+      // loader: {
+      //   name: 'lds-heart',
+      //   color: '#c75a59'
+      // },
       background: '#9395ab',
     },
     afterAngularBootstrap: {
@@ -16,21 +22,13 @@ config = {
         name: 'lds-default',
         color: '#c85958'
       },
-      background: '#868686',
+      background: '#9395abb5',
     },
-  },
-  entites: {
-    FiredevFile: {
-      dontLoadAssets: false,
-    }
   },
   title: 'Codete NgRx Quick Start',
   pwa: {
     name: 'Codete NgRx Quick Start',
     short_name: 'codete-ngrx-start',
   }
-
-
-
 }
 module.exports = exports = { config };
