@@ -37,7 +37,7 @@ export class ProcessController extends Firedev.Base.Controller<Process>  {
         //#region @browser
         (async (stdout, stder, shouldProcesBeDead) => {
           for (let i = 1; i < 11; i++) {
-            stdout(`Pluszka`);
+            stdout(`\nPluszka`);
             await Helpers.wait(2)
             if (shouldProcesBeDead()) {
               return 0;
