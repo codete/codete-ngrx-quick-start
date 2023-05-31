@@ -2,12 +2,15 @@
   "resources": [],
   "overrided": {
     "linkedFolders": [],
+
     "ignoreDepsPattern": [
       "*"
     ],
+
     "includeAsDev": [],
     "includeOnly": [],
-    "dependencies": {}
+    "dependencies": {},
+    'npmFixes': [],
   },
   "linkedProjects": [],
   "smartContainerBuildTarget": "",
