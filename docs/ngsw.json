@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1686424914894,
+  "timestamp": 1686425663023,
   "index": "/codete-ngrx-quick-start/index.html",
   "assetGroups": [
     {
@@ -14,16 +14,16 @@
         "/codete-ngrx-quick-start/197.abd7de708b3c7130.js",
         "/codete-ngrx-quick-start/214.92906d55275c939d.js",
         "/codete-ngrx-quick-start/249.a6f344c779f92f33.js",
-        "/codete-ngrx-quick-start/307.a39c75236e230206.js",
+        "/codete-ngrx-quick-start/307.208cba5effe1ac30.js",
         "/codete-ngrx-quick-start/537.52109b015d300202.js",
         "/codete-ngrx-quick-start/571.f4d19f5ebb6ae927.js",
         "/codete-ngrx-quick-start/770.09686264a76191a4.js",
         "/codete-ngrx-quick-start/favicon.ico",
         "/codete-ngrx-quick-start/index.html",
-        "/codete-ngrx-quick-start/main.763aaa1d84bb116c.js",
+        "/codete-ngrx-quick-start/main.c32bb5d812e0c49f.js",
         "/codete-ngrx-quick-start/manifest.webmanifest",
         "/codete-ngrx-quick-start/polyfills.d4bf141a25801022.js",
-        "/codete-ngrx-quick-start/runtime.cd195d36609ff4be.js",
+        "/codete-ngrx-quick-start/runtime.7583a06e1bba4e45.js",
         "/codete-ngrx-quick-start/styles.275808403b6d77f9.css"
       ],
       "patterns": []
@@ -614,7 +614,7 @@
     "/codete-ngrx-quick-start/197.abd7de708b3c7130.js": "ba15bdff34f9f9055c8c0034e856b103436b41c2",
     "/codete-ngrx-quick-start/214.92906d55275c939d.js": "c59ffcdfcdc997ec75a55a2ce9c8b5e910ae1fdc",
     "/codete-ngrx-quick-start/249.a6f344c779f92f33.js": "f1d9d2916a60d290d59e24d92a68df9755e8e3e8",
-    "/codete-ngrx-quick-start/307.a39c75236e230206.js": "e0eae3a9f2ef257b7cffdfa80cf77262f8674808",
+    "/codete-ngrx-quick-start/307.208cba5effe1ac30.js": "a64ba6a7813635871898e222407232b311ae9081",
     "/codete-ngrx-quick-start/537.52109b015d300202.js": "c2863fe60c80ef441acf91ed4eff1877f2a9af99",
     "/codete-ngrx-quick-start/571.f4d19f5ebb6ae927.js": "5ff144bd64073564f6c13ccaec32313abb1ff908",
     "/codete-ngrx-quick-start/770.09686264a76191a4.js": "b721f03f2fb9fc7093eb3a476c0f84e2a43916f8",
@@ -1169,7 +1169,7 @@
     "/codete-ngrx-quick-start/assets/assets-for/ng2-rest/shared/shared_folder_info.txt": "20c9f283e2ae8222cb7a8773579c21ca06c04762",
     "/codete-ngrx-quick-start/assets/assets-for/static-columns/shared/shared_folder_info.txt": "69932a795dfffd3974774c4e2edf2f16657da86c",
     "/codete-ngrx-quick-start/assets/assets-for/tnp-cli/shared/shared_folder_info.txt": "e6ccc7736d6aa6d117c8835c34c016bf1ebc4ad0",
-    "/codete-ngrx-quick-start/assets/assets-for/tnp-config/shared/shared_folder_info.txt": "15d91a88ef4057b1db52c5ceb667614bd62d0735",
+    "/codete-ngrx-quick-start/assets/assets-for/tnp-config/shared/shared_folder_info.txt": "59c3b5bee365a8a73308da7b5b0d93d7465fbb4e",
     "/codete-ngrx-quick-start/assets/assets-for/tnp-core/shared/shared_folder_info.txt": "8d66e42958b83a0d9565a4cc406e8dc414a25712",
     "/codete-ngrx-quick-start/assets/assets-for/tnp-db/shared/shared_folder_info.txt": "29e3049376f276737d098df6f41de3db4358ac13",
     "/codete-ngrx-quick-start/assets/assets-for/tnp-helpers/shared/shared_folder_info.txt": "31369755136ae402bc4efd2147e6f41daf8c2ad9",
@@ -1188,11 +1188,11 @@
     "/codete-ngrx-quick-start/assets/shared/shared_folder_info.txt": "f083726ddde09b80bbf7e3e467f42eaf716f7ba8",
     "/codete-ngrx-quick-start/assets/sql-wasm.wasm": "fcc42ce03c2b5af20e90acc2b75263acc502d736",
     "/codete-ngrx-quick-start/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/codete-ngrx-quick-start/index.html": "f1ba9a4637daaaf1fee2a54eeb6034d7c5c5d289",
-    "/codete-ngrx-quick-start/main.763aaa1d84bb116c.js": "a9255bda02531a8e7af148653d484feb30b7480b",
+    "/codete-ngrx-quick-start/index.html": "6b3e7217518f295337b4d580362b9f6f82fea218",
+    "/codete-ngrx-quick-start/main.c32bb5d812e0c49f.js": "25fd38d9ffd03d018abcd11eb8712adfd6ca9f1d",
     "/codete-ngrx-quick-start/manifest.webmanifest": "1e1be5b75f57cd6b6c62d6804857fb423f1cc9bd",
     "/codete-ngrx-quick-start/polyfills.d4bf141a25801022.js": "ba4bce01a115e9bee93d0585400218abd2f58723",
-    "/codete-ngrx-quick-start/runtime.cd195d36609ff4be.js": "3b5b2c4c03fdab3b438545929060b2ac33f2296b",
+    "/codete-ngrx-quick-start/runtime.7583a06e1bba4e45.js": "2f14f7ce44302f4cb8d9ead08f53bd9c7e69a753",
     "/codete-ngrx-quick-start/styles.275808403b6d77f9.css": "5043e4d2f106c41cdf78369e8eed522788f1eedd"
   },
   "navigationUrls": [

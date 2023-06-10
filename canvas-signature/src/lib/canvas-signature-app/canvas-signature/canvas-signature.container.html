@@ -15,14 +15,16 @@
       Undo
       <mat-icon>undo</mat-icon>
     </button>
-
+    &nbsp;
+    &nbsp;
     <button mat-raised-button
             [disabled]="!(allowedToRedo$ | async)"
             (click)="redo()">
       Redo
       <mat-icon>redo</mat-icon>
     </button>
-
+    &nbsp;
+    &nbsp;
     <button mat-button
             (click)="onClear()">
       Clear
