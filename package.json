@@ -1,4 +1,39 @@
 {
+  "tnp": {
+    "resources": [],
+    "overrided": {
+      "linkedFolders": [],
+      "ignoreDepsPattern": [
+        "*"
+      ],
+      "includeAsDev": [],
+      "includeOnly": [],
+      "dependencies": {},
+      "npmFixes": []
+    },
+    "linkedProjects": [
+      "canvas-signature",
+      "layout",
+      "main",
+      "ngrx-data-tasks",
+      "ngrx-tasks",
+      "realtime-process",
+      "shared"
+    ],
+    "smartContainerBuildTarget": "main",
+    "linkedRepos": [],
+    "libReleaseOptions": {
+      "nodts": false,
+      "obscure": false,
+      "ugly": false,
+      "includeNodeModules": false
+    },
+    "type": "container",
+    "version": "v4",
+    "smart": true,
+    "monorepo": true,
+    "private": true
+  },
   "name": "codete-ngrx-quick-start",
   "version": "0.0.31",
   "dependencies": {
