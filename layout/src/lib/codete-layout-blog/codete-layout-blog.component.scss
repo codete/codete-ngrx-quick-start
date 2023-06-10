@@ -68,6 +68,25 @@ $padding: 16px;
   height: calc(100% - $headerLogoSize - 20px);
   overflow-x: hidden;
   overflow-y: auto;
+
+  >ng-scrollbar {
+    background: transparent;
+
+    >div {
+      >div {
+        >div {
+          >div {
+            >mat-card {
+              margin: 10px;
+              background-color: #0006;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
 }
 
 .bg-logo {

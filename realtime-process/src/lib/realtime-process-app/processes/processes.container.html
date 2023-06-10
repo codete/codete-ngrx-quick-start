@@ -1,8 +1,11 @@
 <mat-card>
   <h2>Processes</h2>
   <br>
-  <app-process [process]="p"
-               (processAction)="onProcessAction($event,p)"
-               (subscribeRealtime)="onProcessRealtimeSubscribe(p)"
-               *ngFor="let p of (processes$ | async); trackBy: trackByMethod"> {{p.id}} </app-process>
+  <div class="wrapper">
+    <app-process [process]="p"
+                 (processAction)="onProcessAction($event,p)"
+                 (subscribeRealtime)="onProcessRealtimeSubscribe(p)"
+                 *ngFor="let p of (processes$ | async); trackBy: trackByMethod"> {{p.id}} </app-process>
+  </div>
+
 </mat-card>

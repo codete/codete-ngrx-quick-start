@@ -15,24 +15,13 @@
   </a>
 </div>
 
-<ng-template #content>
-  <ng-content></ng-content>
-</ng-template>
 
-<ng-container *ngIf="!useOpenLayout">
-  <div class="bg-text-open">
-    <ng-scrollbar>
-      <mat-card>
-        <ng-container [ngTemplateOutlet]="content"></ng-container>
-      </mat-card>
-    </ng-scrollbar>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="useOpenLayout">
-  <div class="bg-text">
-    <ng-container [ngTemplateOutlet]="content"></ng-container>
-  </div>
-</ng-container>
+<div class="bg-text-open">
+  <ng-scrollbar>
+    <mat-card>
+      <ng-content></ng-content>
+    </mat-card>
+  </ng-scrollbar>
+</div>
 
 <footer>Copyright 2023 Codete</footer>

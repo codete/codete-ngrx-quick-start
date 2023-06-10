@@ -1,11 +1,9 @@
 <mat-tab-group>
   <mat-tab label="1. NgRx Introduction">
-    <br>
     <ng-container [ngTemplateOutlet]="topicsTmpl"
                   [ngTemplateOutletContext]="{ value: topicsPart1, blogindex: 1  }"></ng-container>
   </mat-tab>
-  <mat-tab label="2. NgRx vs NgRx Data" disabled="true" >
-    <br>
+  <mat-tab label="2. NgRx vs NgRx Data" >
     <ng-container [ngTemplateOutlet]="topicsTmpl"
                   [ngTemplateOutletContext]="{ value: topicsPart2, blogindex: 2  }"></ng-container>
   </mat-tab>
@@ -15,7 +13,6 @@
              let-value="value"
              let-blogindex="blogindex">
   <ng-container *ngFor="let t of value; let i = index">
-    <br *ngIf="i > 0">
     <mat-card [routerLink]="[t.link]">
       <mat-card-header>
         <mat-card-title [innerHtml]="blogindex + '.' + (i + 1) + ' ' + t.title"></mat-card-title>

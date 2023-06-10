@@ -1,12 +1,14 @@
+//#region @browser
 import { PlatformLocation, Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { filter, map, share, Subject, takeUntil, tap } from "rxjs";
 
 @Component({
   selector: 'app-codete-layout-blog',
   templateUrl: './codete-layout-blog.component.html',
-  styleUrls: ['./codete-layout-blog.component.scss']
+  styleUrls: ['./codete-layout-blog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CodeteLayoutBlogComponent implements OnInit {
   useOpenLayout = true;
@@ -47,3 +49,4 @@ export class CodeteLayoutBlogComponent implements OnInit {
 
 
 }
+//#endregion

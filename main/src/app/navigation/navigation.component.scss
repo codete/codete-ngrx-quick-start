@@ -1,8 +1,16 @@
+:host {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 mat-card {
   background-color: white;
-  color           : black;
-  cursor          : pointer;
-  opacity         : 0.9;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  opacity: 0.9;
 
   &:hover {
     opacity: 1;
