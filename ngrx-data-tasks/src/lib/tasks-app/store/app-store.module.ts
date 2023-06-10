@@ -14,10 +14,8 @@ export const metaReducers: MetaReducer<any>[] = [
 
 @NgModule({
   imports: [
-    StoreModule.forRoot({}, { metaReducers }),
-    EffectsModule.forRoot([AppEffects]),
-    StoreModule.forFeature(appConfigStoreKey, appConfigReducer),
-    StoreDevtoolsModule.instrument(),
+    StoreModule.forFeature(appConfigStoreKey, metaReducers),
+    EffectsModule.forFeature([AppEffects]),
     AppEntityStoreModule,
   ],
 })

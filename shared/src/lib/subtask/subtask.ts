@@ -11,7 +11,10 @@ import { ISubTask } from '../interfaces';
 export class SubTask extends Task {
 
   //#region static
-  public static URLS = URL_FOR(SubTask);
+  public static get URLS() {
+    return URL_FOR(this.ctrl.entity);
+  }
+
   public static ctrl: SubTaskController;
 
   public static from(subtask: Partial<SubTask> | ISubTask) {

@@ -6,7 +6,7 @@ body {
 }
 
 body {
-  margin: 0;
+  margin     : 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
@@ -57,4 +57,16 @@ mat-ink-bar {
 
 mat-form-field {
   width: 100%;
+}
+
+.mdc-tab__text-label {
+  color: white !important;
+}
+
+.mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: white !important;
+}
+
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
 }

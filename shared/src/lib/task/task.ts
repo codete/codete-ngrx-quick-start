@@ -9,7 +9,10 @@ import type { SubTask } from '../subtask/subtask';
   className: 'Task',
 })
 export class Task extends Firedev.Base.Entity<Task> {
-  public static URLS = URL_FOR(Task);
+  public static get URLS() {
+    return URL_FOR(this.ctrl.entity);
+  }
+
   public ctrl: TaskController;
   public static ctrl: TaskController;
 

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@codete-ngrx-quick-start/shared';
 import { StaticColumnsModule } from "static-columns";
 
-import { reducer } from './simple-tasks-app.reducer';
+import { appFeatureKey, reducer } from './simple-tasks-app.reducer';
 import { SimpleTasksModule } from './simple-tasks/simple-tasks.module';
 
 const routes: Routes = [
@@ -28,13 +28,8 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     StaticColumnsModule,
-    StoreModule.forRoot(reducer, {}),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      // maxAge: 25,
-      // logOnly: environment.production
-    }),
+    StoreModule.forFeature(appFeatureKey, reducer),
+    EffectsModule.forFeature([]),
     RouterModule.forChild(routes),
     SimpleTasksModule,
   ],

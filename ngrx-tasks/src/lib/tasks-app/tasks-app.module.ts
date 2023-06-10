@@ -8,7 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducer } from './tasks-app.reducer';
+import { appFeatureKey, reducer } from './tasks-app.reducer';
 
 const routes: Routes = [
   {
@@ -21,13 +21,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     TasksModule,
-    StoreModule.forRoot(reducer, {}),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      // maxAge: 25,
-      // logOnly: environment.production
-    }),
+    StoreModule.forFeature(appFeatureKey, reducer),
+    EffectsModule.forFeature([]),
     RouterModule.forChild(routes),
   ],
   declarations: [TasksAppComponent]

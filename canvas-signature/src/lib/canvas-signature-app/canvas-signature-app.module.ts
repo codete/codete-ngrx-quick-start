@@ -8,7 +8,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducer } from './canvas-signature-app.recucer';
+import { appFeatureKey, reducer } from './canvas-signature-app.recucer';
 
 const routes: Routes = [
   {
@@ -21,13 +21,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     CanvasSignatureModule,
-    StoreModule.forRoot(reducer, {}),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      // maxAge: 25,
-      // logOnly: environment.production
-    }),
+    StoreModule.forFeature(appFeatureKey, reducer),
+    EffectsModule.forFeature(),
     RouterModule.forChild(routes),
   ],
   declarations: [CanvasSignatureAppComponent]

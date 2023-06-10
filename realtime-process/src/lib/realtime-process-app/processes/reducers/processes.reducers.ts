@@ -40,12 +40,12 @@ export const reducer = createReducer(
       const actionProcess = _.cloneDeep(action.process);
 
       let onlyAllowedNext = [];
-      const existed = state.entities[action.process.id];
-      if (existed === 'killing') {
+      const existed = state.entities[action.process.id]
+      if (existed.state === 'killing') {
         onlyAllowedNext = ['killed', 'ended-with-error', 'ended-ok']
       }
 
-      if (existed === 'starting') {
+      if (existed.state === 'starting') {
         onlyAllowedNext = ['active']
       }
       if (onlyAllowedNext.length > 0) {

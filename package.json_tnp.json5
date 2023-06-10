@@ -35,7 +35,7 @@
   },
 
   "type": "container",
-  "version": "v3",
+  "version": "v4",
   "smart": true,
   "monorepo": true,
   "private": true,

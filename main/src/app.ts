@@ -9,6 +9,10 @@ import { NgModule, NgZone, ViewEncapsulation } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CodeteLayoutBlogModule } from "@codete-ngrx-quick-start/layout";
 import { RouterModule, Routes } from "@angular/router";
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { createReducer, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 //#endregion
 import { ProcessController, Process } from '@codete-ngrx-quick-start/shared';
 
@@ -62,12 +66,18 @@ export class MainComponent {
 
 }
 
-
 @NgModule({
   imports: [
     CodeteLayoutBlogModule,
     RouterModule.forRoot(routes, {
       useHash: true,
+    }),
+    StoreModule.forRoot(),
+    EffectsModule.forRoot(),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      // maxAge: 25,
+      // logOnly: environment.production
     }),
     FiredevGithubForkMeCornerModule,
   ],

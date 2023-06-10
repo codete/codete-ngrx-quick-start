@@ -21,6 +21,6 @@
     "ugly": false,
     "includeNodeModules": false
   },
-  "version": "v3",
+  "version": 'v4',
   "type": "isomorphic-lib"
 }
